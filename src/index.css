@@ -42,10 +42,19 @@ img, video, canvas, svg { max-width: 100%; }
 
 /* Shared mobile product-page corrections */
 @media (max-width: 767px) {
-  header > div {
+  header > div:first-child {
     height: 68px !important;
     padding-left: 16px !important;
     padding-right: 16px !important;
+  }
+
+  header > div.fixed {
+    top: 68px !important;
+    min-height: calc(100vh - 68px) !important;
+  }
+
+  header > div.fixed > aside {
+    min-height: calc(100vh - 68px) !important;
   }
 
   header [aria-label="Astikan home"] {
