@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import AOS from 'aos';
 import App from './App';
 import SiteHeader from './components/SiteHeader';
+import AstikanPage from './pages/AstikanPage';
 import TechnologyPage from './pages/TechnologyPage';
 import PartnersPage from './pages/PartnersPage';
 import TrustPage from './pages/TrustPage';
@@ -84,6 +85,7 @@ export default function RootApp() {
     return () => document.removeEventListener('click', routePageLinks);
   }, [path]);
 
+  if (path === '/astikan') return <AstikanPage />;
   if (path === '/technology') return <TechnologyPage />;
   if (path === '/partners') return <PartnersPage />;
   if (path === '/trust') return <TrustPage />;
