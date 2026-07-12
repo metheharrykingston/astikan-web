@@ -5,6 +5,7 @@ import SiteHeader from './components/SiteHeader';
 import SiteFooter from './components/SiteFooter';
 import AstikanPage from './pages/AstikanPage';
 import AstikanPayPage from './pages/AstikanPayPage';
+import KioskPage from './pages/KioskPage';
 import TechnologyPage from './pages/TechnologyPage';
 import PartnersPage from './pages/PartnersPage';
 import TrustPage from './pages/TrustPage';
@@ -135,6 +136,7 @@ export default function RootApp() {
 
   if (path === '/astikan') return <UniversalPage><AstikanPage /></UniversalPage>;
   if (path === '/astikan-pay') return <UniversalPage><AstikanPayPage /></UniversalPage>;
+  if (path === '/the-kiosk') return <UniversalPage><KioskPage /></UniversalPage>;
   if (path === '/technology') return <UniversalPage><TechnologyPage /></UniversalPage>;
   if (path === '/partners') return <UniversalPage><PartnersPage /></UniversalPage>;
   if (path === '/trust') return <UniversalPage><TrustPage /></UniversalPage>;
