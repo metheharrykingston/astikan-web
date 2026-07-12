@@ -25,11 +25,11 @@ const footerColumns = [
     ['Partner Portal', '/partners#partner-portal'],
   ]],
   ['TRUST', [
-    ['Our Standards', '/#trust'],
-    ['Safety & Quality', '/#trust'],
-    ['Compliance', '/#trust'],
-    ['Privacy Policy', '/#trust'],
-    ['Terms of Use', '/#trust'],
+    ['Our Care Standards', '/trust#care-standards'],
+    ['Clear Care Journeys', '/trust'],
+    ['Quality & Safety', '/trust#care-standards'],
+    ['Support & Resolution', '/trust'],
+    ['Feedback & Improvement', '/trust'],
   ]],
   ['INSIGHTS', [
     ['Health Library', '/#insights'],
