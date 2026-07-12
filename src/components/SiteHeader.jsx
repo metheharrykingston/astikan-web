@@ -5,7 +5,7 @@ import AstikanLogo from './AstikanLogo';
 const navItems = [
   { label: 'Care', to: '/#ecosystem', dropdown: true },
   { label: 'Technology', to: '/technology' },
-  { label: 'Partners', to: '/#ecosystem' },
+  { label: 'Partners', to: '/partners' },
   { label: 'Trust', to: '/#trust' },
   { label: 'Impact', to: '/#impact' },
   { label: 'Insights', to: '/#insights' },
@@ -14,7 +14,7 @@ const navItems = [
 
 export default function SiteHeader() {
   const [open, setOpen] = useState(false);
-  const currentPath = typeof window === 'undefined' ? '/' : window.location.pathname;
+  const currentPath = typeof window === 'undefined' ? '/' : window.location.pathname.replace(/\/+$/, '') || '/';
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-slate-200/80 bg-white/95 backdrop-blur-xl">
@@ -23,7 +23,7 @@ export default function SiteHeader() {
 
         <nav className="hidden items-center gap-8 lg:flex" aria-label="Primary navigation">
           {navItems.map((item) => {
-            const active = item.to === '/technology' && currentPath === '/technology';
+            const active = item.to.startsWith('/') && !item.to.startsWith('/#') && currentPath === item.to;
             return (
               <a
                 key={item.label}
@@ -60,20 +60,21 @@ export default function SiteHeader() {
       {open && (
         <div className="border-t border-slate-200 bg-white px-5 py-5 shadow-soft lg:hidden">
           <div className="grid gap-1">
-            {navItems.map((item) => (
-              <a
-                key={item.label}
-                href={item.to}
-                onClick={() => setOpen(false)}
-                className={`rounded-lg px-3 py-3 font-semibold transition ${
-                  item.to === '/technology' && currentPath === '/technology'
-                    ? 'bg-blue-50 text-navy-900'
-                    : 'text-navy-900 hover:bg-slate-50'
-                }`}
-              >
-                {item.label}
-              </a>
-            ))}
+            {navItems.map((item) => {
+              const active = item.to.startsWith('/') && !item.to.startsWith('/#') && currentPath === item.to;
+              return (
+                <a
+                  key={item.label}
+                  href={item.to}
+                  onClick={() => setOpen(false)}
+                  className={`rounded-lg px-3 py-3 font-semibold transition ${
+                    active ? 'bg-blue-50 text-navy-900' : 'text-navy-900 hover:bg-slate-50'
+                  }`}
+                >
+                  {item.label}
+                </a>
+              );
+            })}
             <a
               href="/#contact"
               onClick={() => setOpen(false)}
