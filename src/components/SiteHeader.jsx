@@ -4,7 +4,7 @@ import AstikanLogo from './AstikanLogo';
 
 const navItems = [
   { label: 'ASTIKAN', to: '/astikan', enabled: true },
-  { label: 'ASTIKAN PAY', enabled: false },
+  { label: 'ASTIKAN PAY', to: '/astikan-pay', enabled: true },
   { label: 'THE KIOSK', enabled: false },
   { label: 'RESEARCH', enabled: false },
   { label: 'MISSION', enabled: false },
