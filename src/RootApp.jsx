@@ -5,7 +5,7 @@ import SiteHeader from './components/SiteHeader';
 import SiteFooter from './components/SiteFooter';
 import AstikanPage from './pages/AstikanPage';
 import AstikanPayPage from './pages/AstikanPayPage';
-import KioskPage from './pages/KioskPage';
+import KioskPage from './pages/KioskPageClean';
 import TechnologyPage from './pages/TechnologyPage';
 import PartnersPage from './pages/PartnersPage';
 import TrustPage from './pages/TrustPage';
