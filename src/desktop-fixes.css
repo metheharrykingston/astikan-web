@@ -1,0 +1,50 @@
+/* Desktop-only composition corrections */
+@media (min-width: 1024px) {
+  .astikan-hero-copy {
+    max-width: 510px !important;
+    min-width: 0;
+  }
+
+  .astikan-hero-copy h2,
+  .astikan-hero-copy p {
+    max-width: 510px !important;
+  }
+
+  .astikan-device-stage {
+    width: min(100%, 680px) !important;
+    max-width: 680px !important;
+    margin-left: auto !important;
+    margin-right: 0 !important;
+  }
+
+  .astikan-device-stage > div:nth-last-child(3) {
+    left: 7% !important;
+  }
+
+  .astikan-device-stage > div:nth-last-child(2) {
+    right: 7% !important;
+  }
+
+  .astikan-device-stage > div:last-child {
+    right: -2% !important;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .astikan-hero-copy {
+    max-width: 460px !important;
+  }
+
+  .astikan-hero-copy h1 {
+    font-size: 4.45rem !important;
+  }
+
+  .astikan-device-stage {
+    max-width: 610px !important;
+  }
+
+  .astikan-device-stage > div:nth-last-child(2) {
+    width: 235px !important;
+    right: 5% !important;
+  }
+}
