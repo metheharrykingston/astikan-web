@@ -23,9 +23,10 @@ const worldCards = [
   {
     eyebrow: 'PHYSICAL HEALTH INTERFACE',
     title: 'The Kiosk',
-    text: 'A future physical access point connecting people with Astikan health technologies.',
+    text: 'A connected physical health station bringing guided check-ups, consultation, diagnostics, and medicine access together.',
+    to: '/the-kiosk',
     icon: Building2,
-    enabled: false,
+    enabled: true,
   },
 ];
 
@@ -35,7 +36,7 @@ const footerGroups = [
     items: [
       { label: 'Astikan', to: '/astikan', enabled: true },
       { label: 'Astikan Pay', to: '/astikan-pay', enabled: true },
-      { label: 'The Kiosk', enabled: false },
+      { label: 'The Kiosk', to: '/the-kiosk', enabled: true },
     ],
   },
   {
