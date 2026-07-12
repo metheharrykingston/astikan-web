@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUpRight, Atom, Building2, CreditCard, FlaskConical, Grid3X3, Orbit, ShoppingBag } from 'lucide-react';
+import { ArrowUpRight, Atom, Building2, CreditCard, FlaskConical, Grid3X3, Orbit } from 'lucide-react';
 import { FaInstagram, FaLinkedinIn, FaXTwitter, FaYoutube } from 'react-icons/fa6';
 import AstikanLogo, { AstikanMark } from './AstikanLogo';
 
@@ -76,7 +76,7 @@ function FooterLink({ item }) {
 
 export default function SiteFooter() {
   return (
-    <>
+    <div data-universal-footer="true">
       <section className="border-t border-slate-100 bg-[linear-gradient(180deg,#ffffff_0%,#f4f8ff_100%)] px-5 py-20 sm:py-28 lg:px-8">
         <div className="mx-auto max-w-[1380px]">
           <div className="grid items-end gap-8 lg:grid-cols-[1fr_.72fr]">
@@ -178,6 +178,6 @@ export default function SiteFooter() {
           </div>
         </div>
       </footer>
-    </>
+    </div>
   );
 }
