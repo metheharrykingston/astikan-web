@@ -18,11 +18,11 @@ const footerColumns = [
     ['Future Research', '/technology#future'],
   ]],
   ['PARTNERS', [
-    ['For Hospitals', '/#ecosystem'],
-    ['For Doctors', '/#ecosystem'],
-    ['For Labs', '/#ecosystem'],
-    ['For Corporates', '/#ecosystem'],
-    ['Partner Portal', '/#contact'],
+    ['Partner With Us', '/partners'],
+    ['For Hospitals', '/partners#partner-paths'],
+    ['For Doctors', '/partners#partner-paths'],
+    ['For Labs', '/partners#partner-paths'],
+    ['Partner Portal', '/partners#partner-portal'],
   ]],
   ['TRUST', [
     ['Our Standards', '/#trust'],
