@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react';
 import AOS from 'aos';
 import App from './App';
+import SiteHeader from './components/SiteHeader';
 import TechnologyPage from './pages/TechnologyPage';
 import PartnersPage from './pages/PartnersPage';
 import TrustPage from './pages/TrustPage';
+import ShopPage from './pages/ShopPage';
 
 export default function RootApp() {
   const path = window.location.pathname.replace(/\/+$/, '') || '/';
@@ -85,5 +87,17 @@ export default function RootApp() {
   if (path === '/technology') return <TechnologyPage />;
   if (path === '/partners') return <PartnersPage />;
   if (path === '/trust') return <TrustPage />;
-  return <App />;
+  if (path === '/shop') return <ShopPage />;
+
+  return (
+    <>
+      <SiteHeader />
+      <div className="astikan-home-shell"><App /></div>
+      <style>{`
+        .astikan-home-shell > div > header { display: none !important; }
+        .astikan-home-shell a[href="#contact"] { display: none !important; }
+        .astikan-home-shell section#contact { display: none !important; }
+      `}</style>
+    </>
+  );
 }
