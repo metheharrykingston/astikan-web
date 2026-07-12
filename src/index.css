@@ -10,9 +10,26 @@
   text-rendering: optimizeLegibility;
 }
 
-html { scroll-behavior: smooth; }
-body { margin: 0; min-width: 320px; min-height: 100vh; background: #fff; }
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: #fff;
+}
+
+#root {
+  min-width: 0;
+  overflow-x: clip;
+}
+
 * { box-sizing: border-box; }
+img, video, canvas, svg { max-width: 100%; }
 ::selection { background: #cde6ff; color: #062654; }
 
 @media (max-width: 1023px) {
@@ -21,6 +38,176 @@ body { margin: 0; min-width: 320px; min-height: 100vh; background: #fff; }
 
 @media (max-width: 700px) {
   .hero-dashboard { left: 3%; top: 26%; width: 74%; transform: scale(.82); transform-origin: left top; }
+}
+
+/* Shared mobile product-page corrections */
+@media (max-width: 767px) {
+  header > div {
+    height: 68px !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  header [aria-label="Astikan home"] {
+    max-width: 132px;
+    overflow: hidden;
+  }
+
+  header [aria-label="Astikan home"] img {
+    display: block;
+    width: auto;
+    height: 40px !important;
+    max-width: 132px !important;
+    object-fit: contain;
+  }
+
+  header button[aria-label*="navigation"] {
+    width: 40px;
+    height: 40px;
+    flex: 0 0 auto;
+  }
+
+  main {
+    width: 100%;
+    min-width: 0;
+    overflow-x: clip;
+  }
+
+  main section,
+  main section > div {
+    min-width: 0;
+  }
+
+  .astikan-hero-copy,
+  .pay-hero-copy {
+    width: 100%;
+    max-width: none !important;
+    padding-top: 42px !important;
+    padding-bottom: 18px !important;
+  }
+
+  .astikan-hero-copy h1,
+  .pay-hero-copy h1 {
+    font-size: clamp(2.8rem, 14vw, 4rem) !important;
+    line-height: .98 !important;
+    overflow-wrap: anywhere;
+  }
+
+  .astikan-hero-copy h2,
+  .pay-hero-copy h2 {
+    font-size: 1.45rem !important;
+    line-height: 1.2 !important;
+  }
+
+  .astikan-hero-copy p,
+  .pay-hero-copy p {
+    line-height: 1.75 !important;
+  }
+
+  /* Astikan device composition */
+  .astikan-device-stage {
+    width: 100% !important;
+    max-width: 430px !important;
+    height: 500px !important;
+    margin-top: 0 !important;
+    overflow: hidden;
+  }
+
+  .astikan-device-stage > div:nth-last-child(2) {
+    right: 50% !important;
+    bottom: 0 !important;
+    width: 218px !important;
+    transform: translateX(50%) rotate(-2deg) !important;
+  }
+
+  .astikan-device-stage > svg {
+    right: -4% !important;
+    top: 8% !important;
+    width: 82% !important;
+    height: 66% !important;
+  }
+
+  /* Astikan Pay phone composition */
+  .pay-device-stage {
+    width: calc(100% + 40px) !important;
+    min-height: 455px !important;
+    margin-left: -20px;
+    overflow: hidden !important;
+    align-items: flex-start !important;
+    justify-content: center !important;
+    padding-top: 8px;
+  }
+
+  .pay-device-stage > div:nth-child(1) {
+    right: -62% !important;
+    top: 4% !important;
+    width: 780px !important;
+    height: 520px !important;
+  }
+
+  .pay-device-stage > div:nth-child(2),
+  .pay-device-stage > div:nth-child(3) {
+    display: none;
+  }
+
+  .pay-device-stage > div:last-child {
+    position: relative;
+    left: 50%;
+    width: max-content;
+    transform: translateX(-50%) scale(.58) !important;
+    transform-origin: center top !important;
+  }
+
+  .pay-device-stage > div:last-child > div:nth-child(4),
+  .pay-device-stage > div:last-child > div:nth-child(5) {
+    display: none !important;
+  }
+
+  /* Personal product canvases */
+  main [class*="grid-cols-[76px_1fr]"] {
+    grid-template-columns: 56px minmax(0, 1fr) !important;
+  }
+
+  main [class*="grid-cols-[110px_1fr]"] {
+    grid-template-columns: 56px minmax(0, 1fr) !important;
+  }
+
+  main [class*="grid-cols-[1.2fr_.8fr]"],
+  main [class*="grid-cols-[1.35fr_.65fr]"] {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  main article,
+  main [class*="rounded-[2rem]"],
+  main [class*="rounded-[2.7rem]"] {
+    max-width: 100%;
+  }
+
+  main .overflow-hidden {
+    min-width: 0;
+  }
+}
+
+@media (max-width: 479px) {
+  .astikan-hero-copy > div,
+  .pay-hero-copy > div {
+    max-width: 100%;
+  }
+
+  .astikan-hero-copy .rounded-full,
+  .pay-hero-copy .rounded-full {
+    font-size: 10px;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .pay-device-stage > div:last-child {
+    transform: translateX(-50%) scale(.53) !important;
+  }
+
+  .astikan-device-stage {
+    height: 470px !important;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
