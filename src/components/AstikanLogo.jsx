@@ -3,22 +3,29 @@ import React from 'react';
 export function AstikanMark({ className = 'h-11 w-11' }) {
   return (
     <svg className={className} viewBox="0 0 64 64" fill="none" aria-hidden="true">
-      <path d="M32 3 39 15 52 12 49 25 61 32 49 39 52 52 39 49 32 61 25 49 12 52 15 39 3 32 15 25 12 12 25 15 32 3Z" fill="#FFF8E7" stroke="#0B3974" strokeWidth="3"/>
-      <path d="M32 11 37 20 47 18 44 28 53 32 44 37 47 47 37 44 32 53 27 44 17 47 20 37 11 32 20 28 17 18 27 20 32 11Z" fill="#E8B34D" stroke="#0B3974" strokeWidth="2"/>
-      <circle cx="32" cy="32" r="10" fill="#0B3974"/>
-      <path d="M32 25v14M25 32h14" stroke="white" strokeWidth="3.5" strokeLinecap="round"/>
+      <defs>
+        <linearGradient id="astikan-mark-gradient" x1="6" y1="7" x2="59" y2="57" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#6858B6" />
+          <stop offset="0.5" stopColor="#8E2D91" />
+          <stop offset="1" stopColor="#5A145F" />
+        </linearGradient>
+      </defs>
+      <rect x="2" y="2" width="60" height="60" rx="15" fill="url(#astikan-mark-gradient)" />
+      <path d="M13 45C22 37 30 27 38 15C41 10 47 9 50 13C52 16 51 20 48 23C40 31 30 40 19 48C16 50 12 49 10 47C9 46 10 46 13 45Z" fill="white" />
+      <path d="M17 16C24 18 31 23 37 29C42 34 46 41 48 49C49 52 47 54 45 53C43 52 42 49 41 46C38 37 31 29 22 24C18 22 14 20 12 18C10 16 12 15 17 16Z" fill="white" />
+      <path d="M13 46C22 45 31 40 40 32C46 27 50 22 53 18C55 16 57 16 58 18C59 20 58 22 56 24C49 33 39 42 27 49C20 53 14 55 10 53C8 52 9 48 13 46Z" fill="white" fillOpacity="0.96" />
     </svg>
   );
 }
 
 export default function AstikanLogo({ light = false, compact = false }) {
   return (
-    <a href="#top" className="group inline-flex items-center gap-2.5" aria-label="Astikan Healthcare Trust home">
-      <AstikanMark className={compact ? 'h-9 w-9' : 'h-11 w-11'} />
+    <span className="inline-flex items-center gap-3" aria-label="Astikan Healthcare">
+      <AstikanMark className={compact ? 'h-10 w-10' : 'h-12 w-12'} />
       <span className="leading-none">
-        <span className={`block text-[1.35rem] font-extrabold tracking-[0.12em] ${light ? 'text-white' : 'text-navy-900'}`}>ASTIKAN</span>
-        <span className={`mt-1 block text-[0.55rem] font-bold tracking-[0.24em] ${light ? 'text-blue-200' : 'text-navy-700'}`}>HEALTHCARE TRUST</span>
+        <span className={`block text-[1.42rem] font-extrabold tracking-[0.04em] ${light ? 'text-white' : 'text-[#25262b]'}`}>astikan</span>
+        <span className={`mt-1 block text-[0.56rem] font-semibold tracking-[0.24em] ${light ? 'text-violet-200' : 'text-[#6f2f79]'}`}>HEALTHCARE</span>
       </span>
-    </a>
+    </span>
   );
 }
