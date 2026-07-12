@@ -6,7 +6,7 @@ const navItems = [
   { label: 'Care', to: '/#ecosystem', dropdown: true },
   { label: 'Technology', to: '/technology' },
   { label: 'Partners', to: '/partners' },
-  { label: 'Trust', to: '/#trust' },
+  { label: 'Trust', to: '/trust' },
   { label: 'Impact', to: '/#impact' },
   { label: 'Insights', to: '/#insights' },
   { label: 'Contact', to: '/#contact' },
