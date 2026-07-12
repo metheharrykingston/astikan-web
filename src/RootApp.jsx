@@ -3,6 +3,7 @@ import AOS from 'aos';
 import App from './App';
 import TechnologyPage from './pages/TechnologyPage';
 import PartnersPage from './pages/PartnersPage';
+import TrustPage from './pages/TrustPage';
 
 export default function RootApp() {
   const path = window.location.pathname.replace(/\/+$/, '') || '/';
@@ -64,12 +65,17 @@ export default function RootApp() {
     if (path !== '/') return undefined;
 
     const routePageLinks = (event) => {
-      const link = event.target.closest('a[href="#technology"], a[href="#partners"]');
+      const link = event.target.closest('a[href="#technology"], a[href="#partners"], a[href="#trust"]');
       if (!link) return;
 
-      const destination = link.getAttribute('href') === '#partners' ? '/partners' : '/technology';
+      const destinationByHash = {
+        '#technology': '/technology',
+        '#partners': '/partners',
+        '#trust': '/trust',
+      };
+
       event.preventDefault();
-      window.location.assign(destination);
+      window.location.assign(destinationByHash[link.getAttribute('href')]);
     };
 
     document.addEventListener('click', routePageLinks);
@@ -78,5 +84,6 @@ export default function RootApp() {
 
   if (path === '/technology') return <TechnologyPage />;
   if (path === '/partners') return <PartnersPage />;
+  if (path === '/trust') return <TrustPage />;
   return <App />;
 }
