@@ -38,9 +38,18 @@ export default function SiteHeader() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-slate-200/80 bg-white/95 backdrop-blur-xl">
       <div className="mx-auto flex h-[76px] max-w-[1380px] items-center px-5 lg:px-8">
-        <a href="/" aria-label="Astikan home" className="shrink-0">
+        <span
+          role="link"
+          tabIndex={0}
+          aria-label="Astikan home"
+          onClick={() => window.location.assign('/')}
+          onKeyDown={(event) => {
+            if (event.key === 'Enter' || event.key === ' ') window.location.assign('/');
+          }}
+          className="shrink-0 cursor-pointer"
+        >
           <AstikanLogo compact />
-        </a>
+        </span>
 
         <nav className="ml-10 hidden items-center gap-5 lg:flex xl:ml-14 xl:gap-7" aria-label="Primary navigation">
           {navItems.map(renderDesktopItem)}
