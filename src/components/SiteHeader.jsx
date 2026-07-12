@@ -3,12 +3,12 @@ import { Menu, X } from 'lucide-react';
 import AstikanLogo from './AstikanLogo';
 
 const navItems = [
-  { label: 'ASTIKAN', to: '/' },
-  { label: 'ASTIKAN PAY', to: '/technology#building-now' },
-  { label: 'THE KIOSK', to: '/technology#health-kiosk' },
-  { label: 'RESEARCH', to: '/technology#future' },
-  { label: 'MISSION', to: '/#impact' },
-  { label: 'COMPANY', to: '/trust' },
+  { label: 'ASTIKAN', to: '/astikan', enabled: true },
+  { label: 'ASTIKAN PAY', enabled: false },
+  { label: 'THE KIOSK', enabled: false },
+  { label: 'RESEARCH', enabled: false },
+  { label: 'MISSION', enabled: false },
+  { label: 'COMPANY', enabled: false },
 ];
 
 export default function SiteHeader() {
@@ -16,13 +16,23 @@ export default function SiteHeader() {
   const currentPath = typeof window === 'undefined'
     ? '/'
     : window.location.pathname.replace(/\/+$/, '') || '/';
-  const currentHash = typeof window === 'undefined' ? '' : window.location.hash;
-  const currentLocation = `${currentPath}${currentHash}`;
 
-  const isActive = (item) => {
-    if (item.to === '/') return currentPath === '/';
-    if (item.to.includes('#')) return currentLocation === item.to;
-    return currentPath === item.to;
+  const renderDesktopItem = (item) => {
+    const active = item.enabled && currentPath === item.to;
+    const className = `group relative py-2 text-[11px] font-extrabold tracking-[0.08em] transition xl:text-xs ${
+      active ? 'text-navy-900' : item.enabled ? 'text-navy-900/70 hover:text-navy-900' : 'cursor-default text-navy-900/45'
+    }`;
+
+    if (!item.enabled) {
+      return <span key={item.label} aria-disabled="true" className={className}>{item.label}</span>;
+    }
+
+    return (
+      <a key={item.label} href={item.to} className={className}>
+        {item.label}
+        <span className={`absolute inset-x-0 -bottom-[18px] h-0.5 origin-left bg-navy-900 transition-transform ${active ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`} />
+      </a>
+    );
   };
 
   return (
@@ -33,30 +43,13 @@ export default function SiteHeader() {
         </a>
 
         <nav className="ml-10 hidden items-center gap-5 lg:flex xl:ml-14 xl:gap-7" aria-label="Primary navigation">
-          {navItems.map((item) => {
-            const active = isActive(item);
-            return (
-              <a
-                key={item.label}
-                href={item.to}
-                className={`group relative py-2 text-[11px] font-extrabold tracking-[0.08em] transition xl:text-xs ${
-                  active ? 'text-navy-900' : 'text-navy-900/70 hover:text-navy-900'
-                }`}
-              >
-                {item.label}
-                <span className={`absolute inset-x-0 -bottom-[18px] h-0.5 origin-left bg-navy-900 transition-transform ${active ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`} />
-              </a>
-            );
-          })}
+          {navItems.map(renderDesktopItem)}
         </nav>
 
         <div className="ml-auto flex items-center gap-5">
-          <a
-            href="/shop"
-            className={`hidden py-2 text-[11px] font-extrabold tracking-[0.1em] transition sm:inline-flex xl:text-xs ${currentPath === '/shop' ? 'text-navy-900' : 'text-navy-900/75 hover:text-navy-900'}`}
-          >
+          <span aria-disabled="true" className="hidden cursor-default py-2 text-[11px] font-extrabold tracking-[0.1em] text-navy-900/45 sm:inline-flex xl:text-xs">
             SHOP
-          </a>
+          </span>
           <button
             type="button"
             onClick={() => setOpen((value) => !value)}
@@ -76,17 +69,18 @@ export default function SiteHeader() {
             onClick={(event) => event.stopPropagation()}
           >
             <nav className="grid" aria-label="Expanded navigation">
-              {[...navItems, { label: 'SHOP', to: '/shop' }].map((item) => {
-                const active = isActive(item) || (item.to === '/shop' && currentPath === '/shop');
+              {[...navItems, { label: 'SHOP', enabled: false }].map((item) => {
+                const active = item.enabled && currentPath === item.to;
+                const className = `border-b border-slate-100 py-4 text-sm font-extrabold tracking-[0.08em] transition ${
+                  active ? 'text-blue-700' : item.enabled ? 'text-navy-900 hover:pl-1 hover:text-blue-700' : 'cursor-default text-navy-900/40'
+                }`;
+
+                if (!item.enabled) {
+                  return <span key={item.label} aria-disabled="true" className={className}>{item.label}</span>;
+                }
+
                 return (
-                  <a
-                    key={item.label}
-                    href={item.to}
-                    onClick={() => setOpen(false)}
-                    className={`border-b border-slate-100 py-4 text-sm font-extrabold tracking-[0.08em] transition ${
-                      active ? 'text-blue-700' : 'text-navy-900 hover:pl-1 hover:text-blue-700'
-                    }`}
-                  >
+                  <a key={item.label} href={item.to} onClick={() => setOpen(false)} className={className}>
                     {item.label}
                   </a>
                 );
