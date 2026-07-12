@@ -25,4 +25,4 @@ npm run build
 npm run preview
 ```
 
-The original supplied screenshot is preserved at `public/astikan-reference.png` for visual comparison. The page itself is built with React components, CSS, SVG, and icon libraries rather than using the screenshot as the interface.
+The interface is built with reusable React components, Tailwind utility classes, SVG artwork, and icon libraries rather than displaying the reference screenshot as the page.
