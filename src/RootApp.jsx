@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import AOS from 'aos';
 import App from './App';
 import TechnologyPage from './pages/TechnologyPage';
+import PartnersPage from './pages/PartnersPage';
 
 export default function RootApp() {
   const path = window.location.pathname.replace(/\/+$/, '') || '/';
@@ -62,16 +63,20 @@ export default function RootApp() {
   useEffect(() => {
     if (path !== '/') return undefined;
 
-    const routeTechnology = (event) => {
-      const link = event.target.closest('a[href="#technology"]');
+    const routePageLinks = (event) => {
+      const link = event.target.closest('a[href="#technology"], a[href="#partners"]');
       if (!link) return;
+
+      const destination = link.getAttribute('href') === '#partners' ? '/partners' : '/technology';
       event.preventDefault();
-      window.location.assign('/technology');
+      window.location.assign(destination);
     };
 
-    document.addEventListener('click', routeTechnology);
-    return () => document.removeEventListener('click', routeTechnology);
+    document.addEventListener('click', routePageLinks);
+    return () => document.removeEventListener('click', routePageLinks);
   }, [path]);
 
-  return path === '/technology' ? <TechnologyPage /> : <App />;
+  if (path === '/technology') return <TechnologyPage />;
+  if (path === '/partners') return <PartnersPage />;
+  return <App />;
 }
