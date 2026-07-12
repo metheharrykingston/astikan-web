@@ -3,6 +3,7 @@ import AOS from 'aos';
 import App from './App';
 import SiteHeader from './components/SiteHeader';
 import AstikanPage from './pages/AstikanPage';
+import AstikanPayPage from './pages/AstikanPayPage';
 import TechnologyPage from './pages/TechnologyPage';
 import PartnersPage from './pages/PartnersPage';
 import TrustPage from './pages/TrustPage';
@@ -86,6 +87,7 @@ export default function RootApp() {
   }, [path]);
 
   if (path === '/astikan') return <AstikanPage />;
+  if (path === '/astikan-pay') return <AstikanPayPage />;
   if (path === '/technology') return <TechnologyPage />;
   if (path === '/partners') return <PartnersPage />;
   if (path === '/trust') return <TrustPage />;
