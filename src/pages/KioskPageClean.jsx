@@ -2,6 +2,8 @@ import React, { useLayoutEffect, useRef } from 'react';
 import KioskPage from './KioskPage';
 
 function replaceVideoWithStill(video, timestamp) {
+  const originalClassName = video.className;
+
   const drawStill = () => {
     if (!video.videoWidth || !video.videoHeight) return;
 
@@ -10,12 +12,14 @@ function replaceVideoWithStill(video, timestamp) {
 
     canvas.width = video.videoWidth;
     canvas.height = cropHeight;
-    canvas.className = video.className;
+    canvas.className = originalClassName;
     canvas.setAttribute('role', 'img');
     canvas.setAttribute('aria-label', 'Astikan Health Kiosk product image');
 
     const context = canvas.getContext('2d');
-    context?.drawImage(
+    if (!context) return;
+
+    context.drawImage(
       video,
       0,
       0,
@@ -39,12 +43,10 @@ function replaceVideoWithStill(video, timestamp) {
   video.removeAttribute('autoplay');
   video.loop = false;
   video.pause();
+  video.addEventListener('seeked', drawStill, { once: true });
 
   if (video.readyState >= 1) seekToFrame();
   else video.addEventListener('loadedmetadata', seekToFrame, { once: true });
-
-  video.addEventListener('seeked', drawStill, { once: true });
-  video.load();
 }
 
 export default function KioskPageClean() {
