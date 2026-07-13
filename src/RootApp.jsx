@@ -6,10 +6,11 @@ import SiteFooter from './components/SiteFooter';
 import AstikanPage from './pages/AstikanPage';
 import AstikanPayPage from './pages/AstikanPayPage';
 import KioskPage from './pages/KioskPageClean';
+import { ResearchPage, CompanyPage } from './pages/BrandPages';
+import MissionPage from './pages/MissionPage';
 import TechnologyPage from './pages/TechnologyPage';
 import PartnersPage from './pages/PartnersPage';
 import TrustPage from './pages/TrustPage';
-import ShopPage from './pages/ShopPage';
 
 function UniversalPage({ children }) {
   return (
@@ -56,8 +57,7 @@ export default function RootApp() {
 
       candidates.forEach((element) => {
         if (element.parentElement?.closest('[data-aos]')) return;
-
-        element.setAttribute('data-aos', element.tagName === 'H2' ? 'fade-up' : 'fade-up');
+        element.setAttribute('data-aos', 'fade-up');
         element.setAttribute('data-aos-delay', String((animationIndex % 6) * 45));
         animationIndex += 1;
       });
@@ -84,10 +84,7 @@ export default function RootApp() {
             }
           });
         },
-        {
-          threshold: 0.01,
-          rootMargin: '0px 0px 140px 0px',
-        },
+        { threshold: 0.01, rootMargin: '0px 0px 140px 0px' },
       );
 
       animatedElements.forEach((element) => observer.observe(element));
@@ -137,10 +134,12 @@ export default function RootApp() {
   if (path === '/astikan') return <UniversalPage><AstikanPage /></UniversalPage>;
   if (path === '/astikan-pay') return <UniversalPage><AstikanPayPage /></UniversalPage>;
   if (path === '/the-kiosk') return <UniversalPage><KioskPage /></UniversalPage>;
+  if (path === '/research') return <UniversalPage><ResearchPage /></UniversalPage>;
+  if (path === '/mission') return <UniversalPage><MissionPage /></UniversalPage>;
+  if (path === '/company') return <UniversalPage><CompanyPage /></UniversalPage>;
   if (path === '/technology') return <UniversalPage><TechnologyPage /></UniversalPage>;
   if (path === '/partners') return <UniversalPage><PartnersPage /></UniversalPage>;
   if (path === '/trust') return <UniversalPage><TrustPage /></UniversalPage>;
-  if (path === '/shop') return <UniversalPage><ShopPage /></UniversalPage>;
 
   return (
     <UniversalPage>
