@@ -6,9 +6,9 @@ const navItems = [
   { label: 'ASTIKAN', to: '/astikan', enabled: true },
   { label: 'ASTIKAN PAY', to: '/astikan-pay', enabled: true },
   { label: 'THE KIOSK', to: '/the-kiosk', enabled: true },
-  { label: 'RESEARCH', enabled: false },
-  { label: 'MISSION', enabled: false },
-  { label: 'COMPANY', enabled: false },
+  { label: 'RESEARCH', to: '/research', enabled: true },
+  { label: 'MISSION', to: '/mission', enabled: true },
+  { label: 'COMPANY', to: '/company', enabled: true },
 ];
 
 export default function SiteHeader() {
@@ -18,14 +18,8 @@ export default function SiteHeader() {
     : window.location.pathname.replace(/\/+$/, '') || '/';
 
   const renderDesktopItem = (item) => {
-    const active = item.enabled && currentPath === item.to;
-    const className = `group relative py-2 text-[11px] font-extrabold tracking-[0.08em] transition xl:text-xs ${
-      active ? 'text-navy-900' : item.enabled ? 'text-navy-900/70 hover:text-navy-900' : 'cursor-default text-navy-900/45'
-    }`;
-
-    if (!item.enabled) {
-      return <span key={item.label} aria-disabled="true" className={className}>{item.label}</span>;
-    }
+    const active = currentPath === item.to;
+    const className = `group relative py-2 text-[11px] font-extrabold tracking-[0.08em] text-navy-900/70 transition hover:text-navy-900 xl:text-xs ${active ? 'text-navy-900' : ''}`;
 
     return (
       <a key={item.label} href={item.to} className={className}>
@@ -55,10 +49,7 @@ export default function SiteHeader() {
           {navItems.map(renderDesktopItem)}
         </nav>
 
-        <div className="ml-auto flex items-center gap-5">
-          <span aria-disabled="true" className="hidden cursor-default py-2 text-[11px] font-extrabold tracking-[0.1em] text-navy-900/45 sm:inline-flex xl:text-xs">
-            SHOP
-          </span>
+        <div className="ml-auto flex items-center">
           <button
             type="button"
             onClick={() => setOpen((value) => !value)}
@@ -78,15 +69,9 @@ export default function SiteHeader() {
             onClick={(event) => event.stopPropagation()}
           >
             <nav className="grid" aria-label="Expanded navigation">
-              {[...navItems, { label: 'SHOP', enabled: false }].map((item) => {
-                const active = item.enabled && currentPath === item.to;
-                const className = `border-b border-slate-100 py-4 text-sm font-extrabold tracking-[0.08em] transition ${
-                  active ? 'text-blue-700' : item.enabled ? 'text-navy-900 hover:pl-1 hover:text-blue-700' : 'cursor-default text-navy-900/40'
-                }`;
-
-                if (!item.enabled) {
-                  return <span key={item.label} aria-disabled="true" className={className}>{item.label}</span>;
-                }
+              {navItems.map((item) => {
+                const active = currentPath === item.to;
+                const className = `border-b border-slate-100 py-4 text-sm font-extrabold tracking-[0.08em] transition ${active ? 'text-blue-700' : 'text-navy-900 hover:pl-1 hover:text-blue-700'}`;
 
                 return (
                   <a key={item.label} href={item.to} onClick={() => setOpen(false)} className={className}>
