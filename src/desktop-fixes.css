@@ -1,29 +1,91 @@
-/* Astikan hero: three app mockups only */
+/* Astikan hero: stable three-app-screen composition */
 .astikan-device-stage {
   isolation: isolate;
-  overflow: hidden;
-  border-radius: 3rem;
-  background: linear-gradient(180deg, rgba(247, 250, 255, 0.92) 0%, rgba(236, 244, 255, 0.96) 100%);
+  overflow: visible !important;
+  border-radius: 0 !important;
+  background: transparent !important;
 }
 
-/* Remove the old globe, orbit rings and floating dots. */
+/* Remove every legacy globe, orbit, glow and floating-dot layer. */
 .astikan-device-stage > svg,
 .astikan-device-stage > div:nth-child(-n + 6) {
   display: none !important;
 }
 
-/* Make the left health overview panel read as a real phone. */
-.astikan-device-stage > div:nth-last-child(3)::before {
+/* Select the three existing product screens by their source classes instead of brittle child order. */
+.astikan-device-stage > div[class*="left-[2%]"][class*="top-[15%]"],
+.astikan-device-stage > div[class*="bottom-[2%]"][class*="right-[18%]"],
+.astikan-device-stage > div[class*="bottom-[8%]"][class*="right-[0%]"] {
+  display: block !important;
+  position: absolute !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  overflow: hidden !important;
+  border-color: #081a3d !important;
+  background: #f7f9fd !important;
+  box-shadow: 0 30px 75px rgba(20, 50, 105, 0.22) !important;
+}
+
+/* Left app mockup: overview */
+.astikan-device-stage > div[class*="left-[2%]"][class*="top-[15%]"] {
+  left: 0 !important;
+  right: auto !important;
+  top: 74px !important;
+  bottom: auto !important;
+  z-index: 10 !important;
+  width: 205px !important;
+  height: 430px !important;
+  border-width: 8px !important;
+  border-radius: 2.45rem !important;
+  transform: rotate(-6deg) !important;
+  transform-origin: center bottom !important;
+}
+
+.astikan-device-stage > div[class*="left-[2%]"][class*="top-[15%]"]::before {
   content: '';
   position: absolute;
   left: 50%;
   top: 7px;
-  z-index: 30;
-  width: 72px;
+  z-index: 50;
+  width: 70px;
   height: 18px;
   transform: translateX(-50%);
   border-radius: 999px;
   background: #081a3d;
+}
+
+.astikan-device-stage > div[class*="left-[2%]"][class*="top-[15%]"] > div:first-child {
+  padding: 2.35rem 0.85rem 0.75rem !important;
+}
+
+.astikan-device-stage > div[class*="left-[2%]"][class*="top-[15%]"] > div:nth-child(2) {
+  padding: 0.8rem !important;
+}
+
+.astikan-device-stage > div[class*="left-[2%]"][class*="top-[15%]"] .grid {
+  grid-template-columns: 1fr !important;
+}
+
+/* Centre app mockup: main home */
+.astikan-device-stage > div[class*="bottom-[2%]"][class*="right-[18%]"] {
+  left: 50% !important;
+  right: auto !important;
+  top: auto !important;
+  bottom: 0 !important;
+  z-index: 30 !important;
+  width: 245px !important;
+  transform: translateX(-50%) rotate(-1deg) !important;
+}
+
+/* Right app mockup: reports */
+.astikan-device-stage > div[class*="bottom-[8%]"][class*="right-[0%]"] {
+  left: auto !important;
+  right: 0 !important;
+  top: auto !important;
+  bottom: 34px !important;
+  z-index: 20 !important;
+  width: 205px !important;
+  transform: rotate(6deg) !important;
 }
 
 @media (min-width: 1024px) {
@@ -53,58 +115,9 @@
   .astikan-device-stage {
     width: 100% !important;
     height: 560px !important;
-    max-width: 700px !important;
+    max-width: 680px !important;
     margin-left: auto !important;
     margin-right: 0 !important;
-  }
-
-  /* First app screen: health overview */
-  .astikan-device-stage > div:nth-last-child(3) {
-    display: block !important;
-    left: 2% !important;
-    top: 16% !important;
-    width: 210px !important;
-    height: 420px !important;
-    z-index: 8 !important;
-    overflow: hidden !important;
-    border-width: 8px !important;
-    border-radius: 2.4rem !important;
-    transform: rotate(-5deg) !important;
-    transform-origin: center bottom !important;
-    box-shadow: 0 30px 75px rgba(20, 50, 105, 0.22) !important;
-  }
-
-  .astikan-device-stage > div:nth-last-child(3) > div:first-child {
-    padding-top: 2.25rem !important;
-    padding-left: 0.8rem !important;
-    padding-right: 0.8rem !important;
-  }
-
-  .astikan-device-stage > div:nth-last-child(3) > div:nth-child(2) {
-    padding: 0.8rem !important;
-  }
-
-  .astikan-device-stage > div:nth-last-child(3) .grid {
-    grid-template-columns: 1fr !important;
-  }
-
-  /* Second app screen: main home */
-  .astikan-device-stage > div:nth-last-child(2) {
-    right: 28% !important;
-    bottom: 2% !important;
-    width: 225px !important;
-    z-index: 20 !important;
-    transform: rotate(-1deg) !important;
-  }
-
-  /* Third app screen: reports */
-  .astikan-device-stage > div:last-child {
-    display: block !important;
-    right: 0 !important;
-    bottom: 6% !important;
-    width: 195px !important;
-    z-index: 12 !important;
-    transform: rotate(5deg) !important;
   }
 }
 
@@ -129,27 +142,23 @@
   }
 
   .astikan-device-stage {
-    height: 520px !important;
-    max-width: 560px !important;
+    height: 510px !important;
+    max-width: 550px !important;
   }
 
-  .astikan-device-stage > div:nth-last-child(3) {
-    left: 0 !important;
-    top: 18% !important;
-    width: 175px !important;
-    height: 360px !important;
+  .astikan-device-stage > div[class*="left-[2%]"][class*="top-[15%]"] {
+    top: 78px !important;
+    width: 170px !important;
+    height: 355px !important;
   }
 
-  .astikan-device-stage > div:nth-last-child(2) {
-    right: 28% !important;
-    bottom: 1% !important;
-    width: 198px !important;
+  .astikan-device-stage > div[class*="bottom-[2%]"][class*="right-[18%]"] {
+    width: 205px !important;
   }
 
-  .astikan-device-stage > div:last-child {
-    right: -2% !important;
-    bottom: 5% !important;
-    width: 165px !important;
+  .astikan-device-stage > div[class*="bottom-[8%]"][class*="right-[0%]"] {
+    bottom: 30px !important;
+    width: 170px !important;
   }
 }
 
@@ -162,114 +171,85 @@
 
   .astikan-device-stage {
     height: 500px !important;
-    max-width: 610px !important;
+    max-width: 590px !important;
   }
 
-  .astikan-device-stage > div:nth-last-child(3) {
-    top: 18% !important;
-    width: 178px !important;
-    height: 350px !important;
+  .astikan-device-stage > div[class*="left-[2%]"][class*="top-[15%]"] {
+    top: 76px !important;
+    width: 174px !important;
+    height: 355px !important;
   }
 
-  .astikan-device-stage > div:nth-last-child(2) {
-    width: 195px !important;
+  .astikan-device-stage > div[class*="bottom-[2%]"][class*="right-[18%]"] {
+    width: 205px !important;
   }
 
-  .astikan-device-stage > div:last-child {
-    width: 162px !important;
+  .astikan-device-stage > div[class*="bottom-[8%]"][class*="right-[0%]"] {
+    width: 172px !important;
   }
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
   .astikan-device-stage {
-    height: 540px !important;
-    max-width: 680px !important;
+    width: 100% !important;
+    height: 520px !important;
+    max-width: 650px !important;
+    margin: 0 auto !important;
   }
 
-  .astikan-device-stage > div:nth-last-child(3) {
-    display: block !important;
-    left: 3% !important;
-    top: 18% !important;
-    width: 190px !important;
-    height: 370px !important;
-    z-index: 8 !important;
-    border-radius: 2.4rem !important;
-    transform: rotate(-5deg) !important;
-  }
-
-  .astikan-device-stage > div:nth-last-child(3) > div:first-child {
-    padding-top: 2.1rem !important;
-  }
-
-  .astikan-device-stage > div:nth-last-child(2) {
-    right: 31% !important;
-    width: 210px !important;
-  }
-
-  .astikan-device-stage > div:last-child {
-    display: block !important;
-    right: 3% !important;
+  .astikan-device-stage > div[class*="left-[2%]"][class*="top-[15%]"] {
+    top: 78px !important;
     width: 180px !important;
-    transform: rotate(5deg) !important;
+    height: 370px !important;
+  }
+
+  .astikan-device-stage > div[class*="bottom-[2%]"][class*="right-[18%]"] {
+    width: 215px !important;
+  }
+
+  .astikan-device-stage > div[class*="bottom-[8%]"][class*="right-[0%]"] {
+    bottom: 30px !important;
+    width: 180px !important;
   }
 }
 
 @media (max-width: 767px) {
   .astikan-device-stage {
-    height: 440px !important;
-    max-width: 100% !important;
-    margin-top: 1.5rem !important;
-    border-radius: 2rem !important;
+    width: 100% !important;
+    max-width: 420px !important;
+    height: 430px !important;
+    margin: 1.25rem auto 0 !important;
+    overflow: hidden !important;
   }
 
-  .astikan-device-stage > div:nth-last-child(3) {
-    display: block !important;
-    left: -4% !important;
-    top: 18% !important;
-    width: 142px !important;
-    height: 310px !important;
-    z-index: 8 !important;
-    overflow: hidden !important;
+  .astikan-device-stage > div[class*="left-[2%]"][class*="top-[15%]"] {
+    left: -2% !important;
+    top: 88px !important;
+    width: 132px !important;
+    height: 288px !important;
     border-width: 6px !important;
-    border-radius: 1.9rem !important;
+    border-radius: 1.8rem !important;
     transform: rotate(-7deg) !important;
   }
 
-  .astikan-device-stage > div:nth-last-child(3)::before {
+  .astikan-device-stage > div[class*="left-[2%]"][class*="top-[15%]"]::before {
     top: 5px;
-    width: 54px;
+    width: 50px;
     height: 14px;
   }
 
-  .astikan-device-stage > div:nth-last-child(3) > div:first-child {
-    padding-top: 1.8rem !important;
-    padding-left: 0.55rem !important;
-    padding-right: 0.55rem !important;
+  .astikan-device-stage > div[class*="left-[2%]"][class*="top-[15%]"] > div:first-child {
+    padding-top: 1.9rem !important;
   }
 
-  .astikan-device-stage > div:nth-last-child(3) > div:nth-child(2) {
-    padding: 0.55rem !important;
+  .astikan-device-stage > div[class*="bottom-[2%]"][class*="right-[18%]"] {
+    width: 170px !important;
   }
 
-  .astikan-device-stage > div:nth-last-child(3) .grid {
-    grid-template-columns: 1fr !important;
-  }
-
-  .astikan-device-stage > div:nth-last-child(2) {
-    left: 50% !important;
-    right: auto !important;
-    bottom: 0 !important;
-    width: 174px !important;
-    z-index: 20 !important;
-    transform: translateX(-50%) rotate(-1deg) !important;
-  }
-
-  .astikan-device-stage > div:last-child {
-    display: block !important;
-    right: -4% !important;
-    bottom: 8% !important;
-    width: 142px !important;
-    z-index: 10 !important;
+  .astikan-device-stage > div[class*="bottom-[8%]"][class*="right-[0%]"] {
+    right: -2% !important;
+    bottom: 26px !important;
+    width: 132px !important;
     transform: rotate(7deg) !important;
   }
 }
