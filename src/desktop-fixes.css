@@ -1,4 +1,31 @@
-/* Astikan desktop hero composition corrections */
+/* Astikan hero: three app mockups only */
+.astikan-device-stage {
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: 3rem;
+  background: linear-gradient(180deg, rgba(247, 250, 255, 0.92) 0%, rgba(236, 244, 255, 0.96) 100%);
+}
+
+/* Remove the old globe, orbit rings and floating dots. */
+.astikan-device-stage > svg,
+.astikan-device-stage > div:nth-child(-n + 6) {
+  display: none !important;
+}
+
+/* Make the left health overview panel read as a real phone. */
+.astikan-device-stage > div:nth-last-child(3)::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 7px;
+  z-index: 30;
+  width: 72px;
+  height: 18px;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: #081a3d;
+}
+
 @media (min-width: 1024px) {
   .astikan-page-content section:has(.astikan-hero-copy) > div.relative.mx-auto.grid {
     min-height: clamp(620px, calc(100vh - 76px), 700px) !important;
@@ -42,12 +69,13 @@
     overflow: hidden !important;
     border-width: 8px !important;
     border-radius: 2.4rem !important;
-    transform: rotate(-4deg) !important;
+    transform: rotate(-5deg) !important;
     transform-origin: center bottom !important;
     box-shadow: 0 30px 75px rgba(20, 50, 105, 0.22) !important;
   }
 
   .astikan-device-stage > div:nth-last-child(3) > div:first-child {
+    padding-top: 2.25rem !important;
     padding-left: 0.8rem !important;
     padding-right: 0.8rem !important;
   }
@@ -76,7 +104,7 @@
     bottom: 6% !important;
     width: 195px !important;
     z-index: 12 !important;
-    transform: rotate(4deg) !important;
+    transform: rotate(5deg) !important;
   }
 }
 
@@ -166,7 +194,11 @@
     height: 370px !important;
     z-index: 8 !important;
     border-radius: 2.4rem !important;
-    transform: rotate(-4deg) !important;
+    transform: rotate(-5deg) !important;
+  }
+
+  .astikan-device-stage > div:nth-last-child(3) > div:first-child {
+    padding-top: 2.1rem !important;
   }
 
   .astikan-device-stage > div:nth-last-child(2) {
@@ -178,5 +210,66 @@
     display: block !important;
     right: 3% !important;
     width: 180px !important;
+    transform: rotate(5deg) !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .astikan-device-stage {
+    height: 440px !important;
+    max-width: 100% !important;
+    margin-top: 1.5rem !important;
+    border-radius: 2rem !important;
+  }
+
+  .astikan-device-stage > div:nth-last-child(3) {
+    display: block !important;
+    left: -4% !important;
+    top: 18% !important;
+    width: 142px !important;
+    height: 310px !important;
+    z-index: 8 !important;
+    overflow: hidden !important;
+    border-width: 6px !important;
+    border-radius: 1.9rem !important;
+    transform: rotate(-7deg) !important;
+  }
+
+  .astikan-device-stage > div:nth-last-child(3)::before {
+    top: 5px;
+    width: 54px;
+    height: 14px;
+  }
+
+  .astikan-device-stage > div:nth-last-child(3) > div:first-child {
+    padding-top: 1.8rem !important;
+    padding-left: 0.55rem !important;
+    padding-right: 0.55rem !important;
+  }
+
+  .astikan-device-stage > div:nth-last-child(3) > div:nth-child(2) {
+    padding: 0.55rem !important;
+  }
+
+  .astikan-device-stage > div:nth-last-child(3) .grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .astikan-device-stage > div:nth-last-child(2) {
+    left: 50% !important;
+    right: auto !important;
+    bottom: 0 !important;
+    width: 174px !important;
+    z-index: 20 !important;
+    transform: translateX(-50%) rotate(-1deg) !important;
+  }
+
+  .astikan-device-stage > div:last-child {
+    display: block !important;
+    right: -4% !important;
+    bottom: 8% !important;
+    width: 142px !important;
+    z-index: 10 !important;
+    transform: rotate(7deg) !important;
   }
 }
