@@ -45,6 +45,7 @@ export default function RootApp() {
       once: true,
       offset: 54,
       anchorPlacement: 'top-bottom',
+      disable: () => window.matchMedia('(prefers-reduced-motion: reduce)').matches,
     });
 
     let observer;
@@ -53,27 +54,37 @@ export default function RootApp() {
     let thirdRefreshTimer;
 
     const decoratePageAnimations = () => {
-      const animationGroups = [
-        { selector: 'main section:not(:first-child) h2:not([data-aos])', animation: 'fade-up' },
-        { selector: 'main section:not(:first-child) h3:not([data-aos])', animation: 'fade-up' },
-        { selector: 'main section:not(:first-child) article:not([data-aos])', animation: 'zoom-in-up' },
-        { selector: 'main section:not(:first-child) img:not([data-aos])', animation: 'fade-left' },
-        { selector: 'main section:not(:first-child) video:not([data-aos])', animation: 'zoom-in' },
-        { selector: 'main section:not(:first-child) ul:not([data-aos])', animation: 'fade-up' },
-        { selector: 'main section:not(:first-child) [class*="shadow-card"]:not([data-aos])', animation: 'zoom-in-up' },
-        { selector: 'main section:not(:first-child) [class*="shadow-dashboard"]:not([data-aos])', animation: 'zoom-in' },
-        { selector: 'main section:not(:first-child) [data-animate-widget="true"]:not([data-aos])', animation: 'fade-up' },
-      ];
+      const scopes = document.querySelectorAll(
+        'main section:not(:first-child), footer section, [data-universal-footer="true"] > section',
+      );
+      const selector = [
+        'h2',
+        'h3',
+        'p',
+        'article',
+        'li',
+        'figure',
+        'img',
+        'video',
+        'form',
+        'blockquote',
+        '[class*="grid"] > div',
+        '[class*="grid"] > a',
+        '[class*="flex"] > a',
+        '[class*="shadow-card"]',
+        '[class*="shadow-dashboard"]',
+        '[data-animate-widget="true"]',
+      ].map((item) => `${item}:not([data-aos])`).join(',');
+      const animationCycle = ['fade-up', 'fade-right', 'fade-left', 'zoom-in-up', 'fade-up'];
 
-      let animationIndex = 0;
-
-      animationGroups.forEach(({ selector, animation }, groupIndex) => {
-        document.querySelectorAll(selector).forEach((element) => {
-          if (element.parentElement?.closest('[data-aos]')) return;
+      scopes.forEach((scope, scopeIndex) => {
+        let itemIndex = 0;
+        scope.querySelectorAll(selector).forEach((element) => {
+          const animation = animationCycle[(itemIndex + scopeIndex) % animationCycle.length];
           element.setAttribute('data-aos', animation);
-          element.setAttribute('data-aos-delay', String((animationIndex % 7) * 55));
-          element.setAttribute('data-aos-duration', String(720 + (groupIndex % 3) * 90));
-          animationIndex += 1;
+          element.setAttribute('data-aos-delay', String((itemIndex % 6) * 45));
+          element.setAttribute('data-aos-duration', String(720 + (itemIndex % 3) * 90));
+          itemIndex += 1;
         });
       });
     };
