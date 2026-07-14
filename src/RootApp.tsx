@@ -4,6 +4,7 @@ import { gsap } from 'gsap';
 import App from './App';
 import SiteHeader from './components/SiteHeader';
 import SiteFooter from './components/SiteFooter';
+import MotionExperience from './components/MotionExperience';
 import AstikanPage from './pages/AstikanPage';
 import AstikanPayPage from './pages/AstikanPayPage';
 import KioskPage from './pages/KioskPageClean';
@@ -16,6 +17,7 @@ import TrustPage from './pages/TrustPage';
 function UniversalPage({ children }) {
   return (
     <>
+      <MotionExperience />
       <div className="astikan-page-content min-h-screen">{children}</div>
       <SiteFooter />
       <style>{`
