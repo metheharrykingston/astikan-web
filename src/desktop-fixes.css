@@ -2,8 +2,8 @@
 @media (min-width: 1024px) {
   .astikan-page-content section:has(.astikan-hero-copy) > div.relative.mx-auto.grid {
     min-height: clamp(620px, calc(100vh - 76px), 700px) !important;
-    grid-template-columns: minmax(0, 0.9fr) minmax(560px, 1.1fr) !important;
-    gap: 1.5rem !important;
+    grid-template-columns: minmax(0, 0.9fr) minmax(600px, 1.1fr) !important;
+    gap: 1rem !important;
     padding-top: 2rem !important;
     padding-bottom: 2rem !important;
   }
@@ -26,39 +26,65 @@
   .astikan-device-stage {
     width: 100% !important;
     height: 560px !important;
-    max-width: 620px !important;
+    max-width: 700px !important;
     margin-left: auto !important;
     margin-right: 0 !important;
   }
 
-  /* Background health dashboard */
+  /* First app screen: health overview */
   .astikan-device-stage > div:nth-last-child(3) {
-    left: 6% !important;
-    top: 17% !important;
-    width: 270px !important;
-    height: 340px !important;
+    display: block !important;
+    left: 2% !important;
+    top: 16% !important;
+    width: 210px !important;
+    height: 420px !important;
+    z-index: 8 !important;
+    overflow: hidden !important;
+    border-width: 8px !important;
+    border-radius: 2.4rem !important;
+    transform: rotate(-4deg) !important;
+    transform-origin: center bottom !important;
+    box-shadow: 0 30px 75px rgba(20, 50, 105, 0.22) !important;
   }
 
-  /* Main Astikan phone */
+  .astikan-device-stage > div:nth-last-child(3) > div:first-child {
+    padding-left: 0.8rem !important;
+    padding-right: 0.8rem !important;
+  }
+
+  .astikan-device-stage > div:nth-last-child(3) > div:nth-child(2) {
+    padding: 0.8rem !important;
+  }
+
+  .astikan-device-stage > div:nth-last-child(3) .grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Second app screen: main home */
   .astikan-device-stage > div:nth-last-child(2) {
-    right: 19% !important;
-    bottom: 4% !important;
+    right: 28% !important;
+    bottom: 2% !important;
     width: 225px !important;
+    z-index: 20 !important;
+    transform: rotate(-1deg) !important;
   }
 
-  /* Reports phone */
+  /* Third app screen: reports */
   .astikan-device-stage > div:last-child {
+    display: block !important;
     right: 0 !important;
-    bottom: 3% !important;
-    width: 190px !important;
+    bottom: 6% !important;
+    width: 195px !important;
+    z-index: 12 !important;
+    transform: rotate(4deg) !important;
   }
 }
 
 @media (min-width: 1024px) and (max-width: 1279px) {
   .astikan-page-content section:has(.astikan-hero-copy) > div.relative.mx-auto.grid {
     min-height: 620px !important;
-    grid-template-columns: minmax(0, 0.88fr) minmax(460px, 1.12fr) !important;
-    gap: 1rem !important;
+    grid-template-columns: minmax(0, 0.88fr) minmax(500px, 1.12fr) !important;
+    gap: 0.75rem !important;
   }
 
   .astikan-hero-copy {
@@ -76,26 +102,26 @@
 
   .astikan-device-stage {
     height: 520px !important;
-    max-width: 510px !important;
+    max-width: 560px !important;
   }
 
   .astikan-device-stage > div:nth-last-child(3) {
-    left: 2% !important;
-    top: 19% !important;
-    width: 245px !important;
-    height: 315px !important;
+    left: 0 !important;
+    top: 18% !important;
+    width: 175px !important;
+    height: 360px !important;
   }
 
   .astikan-device-stage > div:nth-last-child(2) {
-    right: 14% !important;
-    bottom: 2% !important;
-    width: 205px !important;
+    right: 28% !important;
+    bottom: 1% !important;
+    width: 198px !important;
   }
 
   .astikan-device-stage > div:last-child {
-    right: -3% !important;
-    bottom: 1% !important;
-    width: 174px !important;
+    right: -2% !important;
+    bottom: 5% !important;
+    width: 165px !important;
   }
 }
 
@@ -107,15 +133,50 @@
   }
 
   .astikan-device-stage {
-    height: 510px !important;
-    max-width: 570px !important;
+    height: 500px !important;
+    max-width: 610px !important;
+  }
+
+  .astikan-device-stage > div:nth-last-child(3) {
+    top: 18% !important;
+    width: 178px !important;
+    height: 350px !important;
   }
 
   .astikan-device-stage > div:nth-last-child(2) {
-    width: 205px !important;
+    width: 195px !important;
   }
 
   .astikan-device-stage > div:last-child {
-    width: 172px !important;
+    width: 162px !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .astikan-device-stage {
+    height: 540px !important;
+    max-width: 680px !important;
+  }
+
+  .astikan-device-stage > div:nth-last-child(3) {
+    display: block !important;
+    left: 3% !important;
+    top: 18% !important;
+    width: 190px !important;
+    height: 370px !important;
+    z-index: 8 !important;
+    border-radius: 2.4rem !important;
+    transform: rotate(-4deg) !important;
+  }
+
+  .astikan-device-stage > div:nth-last-child(2) {
+    right: 31% !important;
+    width: 210px !important;
+  }
+
+  .astikan-device-stage > div:last-child {
+    display: block !important;
+    right: 3% !important;
+    width: 180px !important;
   }
 }
