@@ -273,7 +273,7 @@ export default function PartnersPage() {
             <div className="partners-hero-copy relative z-10 max-w-2xl">
               <span className="inline-flex rounded-full border border-gold-400 bg-white/85 px-4 py-2 text-[11px] font-extrabold uppercase tracking-[0.14em] text-gold-500">PARTNER WITH ASTIKAN</span>
               <h1 className="mt-6 text-[2.7rem] font-extrabold leading-[1.05] tracking-[-0.04em] text-navy-900 sm:text-6xl lg:text-[4.5rem]">Build the future of healthcare with Astikan.</h1>
-              <p className="mt-6 max-w-xl text-base leading-8 text-slate-600 sm:text-lg">Join a trusted healthcare ecosystem that connects patients, providers, institutions, infrastructure, and innovators—so every partner can reach more people and deliver better care.</p>
+              <p className="mt-6 max-w-xl text-base leading-8 text-slate-600 sm:text-lg">Join a forward looking healthcare ecosystem where patients, providers, institutions, and innovators can reach more people and deliver better care.</p>
               <div className="mt-8 flex flex-wrap gap-4">
                 <a href="#partner-contact" className="inline-flex items-center gap-2 rounded-md bg-navy-900 px-6 py-3.5 text-sm font-extrabold text-white shadow-lg shadow-navy-900/15 transition hover:-translate-y-0.5 hover:bg-navy-800">Become an Astikan Partner <ArrowRight size={16} /></a>
                 <a href="#partner-portal" className="inline-flex items-center gap-2 rounded-md border border-navy-700 bg-white px-6 py-3.5 text-sm font-extrabold text-navy-900 transition hover:bg-slate-50">Partner Portal Login <ArrowRight size={16} /></a>

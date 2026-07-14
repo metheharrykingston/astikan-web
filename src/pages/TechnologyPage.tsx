@@ -291,7 +291,7 @@ export default function TechnologyPage() {
             <div className="tech-hero-copy relative z-10 max-w-2xl">
               <p className="text-xs font-extrabold uppercase tracking-[0.22em] text-cyan-300">ASTIKAN TECHNOLOGY</p>
               <h1 className="mt-5 text-[2.7rem] font-extrabold leading-[1.04] tracking-[-0.04em] sm:text-6xl lg:text-[4.5rem]">Engineering the next era of healthcare.</h1>
-              <p className="mt-6 max-w-xl text-base leading-8 text-blue-100/80 sm:text-lg">We are not building a generic software layer. We are building practical healthcare products today—and exploring technologies that could reshape care tomorrow.</p>
+              <p className="mt-6 max-w-xl text-base leading-8 text-blue-100/80 sm:text-lg">We build practical healthcare products for today while exploring technologies that can reshape care tomorrow.</p>
               <div className="mt-8 flex flex-wrap gap-4">
                 <a href="#building-now" className="inline-flex items-center gap-2 rounded-md bg-white px-6 py-3.5 text-sm font-extrabold text-navy-900 transition hover:-translate-y-0.5">See what we are building <ArrowRight size={16} /></a>
                 <a href="#future" className="inline-flex items-center gap-2 rounded-md border border-cyan-100/50 px-6 py-3.5 text-sm font-extrabold text-white transition hover:bg-white/10">Explore future research <Orbit size={16} /></a>
@@ -330,7 +330,7 @@ export default function TechnologyPage() {
               <ProductCard
                 eyebrow="PRODUCT 01 · IN ACTIVE DEVELOPMENT"
                 title="Astikan Health App"
-                text="A unified health application designed to make the patient journey less fragmented—from finding care to maintaining records and following a health plan."
+                text="A unified health application that makes every step simpler, from finding care to maintaining records and following a health plan."
                 capabilities={appCapabilities}
                 visual={<PhoneMockup type="health" />}
               />
@@ -365,7 +365,7 @@ export default function TechnologyPage() {
         <section id="future" className="relative overflow-hidden bg-[#041a3d] py-16 text-white sm:py-24">
           <div className="absolute inset-0 opacity-30 [background-image:radial-gradient(circle_at_20%_20%,rgba(53,173,255,.3),transparent_25%),radial-gradient(circle_at_82%_60%,rgba(105,74,255,.25),transparent_28%)]" />
           <div className="relative mx-auto max-w-[1380px] px-5 lg:px-8">
-            <SectionHeading eyebrow="FUTURE INNOVATIONS" title="Tomorrow, beyond the current product roadmap." text="These are research directions—not released products or medical promises. They represent the kinds of difficult healthcare problems Astikan wants to investigate over the long term." light />
+            <SectionHeading eyebrow="FUTURE INNOVATIONS" title="Tomorrow, beyond the current product roadmap." text="These are long term research directions. They represent the difficult healthcare problems Astikan wants to investigate responsibly for the future." light />
             <div className="mt-14 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
               {futureCards.map(({ title, label, text, Icon, visual }, index) => (
                 <article key={title} className="group overflow-hidden rounded-[1.7rem] border border-white/10 bg-white/[.04] shadow-[0_25px_70px_rgba(0,0,0,.22)] backdrop-blur-sm" data-aos="fade-up" data-aos-delay={index * 80}>

@@ -348,7 +348,7 @@ export default function KioskPage() {
             <div className="relative mx-auto max-w-3xl text-center" data-aos="fade-up">
               <p className="text-xs font-extrabold uppercase tracking-[0.22em] text-cyan-300">WHY THE KIOSK MATTERS</p>
               <h2 className="mt-4 text-4xl font-extrabold tracking-[-0.04em] sm:text-5xl">Technology becomes useful when it is reachable.</h2>
-              <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-blue-100/70">The kiosk turns Astikan from a screen-only experience into a real physical health interface—bringing guidance, tools, consultation, and continuity into one place.</p>
+              <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-blue-100/70">The kiosk brings Astikan into the physical world, placing guidance, tools, consultation, and continued care in one welcoming space.</p>
             </div>
 
             <div className="relative mt-14 grid gap-5 md:grid-cols-2 xl:grid-cols-4">

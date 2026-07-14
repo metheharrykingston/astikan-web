@@ -5,7 +5,7 @@ import './index.css';
 import './desktop-fixes.css';
 import RootApp from './RootApp';
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <RootApp />
   </React.StrictMode>

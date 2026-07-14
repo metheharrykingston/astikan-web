@@ -25,6 +25,7 @@ import {
 } from 'lucide-react';
 import SiteHeader from '../components/SiteHeader';
 import { AstikanMark } from '../components/AstikanLogo';
+import astikanBanner from '../assets/astikan_banner.png';
 
 const healthMoments = [
   [FolderHeart, 'Health records', 'Keep important health information organised and easy to revisit.', 'bg-blue-50 text-blue-600'],
@@ -162,29 +163,12 @@ function HealthPhone({ variant = 'home', className = '' }) {
 
 function GlobalProductVisual() {
   return (
-    <div className="astikan-device-stage relative mx-auto h-[600px] w-full max-w-[720px] lg:h-[650px]">
-      <div className="absolute inset-[6%] rounded-full bg-[radial-gradient(circle,rgba(191,219,254,.72)_0%,rgba(224,231,255,.5)_38%,transparent_68%)]" />
-      <div className="absolute inset-[5%] rounded-full border border-blue-200/35" />
-      <div className="absolute inset-[16%] rounded-full border border-dashed border-blue-300/35" />
-      <div className="absolute left-[12%] top-[10%] h-3 w-3 animate-pulse rounded-full bg-cyan-400 shadow-[0_0_22px_rgba(34,211,238,.8)]" />
-      <div className="absolute right-[7%] top-[34%] h-2.5 w-2.5 animate-pulse rounded-full bg-blue-500" />
-      <div className="absolute bottom-[14%] left-[20%] h-2 w-2 animate-pulse rounded-full bg-violet-500" />
-      <Globe2 className="absolute right-[5%] top-[5%] h-[72%] w-[72%] text-blue-300/20" strokeWidth={0.55} />
-
-      <div className="absolute left-[2%] top-[15%] hidden h-[380px] w-[300px] overflow-hidden rounded-[2.2rem] border-[9px] border-[#081a3d] bg-[#f7f9fd] shadow-[0_35px_80px_rgba(20,50,105,.22)] sm:block">
-        <div className="flex items-center justify-between bg-white px-5 py-4"><div className="flex items-center gap-2"><AstikanMark className="h-7 w-7" /><span className="text-xs font-extrabold tracking-[.12em] text-navy-900">ASTIKAN</span></div><BellRing size={14} className="text-slate-400" /></div>
-        <div className="p-5">
-          <div className="text-sm font-extrabold text-navy-900">Your health today</div>
-          <div className="mt-4 grid grid-cols-2 gap-3">
-            <AppCard icon={Activity} label="Health score" value="85" detail="Looking good" accent="text-emerald-600" />
-            <AppCard icon={HeartPulse} label="Vitals" value="Normal" detail="Latest readings" accent="text-rose-500" />
-          </div>
-          <div className="mt-3 rounded-2xl border border-slate-200 bg-white p-4"><div className="flex justify-between text-[10px] font-bold text-navy-900"><span>Last 7 days</span><span className="text-slate-400">Overview</span></div><div className="mt-2"><MiniTrend /></div><MiniTrend tone="emerald" /><MiniTrend tone="rose" /></div>
-        </div>
-      </div>
-
-      <HealthPhone variant="home" className="absolute bottom-[2%] right-[18%] z-20 w-[245px] rotate-[-2deg] sm:w-[260px]" />
-      <HealthPhone variant="reports" className="absolute bottom-[8%] right-[0%] z-10 hidden w-[220px] rotate-[3deg] md:block" />
+    <div className="astikan-device-stage relative mx-auto flex min-h-[520px] w-full max-w-[720px] items-center justify-center lg:min-h-[650px]">
+      <img
+        src={astikanBanner}
+        alt="Three Astikan mobile health application screens"
+        className="h-auto w-full object-contain"
+      />
     </div>
   );
 }

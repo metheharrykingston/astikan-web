@@ -26,7 +26,7 @@ const card = 'rounded-[1.35rem] border border-[#dce7f7] bg-white shadow-[0_14px_
 const pillars = [
   [UsersRound, 'People First', 'We put people at the center of every decision, design, and innovation.', 'bg-emerald-50 text-emerald-600'],
   [ShieldCheck, 'Accessible for All', 'We break barriers of cost, distance, and complexity to make healthcare reach everyone.', 'bg-blue-50 text-blue-600'],
-  [HeartPulse, 'Connected Care', 'We connect every aspect of health — people, data, providers, and technology seamlessly.', 'bg-rose-50 text-rose-500'],
+  [HeartPulse, 'Care in Harmony', 'We help people, data, providers, and technology work together seamlessly.', 'bg-rose-50 text-rose-500'],
   [Lightbulb, 'Innovation with Purpose', 'We use research and technology to solve real problems and create meaningful impact.', 'bg-violet-50 text-violet-600'],
   [Leaf, 'Sustainable Impact', 'We build for the long term with ethical, scalable, and environmentally conscious thinking.', 'bg-cyan-50 text-cyan-600'],
 ];

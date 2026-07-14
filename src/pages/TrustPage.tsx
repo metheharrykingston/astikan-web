@@ -44,7 +44,7 @@ const principles = [
   [HandHeart, 'Respect and dignity', 'Every person deserves compassionate treatment and equal respect throughout care.'],
   [BadgeCheck, 'Accountability', 'Astikan and its partners take responsibility for the service experience they deliver.'],
   [UsersRound, 'Fair access', 'Quality healthcare should be easier to reach, understand, and afford.'],
-  [Sparkles, 'Care with purpose', 'Technology and operations exist to improve care—not make the journey more complicated.'],
+  [Sparkles, 'Care with purpose', 'Technology and operations exist to improve care and make the journey simpler.'],
 ];
 
 const careJourney = [
@@ -282,7 +282,7 @@ export default function TrustPage() {
               </div>
               <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-gold-500">TRANSPARENCY</p>
               <h2 className="relative mt-3 max-w-lg text-3xl font-extrabold tracking-tight text-navy-900 sm:text-4xl">People should always know what is happening.</h2>
-              <p className="relative mt-5 max-w-xl text-sm leading-7 text-slate-600">The care journey should be understandable before, during, and after a service—not hidden behind unclear steps.</p>
+              <p className="relative mt-5 max-w-xl text-sm leading-7 text-slate-600">The care journey should be understandable before, during, and after a service, with every step made clear.</p>
               <div className="relative mt-8 grid gap-3 sm:grid-cols-2">
                 {transparencyItems.map((item) => <div key={item} className="flex items-start gap-2 text-sm font-semibold leading-6 text-navy-900"><Check className="mt-1 h-4 w-4 shrink-0 text-blue-600" strokeWidth={2.3} />{item}</div>)}
               </div>
@@ -309,7 +309,7 @@ export default function TrustPage() {
             <article className="rounded-[2rem] border border-slate-200 bg-gradient-to-br from-[#f7f9ff] via-white to-[#eef5ff] p-7 shadow-card sm:p-9" data-aos="fade-left">
               <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-blue-600">TRUST THROUGH FEEDBACK</p>
               <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-navy-900">Every experience helps improve the network.</h2>
-              <p className="mt-5 text-sm leading-7 text-slate-600">Feedback should lead to action—not disappear into a form. Astikan can use recurring service signals to improve partners and care journeys.</p>
+              <p className="mt-5 text-sm leading-7 text-slate-600">Feedback should lead to action. Astikan uses recurring service signals to improve partners and care journeys.</p>
               <div className="mt-8 grid gap-3 sm:grid-cols-2">
                 {feedbackItems.map(([Icon, label]) => (
                   <div key={label} className="flex items-center gap-3 rounded-xl border border-blue-100 bg-white p-4"><span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-blue-700"><Icon size={18} /></span><span className="text-xs font-extrabold leading-5 text-navy-900">{label}</span></div>
