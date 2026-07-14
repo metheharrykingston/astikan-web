@@ -36,6 +36,8 @@ import {
 } from 'lucide-react';
 import SiteHeader from '../components/SiteHeader';
 import { AstikanMark } from '../components/AstikanLogo';
+import TechnologyHighlights from '../components/TechnologyHighlights';
+import astikanPayBanner from '../assets/astikan_pay_banner.png';
 
 const paymentMoments = [
   [WalletCards, 'UPI payments', 'Send money, pay bills, or pay any UPI merchant through one familiar flow.', 'bg-blue-50 text-blue-600'],
@@ -191,13 +193,12 @@ function FamilyPhone() {
 
 function PaymentStage() {
   return (
-    <div className="pay-device-stage relative flex min-h-[620px] items-center justify-center overflow-visible lg:justify-end">
-      <div className="absolute right-[-18%] top-[-8%] h-[760px] w-[920px] rounded-[48%] bg-gradient-to-br from-[#0f2a72] via-[#073f99] to-[#031a4d]" />
-      <div className="absolute right-[1%] top-[9%] h-[540px] w-[720px] rounded-full border border-blue-300/15" />
-      <div className="absolute right-[10%] top-[17%] h-[390px] w-[550px] rounded-full border border-dashed border-cyan-200/20" />
-      <div className="relative flex items-start justify-center scale-[.78] sm:scale-[.92] lg:scale-[.82] xl:scale-[.9] 2xl:scale-100">
-        <HomePhone /><ScanPhone /><BillPhone /><SuccessPhone /><FamilyPhone />
-      </div>
+    <div className="pay-device-stage relative flex min-h-[620px] items-center justify-center lg:min-h-[700px] lg:justify-end">
+      <img
+        src={astikanPayBanner}
+        alt="Three Astikan Pay mobile application screens"
+        className="max-h-[700px] w-full object-contain lg:w-auto"
+      />
     </div>
   );
 }
@@ -278,6 +279,8 @@ export default function AstikanPayPage() {
             <PaymentStage />
           </div>
         </section>
+
+        <TechnologyHighlights variant="pay" />
 
         <section className="bg-white py-16 sm:py-24">
           <div className="mx-auto max-w-[1380px] px-5 lg:px-8">

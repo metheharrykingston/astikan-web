@@ -25,7 +25,9 @@ import {
   Workflow,
 } from 'lucide-react';
 import SiteHeader from '../components/SiteHeader';
+import TechnologyHighlights from '../components/TechnologyHighlights';
 import kioskVideo from '../assets/kiosk.mp4';
+import kioskOne from '../assets/kiosk_one.png';
 
 const capabilities = [
   {
@@ -295,7 +297,14 @@ export default function KioskPage() {
 
               <div className="relative min-h-[520px] bg-[linear-gradient(145deg,#eaf3ff,#f9fcff)] p-5 sm:p-8 lg:p-10">
                 <div className="absolute inset-0 opacity-60 [background-image:radial-gradient(circle,#b8d0f6_1px,transparent_1px)] [background-size:20px_20px]" />
-                <VideoFrame compact className="relative h-full min-h-[480px] w-full" />
+                <div className="relative h-full min-h-[480px] w-full overflow-hidden rounded-[1.8rem] border border-white/70 bg-slate-950 shadow-[0_35px_100px_rgba(13,48,105,.24)]" data-animate-widget="true">
+                  <img src={kioskOne} alt="Inside the Astikan Health Kiosk" className="h-full min-h-[480px] w-full object-cover" />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#031735]/25 via-transparent to-white/5" />
+                  <div className="absolute bottom-4 left-4 flex items-center gap-2 rounded-full border border-white/30 bg-[#031735]/75 px-3 py-2 text-[9px] font-extrabold uppercase tracking-[0.14em] text-white backdrop-blur-xl sm:bottom-5 sm:left-5">
+                    <span className="h-2 w-2 rounded-full bg-cyan-300 shadow-[0_0_14px_rgba(103,232,249,.9)]" />
+                    Inside the kiosk
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -314,6 +323,8 @@ export default function KioskPage() {
             </div>
           </div>
         </section>
+
+        <TechnologyHighlights variant="kiosk" />
 
         <section className="px-5 py-20 lg:px-8 lg:py-28">
           <div className="mx-auto max-w-[1380px]">

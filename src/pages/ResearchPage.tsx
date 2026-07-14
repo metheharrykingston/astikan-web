@@ -20,6 +20,7 @@ import {
   UsersRound,
 } from 'lucide-react';
 import SiteHeader from '../components/SiteHeader';
+import TechnologyHighlights from '../components/TechnologyHighlights';
 
 const shell = 'mx-auto w-full max-w-[1380px] px-5 lg:px-8';
 const card = 'rounded-[1.35rem] border border-[#dce7f7] bg-white shadow-[0_14px_38px_rgba(26,64,125,.075)]';
@@ -199,6 +200,8 @@ export default function ResearchPage() {
             </div>
           </div>
         </section>
+
+        <TechnologyHighlights variant="research" />
 
         <section className="px-5 pb-10 lg:px-8">
           <div className="mx-auto max-w-[1380px] rounded-[1.5rem] bg-[linear-gradient(135deg,#f5f9ff,#edf5ff)] p-5 sm:p-7" data-aos="fade-up">

@@ -25,6 +25,7 @@ import {
 } from 'lucide-react';
 import SiteHeader from '../components/SiteHeader';
 import { AstikanMark } from '../components/AstikanLogo';
+import TechnologyHighlights from '../components/TechnologyHighlights';
 import astikanBanner from '../assets/astikan_banner.png';
 
 const healthMoments = [
@@ -247,6 +248,8 @@ export default function AstikanPage() {
             <GlobalProductVisual />
           </div>
         </section>
+
+        <TechnologyHighlights variant="astikan" />
 
         <section className="bg-white py-16 sm:py-24">
           <div className="mx-auto max-w-[1380px] px-5 lg:px-8">

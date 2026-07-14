@@ -228,7 +228,13 @@ function CompanyVisual() {
 
 export function CompanyPage() {
   const products = [[AstikanMark,'Astikan','A unified health interface for everyday health.','/astikan'],[CreditCard,'Astikan Pay','A health-first UPI payment application.','/astikan-pay'],[Building2,'The Kiosk','A physical interface bringing health access closer.','/the-kiosk'],[FlaskConical,'Research','Research, science, and collaboration.','/research'],[Sparkles,'Future systems','New technologies designed around life.',null]];
-  const leaders = [['Arjun Mehta','Founder & CEO'],['Priya Nair','COO'],['Rahul Sharma','CTO'],['Neha Verma','Head of Research'],['Vikram Singh','Head of Operations']];
+  const leaders = [
+    ['Saurabh Mishra', 'CEO'],
+    ['Harry Kingston', 'Developer'],
+    ['Hency Rozario', 'HR'],
+    ['Sushant Jain', 'Social Media'],
+    ['Megha Tomar', 'Content Writer'],
+  ];
 
   return (
     <div className="min-h-screen bg-white text-slate-700">
