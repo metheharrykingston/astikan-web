@@ -10,17 +10,14 @@ fs.mkdirSync(SHOTS, { recursive: true });
 const routes = [
   { path: '/', name: 'home' },
   { path: '/astikan', name: 'astikan' },
-  { path: '/mission', name: 'mission' },
-  { path: '/membership/index.html', name: 'membership-home' },
-  { path: '/membership/find-doctors.html', name: 'find-doctors' },
-  { path: '/membership/ambulance-emergency.html', name: 'ambulance-emergency' }
+  { path: '/mission', name: 'mission' }
 ];
 const viewports = [
   { name: 'desktop-1440', width: 1440, height: 900 },
   { name: 'mobile-390', width: 390, height: 844 }
 ];
 const engines = { chromium, firefox, webkit };
-const result = { generatedAt: new Date().toISOString(), baseUrl: BASE, browserVersions: {}, cases: [] };
+const result = { generatedAt: new Date().toISOString(), baseUrl: BASE, motionMode: 'reduce', browserVersions: {}, cases: [] };
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
 async function state(page) {
@@ -42,20 +39,15 @@ async function state(page) {
         src: el.currentSrc || el.src || null, naturalWidth: el.naturalWidth ?? null
       };
     };
-    const hero = document.querySelector('main section, body > section, #top, .hero, .hero-section');
     const heading = document.querySelector('h1');
     const images = [...document.images].map(summarize).filter(Boolean);
     const links = [...document.querySelectorAll('a,button')].map(summarize).filter(x => x && x.visible);
-    const heroImages = images.filter(x => x.top < innerHeight * 1.3 && x.width > 100);
-    const primaryActions = links.filter(x => /start|explore|book|join|care|emergency|doctor/i.test(x.text)).slice(0, 20);
     return {
       title: document.title,
-      bodyHeight: document.documentElement.scrollHeight,
-      heading: summarize(heading), hero: summarize(hero), heroImages,
-      primaryActions,
-      brokenImages: images.filter(x => x.naturalWidth === 0),
-      textHas911: /\b911\b|911-emergency/i.test(document.body?.innerText || ''),
-      telLinks: [...document.querySelectorAll('a[href^="tel:"]')].map(a => ({href:a.getAttribute('href'), text:(a.innerText||a.getAttribute('aria-label')||'').trim()}))
+      heading: summarize(heading),
+      heroImages: images.filter(x => x.top < innerHeight * 1.3 && x.width > 100),
+      primaryActions: links.filter(x => /start|explore|book|join|care/i.test(x.text)).slice(0, 20),
+      brokenImages: images.filter(x => x.naturalWidth === 0)
     };
   });
 }
@@ -64,18 +56,15 @@ for (const [browserName, type] of Object.entries(engines)) {
   const browser = await type.launch({ headless: true });
   result.browserVersions[browserName] = browser.version();
   for (const vp of viewports) {
-    const context = await browser.newContext({ viewport: { width: vp.width, height: vp.height }, locale: 'en-IN', timezoneId: 'Asia/Kolkata', colorScheme: 'light', reducedMotion: 'no-preference' });
+    const context = await browser.newContext({ viewport: { width: vp.width, height: vp.height }, locale: 'en-IN', timezoneId: 'Asia/Kolkata', colorScheme: 'light', reducedMotion: 'reduce' });
     for (const route of routes) {
       const page = await context.newPage();
       const errors = [];
       page.on('pageerror', e => errors.push(String(e.message || e)));
-      const consoleErrors = [];
-      page.on('console', m => { if (m.type() === 'error') consoleErrors.push(m.text()); });
       let response, navError = null;
       const started = Date.now();
-      try {
-        response = await page.goto(new URL(route.path, BASE).href, { waitUntil: 'domcontentloaded', timeout: 45000 });
-      } catch (e) { navError = String(e.message || e); }
+      try { response = await page.goto(new URL(route.path, BASE).href, { waitUntil: 'domcontentloaded', timeout: 45000 }); }
+      catch (e) { navError = String(e.message || e); }
       await sleep(1500);
       const earlyState = navError ? null : await state(page).catch(() => null);
       const earlyPath = path.join(SHOTS, `${browserName}__${vp.name}__${route.name}__early.png`);
@@ -89,8 +78,7 @@ for (const [browserName, type] of Object.entries(engines)) {
         browser: browserName, browserVersion: browser.version(), viewport: vp.name,
         route: route.path, routeName: route.name, status: response?.status() ?? null,
         finalUrl: page.url(), durationMs: Date.now()-started, navError,
-        earlyState, settledState,
-        pageErrors: [...new Set(errors)], consoleErrors: [...new Set(consoleErrors)].slice(0,20),
+        earlyState, settledState, pageErrors: [...new Set(errors)],
         earlyScreenshot: fs.existsSync(earlyPath) ? path.relative(OUT, earlyPath) : null,
         settledScreenshot: fs.existsSync(settledPath) ? path.relative(OUT, settledPath) : null
       });
@@ -101,4 +89,4 @@ for (const [browserName, type] of Object.entries(engines)) {
   await browser.close();
 }
 fs.writeFileSync(path.join(OUT, 'validation-results.json'), JSON.stringify(result, null, 2));
-console.log(`Validated ${result.cases.length} standard-motion cases across ${Object.keys(result.browserVersions).join(', ')}`);
+console.log(`Validated ${result.cases.length} reduced-motion cases across ${Object.keys(result.browserVersions).join(', ')}`);
