@@ -1,0 +1,50 @@
+name: Astikan visual cross-browser audit
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/astikan-visual-audit.yml'
+      - 'qa/visual-audit.mjs'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  AUDIT_BASE_URL: https://www.astikan.com
+  AUDIT_OUTPUT: visual-audit-output
+
+jobs:
+  visual-audit:
+    name: Chromium Firefox WebKit visual audit
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+
+    steps:
+      - name: Checkout QA branch
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install audit dependencies
+        run: npm install --no-save --package-lock=false playwright@1.57.0 pixelmatch@6.0.0 pngjs@7.0.0
+
+      - name: Install browser engines and system libraries
+        run: npx playwright install --with-deps chromium firefox webkit
+
+      - name: Run strict visual audit against production
+        run: node qa/visual-audit.mjs
+
+      - name: Upload screenshots and machine-readable results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: astikan-visual-cross-browser-audit
+          path: visual-audit-output
+          if-no-files-found: error
+          retention-days: 7
+          compression-level: 6
