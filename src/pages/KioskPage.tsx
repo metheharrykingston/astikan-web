@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import {
   Activity,
   BadgeCheck,
@@ -25,6 +25,8 @@ import {
   Workflow,
 } from 'lucide-react';
 import SiteHeader from '../components/SiteHeader';
+
+const Kiosk3DViewer = lazy(() => import('../components/Kiosk3DViewer'));
 import TechnologyHighlights from '../components/TechnologyHighlights';
 import kioskVideo from '../assets/kiosk.mp4';
 import kioskOne from '../assets/kiosk_one.png';
@@ -259,6 +261,10 @@ export default function KioskPage() {
             </div>
           </div>
         </section>
+
+        <Suspense fallback={<section className="min-h-[520px] bg-[#020d22]" aria-label="Loading interactive kiosk viewer" />}>
+          <Kiosk3DViewer />
+        </Suspense>
 
         <section className="px-5 py-20 lg:px-8 lg:py-28">
           <div className="mx-auto max-w-[1380px]">

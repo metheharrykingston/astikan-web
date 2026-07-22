@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="refresh" content="0;url=../membership-dashboard.html"/>
+<title>Redirecting…</title>
+<script src="../assets/member-portal-routes.js"></script>
+<script>
+  window.location.replace(
+    (window.MemberPortalRoutes && window.MemberPortalRoutes.dashboardUrl())
+      || "../membership-dashboard.html"
+  );
+</script>
+</head>
+<body></body>
+</html>

@@ -41,13 +41,14 @@ export default function RootApp() {
   const path = window.location.pathname.replace(/\/+$/, '') || '/';
 
   useEffect(() => {
+    const compactMotion = window.matchMedia('(max-width: 767px), (pointer: coarse)').matches;
     AOS.init({
-      duration: 820,
+      duration: compactMotion ? 880 : 1050,
       easing: 'ease-out-cubic',
       once: true,
-      offset: 54,
+      offset: compactMotion ? 18 : 54,
       anchorPlacement: 'top-bottom',
-      disable: () => window.matchMedia('(prefers-reduced-motion: reduce)').matches,
+      disable: false,
     });
 
     let observer;
@@ -84,8 +85,8 @@ export default function RootApp() {
         scope.querySelectorAll(selector).forEach((element) => {
           const animation = animationCycle[(itemIndex + scopeIndex) % animationCycle.length];
           element.setAttribute('data-aos', animation);
-          element.setAttribute('data-aos-delay', String((itemIndex % 6) * 45));
-          element.setAttribute('data-aos-duration', String(720 + (itemIndex % 3) * 90));
+          element.setAttribute('data-aos-delay', String((itemIndex % 6) * (compactMotion ? 42 : 70)));
+          element.setAttribute('data-aos-duration', String((compactMotion ? 820 : 900) + (itemIndex % 3) * (compactMotion ? 90 : 110)));
           itemIndex += 1;
         });
       });
@@ -139,9 +140,8 @@ export default function RootApp() {
   }, [path]);
 
   useEffect(() => {
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduceMotion) return undefined;
-
+    let hoverCleanups = [];
+    let sectionObserver;
     const context = gsap.context(() => {
       gsap.fromTo(
         'body > #root header',
@@ -169,7 +169,7 @@ export default function RootApp() {
         'main article, main a[class*="shadow-card"], main [class*="shadow-dashboard"]',
       );
 
-      const hoverCleanups = interactiveCards.map((card) => {
+      hoverCleanups = interactiveCards.map((card) => {
         const enter = () => gsap.to(card, { y: -7, scale: 1.012, duration: 0.28, ease: 'power2.out', overwrite: 'auto' });
         const leave = () => gsap.to(card, { y: 0, scale: 1, duration: 0.35, ease: 'power2.out', overwrite: 'auto' });
         card.addEventListener('pointerenter', enter);
@@ -184,7 +184,7 @@ export default function RootApp() {
         };
       });
 
-      const sectionObserver = new IntersectionObserver(
+      sectionObserver = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (!entry.isIntersecting) return;
@@ -206,13 +206,13 @@ export default function RootApp() {
 
       document.querySelectorAll('main section:not(:first-child)').forEach((section) => sectionObserver.observe(section));
 
-      context.add(() => {
-        hoverCleanups.forEach((cleanup) => cleanup());
-        sectionObserver.disconnect();
-      });
     });
 
-    return () => context.revert();
+    return () => {
+      hoverCleanups.forEach((cleanup) => cleanup());
+      sectionObserver?.disconnect();
+      context.revert();
+    };
   }, [path]);
 
   useEffect(() => {

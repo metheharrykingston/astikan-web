@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Service Request | Astikan Member Portal</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet"/>
+<link href="../assets/membership-dashboard.css?v=20260703b" rel="stylesheet"/>
+</head>
+<body class="dash-body member-request-page">
+
+<main class="dash-main">
+  <div class="d-flex flex-wrap gap-3 mb-3">
+    <a class="member-portal-back d-inline-flex" href="#" id="backToBrowse" style="display:none;">
+      <i class="bi bi-arrow-left"></i> Back to Browse
+    </a>
+    <a class="member-portal-back d-inline-flex" href="#" id="backToDashboard">
+      <i class="bi bi-arrow-left"></i> Back to Dashboard
+    </a>
+  </div>
+
+  <div class="dash-card member-request-card" id="requestFormView">
+    <div class="member-request-head">
+      <div class="member-request-icon" id="serviceIcon"><i class="bi bi-send"></i></div>
+      <div>
+        <h1 class="member-request-title" id="serviceTitle">Service Request</h1>
+        <p class="member-request-desc" id="serviceDesc">Submit your request and our team will contact you shortly.</p>
+      </div>
+    </div>
+
+    <form id="serviceRequestForm" class="member-request-form">
+      <input id="fieldEnrollmentId" name="enrollment_id" type="hidden"/>
+      <input id="fieldServiceId" name="service_id" type="hidden"/>
+      <input id="fieldUid" name="uid" type="hidden"/>
+
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label class="form-label">Full Name</label>
+          <input class="form-control" id="fieldName" name="member_name" readonly type="text"/>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Mobile</label>
+          <input class="form-control" id="fieldMobile" name="member_mobile" readonly type="text"/>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Email</label>
+          <input class="form-control" id="fieldEmail" name="member_email" readonly type="text"/>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Membership Plan</label>
+          <input class="form-control" id="fieldPlan" name="plan" readonly type="text"/>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Preferred Date <span class="text-muted">(optional)</span></label>
+          <input class="form-control" id="fieldPreferredDate" name="preferred_date" type="date"/>
+        </div>
+        <div class="col-12">
+          <label class="form-label">Request Details <span class="text-danger">*</span></label>
+          <textarea class="form-control" id="fieldDetails" name="request_details" placeholder="Describe what you need — test type, doctor specialty, medicines, claim details, etc." required rows="4"></textarea>
+        </div>
+      </div>
+
+      <div class="member-request-actions">
+        <p class="member-request-status" id="requestStatus"></p>
+        <button class="member-request-submit" id="submitRequestBtn" type="submit">
+          <i class="bi bi-send-fill" aria-hidden="true"></i>
+          <span>Submit Request</span>
+        </button>
+        <p class="member-request-footnote" id="requestFootnote">Our care team will contact you on your registered mobile or email.</p>
+      </div>
+    </form>
+  </div>
+
+  <div class="dash-card member-request-success" id="requestSuccessView" style="display:none;">
+    <div class="text-center py-4">
+      <i class="bi bi-check-circle-fill text-success" style="font-size:3rem;"></i>
+      <h2 class="h4 mt-3 mb-2">Request Submitted</h2>
+      <p class="text-muted mb-4" id="successMessage">Our team will contact you shortly on your registered mobile or email.</p>
+      <a class="member-request-submit d-inline-flex" href="#" id="successDashboardLink">Back to Dashboard</a>
+    </div>
+  </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../assets/astikan-config.js"></script>
+<script src="../assets/astikan-format.js"></script>
+<script src="../assets/member-portal-routes.js?v=20260704d"></script>
+<script src="../assets/member-portal-nav.js?v=20260703c"></script>
+<script src="../assets/membership-service-request-email.js"></script>
+<script src="../assets/member-service-request.js?v=20260705a"></script>
+</body>
+</html>

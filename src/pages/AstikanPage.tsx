@@ -215,9 +215,6 @@ export default function AstikanPage() {
   const pageRef = useRef(null);
 
   useLayoutEffect(() => {
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduceMotion) return undefined;
-
     const context = gsap.context(() => {
       gsap.timeline({ defaults: { ease: 'power3.out' } })
         .from('.astikan-hero-copy > *', { y: 26, opacity: 0, duration: 0.72, stagger: 0.08 })

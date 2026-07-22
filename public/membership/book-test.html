@@ -1,0 +1,1510 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Astikan Health | Book Lab Test</title>
+<meta content="Book your lab test with Astikan Health for home sample collection." name="description"/>
+<meta content="Astikan Health, Lab Tests, Home Sample Collection, Healthcare India" name="keywords"/>
+<meta content="Astikan Health" name="author"/>
+<meta content="Astikan Health | Book Lab Test" property="og:title"/>
+<meta content="Schedule your lab tests with ease at Astikan Health." property="og:description"/>
+<meta content="logo.avif" property="og:image"/>
+<meta content="/membership/book-test.html" property="og:url"/>
+<meta content="website" property="og:type"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Astikan Health | Book Lab Test" name="twitter:title"/>
+<meta content="Schedule your lab tests with ease at Astikan Health." name="twitter:description"/>
+<meta content="logo.avif" name="twitter:image"/>
+<link href="favicon.avif" rel="icon" type="image/avif"/>
+<link href="/membership/book-test.html" rel="canonical"/>
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&amp;family=alan+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet"/>
+<script src="https://sdk.cashfree.com/js/v3/cashfree.js"></script>
+<style>
+         :root {
+         --pthbkg-accent: #7c3aed;
+         --pthbkg-accent-2: #f3e8ff;
+         --pthbkg-muted: #6b7280;
+         --pthbkg-bg: #f9fafb;
+         --pthbkg-card: #ffffff;
+         --pthbkg-border: #e5e7eb;
+         }
+         body {
+         background: var(--pthbkg-bg);
+         font-family: 'Poppins', sans-serif;
+         color: #1f2937;
+         }
+         .pthbkg-title {
+         font-family: 'alan Sans', sans-serif;
+         font-weight: 600;
+         margin-bottom: 1rem;
+         color: #1f2937;
+         }
+         .pthbkg-navbar {
+         background: #fff;
+         box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+         height: 60px;
+         display: flex;
+         align-items: center;
+         padding: 0 1rem;
+         position: sticky;
+         top: 0;
+         z-index: 9999;
+         }
+         .pthbkg-container {
+         max-width: 1200px;
+         margin: 2rem auto;
+         padding: 0 1rem;
+         }
+         .pthbkg-card {
+         background: var(--pthbkg-card);
+         border-radius: 12px;
+         box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+         border: 1px solid var(--pthbkg-border);
+         }
+         .pthbkg-section {
+         padding: 1.5rem;
+         }
+         .pthbkg-form-control {
+         border-radius: 8px;
+         background: #f9fafb;
+         border: 1px solid #e5e7eb;
+         padding: 0.75rem;
+         font-size: 0.9rem;
+         color: #1f2937;
+         }
+         .pthbkg-form-control.is-invalid {
+         border-color: #dc2626;
+         }
+         .pthbkg-label {
+         font-weight: 600;
+         font-size: 0.9rem;
+         margin-bottom: 0.5rem;
+         }
+         .invalid-feedback {
+         font-size: 0.8rem;
+         color: #dc2626;
+         }
+         .pthbkg-calendar {
+         border-radius: 12px;
+         overflow: hidden;
+         }
+         .pthbkg-month {
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+         padding: 1rem;
+         border-bottom: 1px solid var(--pthbkg-border);
+         }
+         .pthbkg-days {
+         padding: 1rem;
+         }
+         .pthbkg-grid {
+         display: grid;
+         grid-template-columns: repeat(7, 1fr);
+         gap: 0.5rem;
+         }
+         .pthbkg-day {
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         height: 2.5rem;
+         border-radius: 8px;
+         font-size: 0.9rem;
+         color: var(--pthbkg-muted);
+         cursor: pointer;
+         }
+         .pthbkg-day.pthbkg-selected {
+         background: #6d28d9;
+         color: #fff;
+         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+         }
+         .pthbkg-day.pthbkg-today {
+         border: 2px solid #6d28d9;
+         font-weight: bold;
+         }
+         .pthbkg-day.pthbkg-disabled {
+         color: #d1d5db;
+         cursor: not-allowed;
+         opacity: 0.5;
+         }
+         .pthbkg-slots .pthbkg-slot {
+         border-radius: 8px;
+         background: #fff;
+         padding: 0.75rem;
+         border: 1px solid var(--pthbkg-border);
+         text-align: center;
+         cursor: pointer;
+         transition: all 0.2s ease;
+         font-size: 0.9rem;
+         }
+         .pthbkg-slots .pthbkg-slot:hover {
+         transform: translateY(-2px);
+         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+         }
+         .pthbkg-slots .pthbkg-slot.pthbkg-booked {
+         background: #f3f4f6;
+         color: #9ca3af;
+         border-color: #e5e7eb;
+         cursor: not-allowed;
+         }
+         .pthbkg-slots .pthbkg-slot.pthbkg-slot-selected {
+         background: linear-gradient(90deg, var(--pthbkg-accent), #6d28d9);
+         color: #fff;
+         border-color: transparent;
+         box-shadow: 0 6px 12px rgba(124, 58, 237, 0.2);
+         }
+         .pthbkg-slots .pthbkg-slot.pthbkg-expired {
+         background: #f3f4f6;
+         color: #9ca3af;
+         border-color: #e5e7eb;
+         cursor: not-allowed;
+         text-decoration: line-through;
+         }
+         .pthbkg-summary {
+         padding: 1.5rem;
+         position: sticky;
+         top: 1rem;
+         }
+         .pthbkg-confirm {
+         background: linear-gradient(90deg, var(--pthbkg-accent), #6d28d9);
+         border: none;
+         width: 100%;
+         color: #fff;
+         padding: 0.75rem;
+         border-radius: 10px;
+         font-weight: 600;
+         box-shadow: 0 6px 12px rgba(124, 58, 237, 0.15);
+         }
+         .pthbkg-confirm:disabled {
+         opacity: 0.7;
+         cursor: not-allowed;
+         }
+         .pthbkg-help {
+         font-size: 0.85rem;
+         color: var(--pthbkg-muted);
+         }
+         .pthbkg-small-muted {
+         color: var(--pthbkg-muted);
+         font-size: 0.9rem;
+         }
+         .pthbkg-amount {
+         font-weight: 700;
+         font-size: 1.2rem;
+         }
+         .pthbkg-savings {
+         color: #16a34a;
+         font-weight: 600;
+         }
+         .pthbkg-error {
+         color: #dc2626;
+         font-size: 0.85rem;
+         text-align: center;
+         margin-bottom: 1rem;
+         }
+         .modern-login-modal {
+         border-radius: 12px;
+         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+         }
+         .btn-facebook {
+         background-color: #3b5998;
+         color: #fff;
+         }
+         .success-modal {
+         position: fixed;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         background-color: rgba(0, 0, 0, 0.5);
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         z-index: 10000;
+         }
+         .success-modal-content {
+         background-color: white;
+         border-radius: 12px;
+         padding: 2rem;
+         max-width: 500px;
+         width: 90%;
+         text-align: center;
+         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+         }
+         .success-icon {
+         font-size: 4rem;
+         color: #16a34a;
+         margin-bottom: 1rem;
+         }
+         .countdown {
+         font-size: 1.2rem;
+         font-weight: bold;
+         color: #7c3aed;
+         margin-top: 1rem;
+         }
+         @media (max-width: 991px) {
+         .pthbkg-container {
+         margin: 1rem auto;
+         padding: 0 0.75rem;
+         }
+         .pthbkg-summary {
+         position: static;
+         }
+         .pthbkg-grid {
+         gap: 0.3rem;
+         }
+         .pthbkg-day {
+         height: 2rem;
+         font-size: 0.8rem;
+         }
+         .pthbkg-slot {
+         font-size: 0.8rem;
+         padding: 0.5rem;
+         }
+         }
+         @media (max-width: 576px) {
+         .pthbkg-section {
+         padding: 1rem;
+         }
+         .pthbkg-form-control {
+         font-size: 0.85rem;
+         padding: 0.5rem;
+         }
+         .pthbkg-label {
+         font-size: 0.85rem;
+         }
+         .pthbkg-title {
+         font-size: 1.2rem;
+         }
+         .pthbkg-amount {
+         font-size: 1rem;
+         }
+         .pthbkg-confirm {
+         padding: 0.5rem;
+         font-size: 0.9rem;
+         }
+         .success-modal-content {
+         padding: 1.5rem;
+         max-width: 90%;
+         }
+         .success-icon {
+         font-size: 3rem;
+         }
+         .countdown {
+         font-size: 1rem;
+         }
+         }
+      </style>
+<link href="style.css" rel="stylesheet"/><link href="responsive.css" rel="stylesheet"/></head>
+<body><a aria-label="Emergency Call" class="emergency-btn d-lg-none" href="tel:+919990071792" id="emergencyBtn">
+<i class="bi bi-telephone-fill me-2"></i> Emergency
+      </a><header class="sticky-header bg-white shadow-sm">
+<div class="container px-2">
+<div class="d-flex align-items-center justify-content-between py-2">
+<a class="d-flex align-items-center" href="/membership/index.html">
+<img alt="Astikan Health" class="logo" fetchpriority="high" src="logo.avif" style="height:50px;"/>
+</a>
+<nav class="nav-menu d-none d-xl-flex align-items-center">
+<a class="nav-link" href="/membership/index.html">Home</a>
+<a class="nav-link" href="/membership/about-us.html">About</a>
+<a class="nav-link" href="/membership/find-doctors.html">Doctors</a>
+<a class="nav-link" href="/membership/lab-test.html">Lab Tests</a>
+<a class="nav-link" href="/membership/medical-finance.html">Finance</a>
+<a class="nav-link healthpocket-nav-premium" href="https://healthpocket.in"><i aria-hidden="true" class="bi bi-credit-card-2-front me-1"></i><span class="hp-nav-text">HealthPocket</span></a>
+<div class="nav-item dropdown">
+<a aria-expanded="false" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" id="surgeryDropdown" role="button">Surgery</a>
+<ul aria-labelledby="surgeryDropdown" class="dropdown-menu shadow border-0">
+<li class="dropdown-submenu">
+<a class="dropdown-item dropdown-toggle" href="#">❤️ Heart Surgeries</a>
+<ul class="dropdown-menu">
+<li><a class="dropdown-item" href="/membership/surgery/aortic-root-arch-surgeries.html">Aortic Root &amp; Arch Surgery</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/congenital-heart-surgeries.html">Congenital Heart Surgery</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/coronary-artery-bypass-grafting.html">Coronary Artery Bypass Grafting (CABG)</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/heart-transplants.html">Heart Transplant</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/left-ventricular-assist-device.html">Left Ventricular Assist Device (LVAD)</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/valve-replacement-avr-mvr-dvr.html">Valve Replacement (AVR/MVR/DVR)</a></li>
+</ul>
+</li>
+<li class="dropdown-submenu">
+<a class="dropdown-item dropdown-toggle" href="#">🩸 Vascular Surgeries</a>
+<ul class="dropdown-menu">
+<li><a class="dropdown-item" href="/membership/surgery/vascular-surgery/aneurysm-repair.html">Aneurysm Repair</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/vascular-surgery/angioplasty-stenting.html">Angioplasty &amp; Stent Placement</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/vascular-surgery/av-fistula-creation.html">AV Fistula Creation</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/vascular-surgery/av-graft-placement.html">AV Graft Placement</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/vascular-surgery/carotid-endarterectomy-stenting.html">Carotid Endarterectomy &amp; Stenting</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/vascular-surgery/dvt-surgery-ivc-filter.html">DVT / IVC Filter</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/vascular-surgery/embolectomy-thrombectomy.html">Embolectomy &amp; Thrombectomy</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/vascular-surgery/lymphedema-surgery.html">Lymphedema Surgery</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/vascular-surgery/peripheral-arterial-bypass.html">Peripheral Arterial Bypass</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/vascular-surgery/peripheral-endarterectomy.html">Peripheral Endarterectomy</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/vascular-surgery/thoracic-outlet-decompression.html">Thoracic Outlet Decompression</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/vascular-surgery/trauma-vascular-repairs.html">Trauma Vascular Repair</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/vascular-surgery/venous-ulcer-surgery.html">Venous Ulcer Surgery</a></li>
+</ul>
+</li>
+<li class="dropdown-submenu">
+<a class="dropdown-item dropdown-toggle" href="#">🫁 Thoracic Conditions</a>
+<ul class="dropdown-menu">
+<li><a class="dropdown-item" href="/membership/surgery/thoracic-surgery/aspergilloma.html">Aspergilloma</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/thoracic-surgery/bronchiectasis.html">Bronchiectasis</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/thoracic-surgery/chest-trauma.html">Chest Trauma</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/thoracic-surgery/empyema.html">Empyema</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/thoracic-surgery/hernia-diaphragm.html">Hernia Diaphragm</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/thoracic-surgery/lung-cancer.html">Lung Cancer</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/thoracic-surgery/lung-nodules.html">Lung Nodules</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/thoracic-surgery/lung-cysts.html">Lung Cysts</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/thoracic-surgery/myasthenia-thymoma.html">Myasthenia Thymoma</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/thoracic-surgery/palmar-hyperhidrosis.html">Palmar Hyperhidrosis</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/thoracic-surgery/pleural-effusion.html">Pleural Effusion</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/thoracic-surgery/pneumothorax.html">Pneumothorax</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/thoracic-surgery/tracheal-stenosis.html">Tracheal Stenosis</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/thoracic-surgery/tracheoesophageal-fistula.html">Tracheoesophageal Fistula</a></li>
+</ul>
+</li>
+<li class="dropdown-submenu">
+<a class="dropdown-item dropdown-toggle" href="#">🦵 Varicose &amp; Venous</a>
+<ul class="dropdown-menu">
+<li><a class="dropdown-item" href="/membership/surgery/vericose/vericose-veins.html">Varicose Veins Surgery</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="nav-item dropdown">
+<a aria-expanded="false" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" id="moreDropdown" role="button">More</a>
+<ul aria-labelledby="moreDropdown" class="dropdown-menu shadow-lg border-0">
+<li><a class="dropdown-item" href="/membership/join-as-doctor.html">Join as a Doctor</a></li>
+<li><a class="dropdown-item" href="/membership/join-as-hospital.html">Join as a Hospital</a></li>
+<li><a class="dropdown-item" href="/membership/membership-assistance.html">Insurance Assistance</a></li>
+<li><a class="dropdown-item" href="/membership/ambulance-emergency.html">Ambulance &amp; Emergency</a></li>
+<li><a class="dropdown-item" href="/membership/contact-us.html">Contact Us</a></li>
+<li><a class="dropdown-item" href="/membership/disclaimer.html">Disclaimer</a></li>
+</ul>
+</div>
+</nav>
+<span aria-controls="offcanvasMenu" aria-label="Open Menu" class="menu-ellipsis d-xl-none" data-bs-target="#offcanvasMenu" data-bs-toggle="offcanvas"></span>
+<div class="d-flex align-items-center">
+<a aria-label="Get Astikan App" class="btn btn-danger mx-2 d-none d-xl-flex align-items-center app-download-cta" href="/membership/index.html#download-app"><i aria-hidden="true" class="bi bi-phone me-2"></i><span>Get App</span></a>
+<button aria-controls="offcanvasMenu" aria-label="Toggle Navigation" class="navbar-toggler d-xl-none ms-2" data-bs-target="#offcanvasMenu" data-bs-toggle="offcanvas" type="button">
+<i class="bi bi-list fs-3"></i>
+</button>
+</div>
+</div>
+</div>
+</header><div aria-labelledby="offcanvasMenuLabel" class="offcanvas offcanvas-end custom-offcanvas" id="offcanvasMenu" style="width: 355px;" tabindex="-1">
+<div class="offcanvas-header custom-offcanvas-header">
+<button aria-label="Close" class="btn-close text-reset" data-bs-dismiss="offcanvas" type="button"></button>
+</div>
+<div class="offcanvas-body custom-offcanvas-body">
+<nav class="nav flex-column gap-2">
+<a class="nav-link custom-link" href="/membership/index.html">Home</a>
+<a class="nav-link custom-link" href="/membership/about-us.html">About</a>
+<a class="nav-link custom-link" href="/membership/find-doctors.html">Doctors</a>
+<a class="nav-link custom-link" href="/membership/lab-test.html">Lab Tests</a>
+<a class="nav-link custom-link" href="/membership/medical-finance.html">Finance</a>
+<a class="nav-link custom-link healthpocket-nav-premium" href="https://healthpocket.in"><i aria-hidden="true" class="bi bi-credit-card-2-front me-1"></i><span class="hp-nav-text">HealthPocket</span></a>
+<div class="accordion" id="surgeryAccordion">
+<div class="accordion-item border-0">
+<h2 class="accordion-header" id="headingSurgeryMobile">
+<button aria-controls="collapseSurgeryMobile" aria-expanded="false" class="accordion-button collapsed custom-link highlighted-link" data-bs-target="#collapseSurgeryMobile" data-bs-toggle="collapse" type="button">
+<i aria-hidden="true" class="bi bi-hospital me-2"></i>Surgeries
+                        </button>
+</h2>
+<div aria-labelledby="headingSurgeryMobile" class="accordion-collapse collapse" data-bs-parent="#surgeryAccordion" id="collapseSurgeryMobile">
+<div class="accordion-body ps-4">
+<div class="accordion" id="heartAccordion">
+<div class="accordion-item border-0">
+<h2 class="accordion-header" id="headingHeart">
+<button aria-controls="collapseHeart" aria-expanded="false" class="accordion-button collapsed bg-transparent px-0" data-bs-target="#collapseHeart" data-bs-toggle="collapse" type="button">
+                                    ❤️ Heart Surgeries
+                                    </button>
+</h2>
+<div aria-labelledby="headingHeart" class="accordion-collapse collapse" data-bs-parent="#heartAccordion" id="collapseHeart">
+<div class="accordion-body ps-3">
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/aortic-root-arch-surgeries.html">Aortic Root &amp; Arch Surgery</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/congenital-heart-surgeries.html">Congenital Heart Surgery</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/coronary-artery-bypass-grafting.html">Coronary Artery Bypass Grafting (CABG)</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/heart-transplants.html">Heart Transplant</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/left-ventricular-assist-device.html">Left Ventricular Assist Device (LVAD)</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/valve-replacement-avr-mvr-dvr.html">Valve Replacement (AVR/MVR/DVR)</a>
+</div>
+</div>
+</div>
+</div>
+<div class="accordion mt-2" id="vascularAccordion">
+<div class="accordion-item border-0">
+<h2 class="accordion-header" id="headingVascular">
+<button aria-controls="collapseVascular" aria-expanded="false" class="accordion-button collapsed bg-transparent px-0" data-bs-target="#collapseVascular" data-bs-toggle="collapse" type="button">
+                                    🩸 Vascular Surgeries
+                                    </button>
+</h2>
+<div aria-labelledby="headingVascular" class="accordion-collapse collapse" data-bs-parent="#vascularAccordion" id="collapseVascular">
+<div class="accordion-body ps-3">
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/vascular-surgery/aneurysm-repair.html">Aneurysm Repair</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/vascular-surgery/angioplasty-stenting.html">Angioplasty &amp; Stent Placement</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/vascular-surgery/av-fistula-creation.html">AV Fistula Creation</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/vascular-surgery/av-graft-placement.html">AV Graft Placement</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/vascular-surgery/carotid-endarterectomy-stenting.html">Carotid Endarterectomy &amp; Stenting</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/vascular-surgery/dvt-surgery-ivc-filter.html">DVT / IVC Filter</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/vascular-surgery/embolectomy-thrombectomy.html">Embolectomy &amp; Thrombectomy</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/vascular-surgery/lymphedema-surgery.html">Lymphedema Surgery</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/vascular-surgery/peripheral-arterial-bypass.html">Peripheral Arterial Bypass</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/vascular-surgery/peripheral-endarterectomy.html">Peripheral Endarterectomy</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/vascular-surgery/thoracic-outlet-decompression.html">Thoracic Outlet Decompression</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/vascular-surgery/trauma-vascular-repairs.html">Trauma Vascular Repair</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/vascular-surgery/venous-ulcer-surgery.html">Venous Ulcer Surgery</a>
+</div>
+</div>
+</div>
+</div>
+<div class="accordion mt-2" id="thoracicAccordion">
+<div class="accordion-item border-0">
+<h2 class="accordion-header" id="headingThoracic">
+<button aria-controls="collapseThoracic" aria-expanded="false" class="accordion-button collapsed bg-transparent px-0" data-bs-target="#collapseThoracic" data-bs-toggle="collapse" type="button">
+                                    🫁 Thoracic Conditions
+                                    </button>
+</h2>
+<div aria-labelledby="headingThoracic" class="accordion-collapse collapse" data-bs-parent="#thoracicAccordion" id="collapseThoracic">
+<div class="accordion-body ps-3">
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/thoracic-surgery/aspergilloma.html">Aspergilloma</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/thoracic-surgery/bronchiectasis.html">Bronchiectasis</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/thoracic-surgery/chest-trauma.html">Chest Trauma</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/thoracic-surgery/empyema.html">Empyema</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/thoracic-surgery/hernia-diaphragm.html">Hernia Diaphragm</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/thoracic-surgery/lung-cancer.html">Lung Cancer</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/thoracic-surgery/lung-nodules.html">Lung Nodules</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/thoracic-surgery/lung-cysts.html">Lung Cysts</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/thoracic-surgery/myasthenia-thymoma.html">Myasthenia Thymoma</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/thoracic-surgery/palmar-hyperhidrosis.html">Palmar Hyperhidrosis</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/thoracic-surgery/pleural-effusion.html">Pleural Effusion</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/thoracic-surgery/pneumothorax.html">Pneumothorax</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/thoracic-surgery/tracheal-stenosis.html">Tracheal Stenosis</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/thoracic-surgery/tracheoesophageal-fistula.html">Tracheoesophageal Fistula</a>
+</div>
+</div>
+</div>
+</div>
+<div class="accordion mt-2" id="varicoseAccordion">
+<div class="accordion-item border-0">
+<h2 class="accordion-header" id="headingVaricose">
+<button aria-controls="collapseVaricose" aria-expanded="false" class="accordion-button collapsed bg-transparent px-0" data-bs-target="#collapseVaricose" data-bs-toggle="collapse" type="button">
+                                    🦵 Varicose &amp; Venous
+                                    </button>
+</h2>
+<div aria-labelledby="headingVaricose" class="accordion-collapse collapse" data-bs-parent="#varicoseAccordion" id="collapseVaricose">
+<div class="accordion-body ps-3">
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/vericose/vericose-veins.html">Varicose Veins Surgery</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="accordion mt-2" id="moreAccordionMobile">
+<div class="accordion-item border-0">
+<h2 class="accordion-header" id="headingMoreMobile">
+<button aria-controls="collapseMoreMobile" aria-expanded="false" class="accordion-button collapsed custom-link bg-transparent px-0" data-bs-target="#collapseMoreMobile" data-bs-toggle="collapse" type="button">
+<i aria-hidden="true" class="bi bi-three-dots me-2"></i>More +
+                           </button>
+</h2>
+<div aria-labelledby="headingMoreMobile" class="accordion-collapse collapse" data-bs-parent="#moreAccordionMobile" id="collapseMoreMobile">
+<div class="accordion-body ps-4">
+<a class="dropdown-item d-block small py-2" href="/membership/join-as-doctor.html">Join as a Doctor</a>
+<a class="dropdown-item d-block small py-2" href="/membership/join-as-hospital.html">Join as a Hospital</a>
+<a class="dropdown-item d-block small py-2" href="/membership/membership-assistance.html">Insurance Assistance</a>
+<a class="dropdown-item d-block small py-2" href="/membership/ambulance-emergency.html">Ambulance &amp; Emergency</a>
+<a class="dropdown-item d-block small py-2" href="/membership/contact-us.html">Contact Us</a>
+<a class="dropdown-item d-block small py-2" href="/membership/disclaimer.html">Disclaimer</a>
+</div>
+</div>
+</div>
+</div>
+<a aria-label="Get Astikan App" class="btn btn-danger w-100 my-2" href="/membership/index.html#download-app"><i aria-hidden="true" class="bi bi-phone me-2"></i>Get Astikan App</a>
+<div class="user-profile-box d-flex align-items-center justify-content-start mt-1 p-2 rounded-3 shadow-sm">
+<a class="dropdown-item d-flex align-items-center text-decoration-none" href="#">
+<img alt="User Avatar" class="rounded-circle user-avatar me-2" src="" style="width: 45px; height: 45px; object-fit: cover;"/>
+<h6 class="fw-semibold mb-0 ms-1 text-dark"></h6>
+</a>
+</div>
+<button aria-label="Consultation" class="btn btn-outline-secondary rounded-pill d-lg-block d-none px-2 py-2" id="consultationBtn">
+<img alt="Consultation Icon" src="assets/free.avif" style="width: 32px;"/>
+                  Consultation
+                  </button>
+</div></nav>
+</div>
+</div>
+<div aria-hidden="true" aria-labelledby="loginModalLabel" class="modal fade" id="loginModal" tabindex="-1">
+<div class="modal-dialog modal-dialog-centered">
+<div class="modal-content modern-login-modal p-4">
+<div class="modal-header border-0 justify-content-center">
+<h5 class="modal-title fw-bold fs-4" id="loginModalLabel">Welcome Back!</h5>
+</div>
+<div class="modal-body pb-4 pt-2">
+<p class="text-center text-muted mb-4 mt-0" style="font-family:'alan Sans',sans-serif">Enter the
+                     World of Premium HealthCare
+                  </p>
+<div class="justify-content-center gap-2">
+<button class="btn btn-danger d-flex align-items-center justify-content-center px-3 my-2 w-100" id="googleLoginBtn" type="button">
+<i class="bi bi-google fs-5 me-2"></i> Login with Google
+                     </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="success-modal" id="successModal" style="display: none;">
+<div class="success-modal-content">
+<div class="success-icon">
+<i class="fas fa-check-circle"></i>
+</div>
+<h2>Booking Confirmed!</h2>
+<p>Your lab test booking has been successfully confirmed. A confirmation email has been sent to your
+               registered email address.
+            </p>
+<p>You will be redirected to your past tests page in <span class="countdown" id="countdown">5</span>
+               seconds.
+            </p>
+<button class="btn btn-primary mt-3" onclick="redirectToPastTests()">Go to My Tests Now</button>
+</div>
+</div>
+<main class="pthbkg-container">
+<div class="row g-4">
+<div class="col-lg-8">
+<div class="pthbkg-card pthbkg-section" data-aos="fade-up">
+<div class="pthbkg-title">Patient Details</div>
+<form action="#" class="row g-3" data-static-disabled="true" id="pthbkg-form">
+<div class="col-12">
+<label class="pthbkg-label">Full Name <span class="text-danger">*</span></label>
+<input class="form-control pthbkg-form-control" id="pthbkg-name" placeholder="Enter patient name" required="" value=""/>
+<div class="invalid-feedback" id="pthbkg-name-error"></div>
+</div>
+<div class="col-12 col-md-6">
+<label class="pthbkg-label">Phone Number <span class="text-danger">*</span></label>
+<input class="form-control pthbkg-form-control" id="pthbkg-phone" inputmode="tel" placeholder="Enter phone number" required=""/>
+<div class="invalid-feedback" id="pthbkg-phone-error"></div>
+</div>
+<div class="col-12 col-md-6">
+<label class="pthbkg-label">Address <span class="text-danger">*</span></label>
+<input class="form-control pthbkg-form-control" id="pthbkg-address" placeholder="Enter complete address for sample collection" required=""/>
+<div class="invalid-feedback" id="pthbkg-address-error"></div>
+</div>
+</form>
+</div>
+<div class="pthbkg-card pthbkg-calendar my-2" data-aos="fade-right" data-aos-delay="80">
+<div class="pthbkg-month">
+<div class="d-flex align-items-center gap-2">
+<button class="btn btn-sm btn-outline-secondary" id="pthbkg-prev"><i class="fa fa-chevron-left"></i></button>
+<div id="pthbkg-month-year" style="font-weight:700"></div>
+<button class="btn btn-sm btn-outline-secondary" id="pthbkg-next"><i class="fa fa-chevron-right"></i></button>
+</div>
+<div class="pthbkg-help">Select Date</div>
+</div>
+<div class="pthbkg-days">
+<div class="row">
+<div class="col-12">
+<div class="pthbkg-grid" id="pthbkg-calendar-grid">
+<div class="text-muted text-center small">Su</div>
+<div class="text-muted text-center small">Mo</div>
+<div class="text-muted text-center small">Tu</div>
+<div class="text-muted text-center small">We</div>
+<div class="text-muted text-center small">Th</div>
+<div class="text-muted text-center small">Fr</div>
+<div class="text-muted text-center small">Sa</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="pthbkg-card pthbkg-section my-2" data-aos="fade-up" data-aos-delay="120">
+<div class="d-flex align-items-center justify-content-between mb-3">
+<h5 class="pthbkg-title m-0">Time Slot</h5>
+<div class="pthbkg-help">Available slots for <span id="pthbkg-selected-date-text"></span></div>
+</div>
+<div class="row g-3 pthbkg-slots">
+<div class="col-6 col-md-4">
+<div class="pthbkg-slot" data-slot="06:00 AM - 07:00 AM" data-start="06:00">06:00 AM - 07:00 AM</div>
+</div>
+<div class="col-6 col-md-4">
+<div class="pthbkg-slot" data-slot="07:00 AM - 08:00 AM" data-start="07:00">07:00 AM - 08:00 AM</div>
+</div>
+<div class="col-6 col-md-4">
+<div class="pthbkg-slot" data-slot="08:00 AM - 09:00 AM" data-start="08:00">08:00 AM - 09:00 AM</div>
+</div>
+<div class="col-6 col-md-4">
+<div class="pthbkg-slot" data-slot="09:00 AM - 10:00 AM" data-start="09:00">09:00 AM - 10:00 AM</div>
+</div>
+<div class="col-6 col-md-4">
+<div class="pthbkg-slot" data-slot="10:00 AM - 11:00 AM" data-start="10:00">10:00 AM - 11:00 AM</div>
+</div>
+<div class="col-6 col-md-4">
+<div class="pthbkg-slot" data-slot="11:00 AM - 12:00 PM" data-start="11:00">11:00 AM - 12:00 PM</div>
+</div>
+</div>
+</div>
+</div>
+<div class="col-lg-4">
+<div class="pthbkg-card pthbkg-summary my-2" data-aos="fade-left">
+<div style="font-weight:700;font-size:1rem">Order Summary</div>
+<div id="pthbkg-test-list"></div>
+<div class="pthbkg-error d-none" id="pthbkg-error">No tests selected. Please add tests from the lab
+                     test page.
+                  </div>
+<div class="line my-3"></div>
+<div class="d-flex justify-content-between align-items-center mb-2">
+<div class="pthbkg-small-muted">Total MRP</div>
+<div class="pthbkg-small-muted" id="pthbkg-total-mrp">₹0</div>
+</div>
+<div class="d-flex justify-content-between align-items-center mb-2">
+<div class="pthbkg-small-muted">Total Savings</div>
+<div class="pthbkg-savings" id="pthbkg-total-savings">-₹0</div>
+</div>
+<div class="d-flex justify-content-between align-items-center mb-3">
+<div class="pthbkg-small-muted">Amount Payable</div>
+<div class="pthbkg-amount" id="pthbkg-amount-payable">₹0</div>
+</div>
+<button class="pthbkg-confirm" disabled="" id="pthbkg-confirm">Confirm Booking</button>
+<div class="text-center pthbkg-help mt-3">Please fill all details and select date &amp; time</div>
+</div>
+</div>
+</div>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script src="assets/astikan-config.js"></script>
+<script type="module">
+         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+         import { getAuth, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+         const firebaseConfig = window.ASTIKAN_CONFIG?.firebase;
+         if (!firebaseConfig?.apiKey) {
+           throw new Error("Missing Firebase config in assets/astikan-config.js");
+         }
+         const app = initializeApp(firebaseConfig);
+         const auth = getAuth(app);
+         const googleProvider = new GoogleAuthProvider();
+         googleProvider.addScope("profile");
+         googleProvider.addScope("email");
+         
+         AOS.init({ duration: 700, once: true });
+         
+         (function () {
+             
+             function createProcessOverlay() {
+                 let el = document.getElementById('pthbkg-process-overlay');
+                 if (!el) {
+                     el = document.createElement('div');
+                     el.id = 'pthbkg-process-overlay';
+                     el.style = `
+                         position:fixed;inset:0;display:none;align-items:center;justify-content:center;
+                         background:rgba(0,0,0,0.45);z-index:9999;color:#fff;font-size:18px;padding:20px;
+                     `;
+                     el.innerHTML = `<div id="pthbkg-process-message" style="max-width:90%;text-align:center"></div>`;
+                     document.body.appendChild(el);
+                 }
+                 return el;
+             }
+             const overlay = createProcessOverlay();
+             function showProcess(message = 'Processing...') {
+                 document.getElementById('pthbkg-process-message').textContent = message;
+                 overlay.style.display = 'flex';
+             }
+             function hideProcess() {
+                 overlay.style.display = 'none';
+             }
+             function formatINR(num) {
+                 return `₹${Number(num || 0).toLocaleString('en-IN')}`;
+             }
+         
+             
+             let isLoggedIn = sessionStorage.getItem('astikan_logged_in') === 'true';
+             const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+             const successModal = document.getElementById('successModal');
+             const countdownEl = document.getElementById('countdown');
+             let countdownInterval;
+         
+             const urlParams = new URLSearchParams(window.location.search);
+         
+             const calendarGrid = document.getElementById('pthbkg-calendar-grid');
+             const monthYearText = document.getElementById('pthbkg-month-year');
+             const selectedDateText = document.getElementById('pthbkg-selected-date-text');
+             const prevBtn = document.getElementById('pthbkg-prev');
+             const nextBtn = document.getElementById('pthbkg-next');
+         
+             const nameInput = document.getElementById('pthbkg-name');
+             const phoneInput = document.getElementById('pthbkg-phone');
+             const addressInput = document.getElementById('pthbkg-address');
+             const confirmBtn = document.getElementById('pthbkg-confirm');
+         
+             const testList = document.getElementById('pthbkg-test-list');
+             const totalMrpEl = document.getElementById('pthbkg-total-mrp');
+             const totalSavingsEl = document.getElementById('pthbkg-total-savings');
+             const amountPayableEl = document.getElementById('pthbkg-amount-payable');
+         
+             const errorEl = document.getElementById('pthbkg-error');
+             const nameError = document.getElementById('pthbkg-name-error');
+             const phoneError = document.getElementById('pthbkg-phone-error');
+             const addressError = document.getElementById('pthbkg-address-error');
+         
+             
+             const today = new Date();
+             today.setHours(0,0,0,0);
+             let currentDate = new Date(today);
+             let selectedDate = null;
+             let selectedSlot = null;
+         
+             
+             let cart = JSON.parse(sessionStorage.getItem('cart') || '[]');
+             if (!cart || cart.length === 0) {
+                 const tempCart = sessionStorage.getItem('temp_cart');
+                 if (tempCart) {
+                     try { cart = JSON.parse(tempCart); console.log('Restored cart from sessionStorage:', cart); }
+                     catch (e) { console.error('Failed to parse cart:', e); cart = []; }
+                 }
+             }
+         
+             
+             const savedFormData = sessionStorage.getItem('bookingFormData');
+             if (savedFormData) {
+                 try {
+                     const formData = JSON.parse(savedFormData);
+                     nameInput.value = formData.name || '';
+                     phoneInput.value = formData.phone || '';
+                     addressInput.value = formData.address || '';
+                     if (formData.selectedDate) {
+                         selectedDate = new Date(formData.selectedDate);
+                         selectedDateText.textContent = selectedDate.toLocaleString('default', { month: 'long', day: 'numeric', year: 'numeric' });
+                     }
+                     if (formData.selectedSlot) selectedSlot = formData.selectedSlot;
+                 } catch (e) { console.error('Failed to restore form data:', e); }
+             }
+         
+             let tests = [];
+             let touched = { name:false, phone:false, address:false };
+             let formSubmitted = false;
+         
+             console.log('Initial cart:', cart);
+             console.log('User logged in:', isLoggedIn);
+         
+             function saveFormData() {
+                 const formData = {
+                     name: nameInput.value,
+                     phone: phoneInput.value,
+                     address: addressInput.value,
+                     selectedDate: selectedDate ? selectedDate.toISOString() : null,
+                     selectedSlot: selectedSlot
+                 };
+                 sessionStorage.setItem('bookingFormData', JSON.stringify(formData));
+             }
+         
+             
+             function validateForm(showErrors=false) {
+                 let isValid = true;
+                 const name = nameInput.value.trim();
+                 const phone = phoneInput.value.trim();
+                 const address = addressInput.value.trim();
+         
+                 const nameValid = name && /^[a-zA-Z\s]{2,200}$/.test(name);
+                 if (!nameValid) isValid = false;
+                 if ((touched.name || showErrors) && !nameValid) {
+                     nameInput.classList.add('is-invalid');
+                     nameError.textContent = 'Name must be 2-200 characters, letters and spaces only';
+                 } else { nameInput.classList.remove('is-invalid'); nameError.textContent = ''; }
+         
+                 const phoneValid = phone && /^[6-9]\d{9}$/.test(phone);
+                 if (!phoneValid) isValid = false;
+                 if ((touched.phone || showErrors) && !phoneValid) {
+                     phoneInput.classList.add('is-invalid');
+                     phoneError.textContent = 'Enter a valid 10-digit Indian phone number';
+                 } else { phoneInput.classList.remove('is-invalid'); phoneError.textContent = ''; }
+         
+                 const addressValid = address && address.length >=5 && address.length <=200;
+                 if (!addressValid) isValid = false;
+                 if ((touched.address || showErrors) && !addressValid) {
+                     addressInput.classList.add('is-invalid');
+                     addressError.textContent = 'Address must be 5-200 characters';
+                 } else { addressInput.classList.remove('is-invalid'); addressError.textContent = ''; }
+         
+                 return isValid;
+             }
+         
+             
+             async function fetchTests() {
+                 const codes = cart.map(item => item.code);
+                 console.log('Fetching tests for codes:', codes);
+                 if (!codes.length) {
+                     console.log('Cart is empty');
+                     errorEl.textContent = 'No tests selected. Please add tests from the lab test page.';
+                     errorEl.classList.remove('d-none');
+                     testList.innerHTML = '';
+                     totalMrpEl.textContent = '₹0';
+                     totalSavingsEl.textContent = '-₹0';
+                     amountPayableEl.textContent = '₹0';
+                     updateConfirmState();
+                     return;
+                 }
+                 try {
+                     const response = await fetch('book-test.php', {
+                         method: 'POST',
+                         headers: {'Content-Type': 'application/json'},
+                         body: JSON.stringify({ test_codes: codes })
+                     });
+                     if (!response.ok) throw new Error(`HTTP error: ${response.status}`);
+                     tests = await response.json();
+                     console.log('Fetched tests:', tests);
+                     errorEl.classList.add('d-none');
+                     renderTests();
+                 } catch (error) {
+                     console.error('Error fetching tests:', error);
+                     errorEl.textContent = 'Failed to load test details. Please try again.';
+                     errorEl.classList.remove('d-none');
+                     tests = [];
+                     renderTests();
+                 }
+             }
+         
+             function renderTests() {
+                 console.log('Rendering tests:', tests);
+                 testList.innerHTML = '';
+                 let totalMrp = 0;
+                 tests.forEach(test => {
+                     const cartItem = cart.find(item => item.code === test.code);
+                     const quantity = cartItem ? cartItem.quantity : 1;
+                     totalMrp += parseFloat(test.price || 0) * quantity;
+                     const div = document.createElement('div');
+                     div.className = 'd-flex justify-content-between align-items-center mb-2';
+                     div.innerHTML = `
+                         <div>
+                             <div style="font-weight:600">${test.label || 'Unknown Test'} (x${quantity})</div>
+                             <div class="pthbkg-small-muted">${test.code || 'N/A'}</div>
+                         </div>
+                         <div class="pthbkg-amount">${formatINR(parseFloat(test.price || 0) * quantity)}</div>
+                     `;
+                     testList.appendChild(div);
+                 });
+                 totalMrpEl.textContent = formatINR(totalMrp);
+                 totalSavingsEl.textContent = '-₹0';
+                 amountPayableEl.textContent = formatINR(totalMrp);
+                 updateConfirmState();
+             }
+         
+             
+             function isTimeSlotExpired(slotStartTime, sDate) {
+                 const now = new Date();
+                 if (!sDate) return true;
+                 
+                 const sDateOnly = new Date(sDate); sDateOnly.setHours(0,0,0,0);
+                 const nowDateOnly = new Date(now); nowDateOnly.setHours(0,0,0,0);
+                 if (sDateOnly.getTime() === nowDateOnly.getTime()) {
+                     const [hours, minutes] = slotStartTime.split(':').map(Number);
+                     const slotTime = new Date(now);
+                     slotTime.setHours(hours, minutes, 0, 0);
+                     
+                     const bufferTime = new Date(slotTime);
+                     bufferTime.setMinutes(bufferTime.getMinutes() - 30);
+                     return now > bufferTime;
+                 }
+                 
+                 return sDateOnly < nowDateOnly;
+             }
+         
+             function updateTimeSlots() {
+                 if (!selectedDate) return;
+                 const slotEls = document.querySelectorAll('.pthbkg-slot');
+                 slotEls.forEach(slot => {
+                     const slotStartTime = slot.getAttribute('data-start');
+                     const expired = isTimeSlotExpired(slotStartTime, selectedDate);
+                     if (expired) {
+                         slot.classList.add('pthbkg-expired');
+                         slot.classList.remove('pthbkg-slot-selected');
+                         
+                     } else {
+                         slot.classList.remove('pthbkg-expired');
+                     }
+                 });
+                 
+                 autoSelectNextAvailableSlotFor(selectedDate);
+             }
+         
+             function autoSelectNextAvailableSlotFor(date) {
+                 if (!date) return;
+                 const slotEls = Array.from(document.querySelectorAll('.pthbkg-slot'));
+                 
+                 if (selectedSlot) {
+                     const existing = slotEls.find(s => s.getAttribute('data-slot') === selectedSlot);
+                     if (existing && !existing.classList.contains('pthbkg-expired') && !existing.classList.contains('pthbkg-booked')) {
+                         existing.classList.add('pthbkg-slot-selected');
+                         return;
+                     }
+                 }
+                 
+                 const candidate = slotEls.find(s => !s.classList.contains('pthbkg-expired') && !s.classList.contains('pthbkg-booked'));
+                 if (candidate) {
+                     slotEls.forEach(x=>x.classList.remove('pthbkg-slot-selected'));
+                     candidate.classList.add('pthbkg-slot-selected');
+                     selectedSlot = candidate.getAttribute('data-slot');
+                     saveFormData();
+                     updateConfirmState();
+                     return;
+                 }
+                 
+                 let lookDate = new Date(date);
+                 for (let i=1;i<=7;i++){
+                     lookDate.setDate(lookDate.getDate()+1);
+                     const dayStr = lookDate.toLocaleDateString('en-GB'); 
+                     
+                     const anyAvailable = Array.from(document.querySelectorAll('.pthbkg-slot')).some(s => !isTimeSlotExpired(s.getAttribute('data-start'), lookDate) && !s.classList.contains('pthbkg-booked'));
+                     if (anyAvailable) {
+                         
+                         selectedDate = new Date(lookDate);
+                         
+                         document.querySelectorAll('.pthbkg-day').forEach(x => x.classList.remove('pthbkg-selected'));
+                         const dataDateStr = `${selectedDate.getFullYear()}-${selectedDate.getMonth()+1}-${selectedDate.getDate()}`;
+                         const dayEl = document.querySelector(`.pthbkg-day[data-date="${dataDateStr}"]`);
+                         if (dayEl) dayEl.classList.add('pthbkg-selected');
+                         selectedDateText.textContent = selectedDate.toLocaleString('default', { month: 'long', day: 'numeric', year: 'numeric' });
+                         saveFormData();
+                         
+                         updateTimeSlots();
+                         return;
+                     }
+                 }
+                 
+             }
+         
+             
+             function renderCalendar(year, month) {
+                 calendarGrid.innerHTML = `
+                     <div class="text-muted text-center small">Su</div>
+                     <div class="text-muted text-center small">Mo</div>
+                     <div class="text-muted text-center small">Tu</div>
+                     <div class="text-muted text-center small">We</div>
+                     <div class="text-muted text-center small">Th</div>
+                     <div class="text-muted text-center small">Fr</div>
+                     <div class="text-muted text-center small">Sa</div>
+                 `;
+                 const date = new Date(year, month, 1);
+                 const firstDay = date.getDay();
+                 const daysInMonth = new Date(year, month + 1, 0).getDate();
+                 monthYearText.textContent = date.toLocaleString('default', { month: 'long', year: 'numeric' });
+                 for (let i=0;i<firstDay;i++) calendarGrid.insertAdjacentHTML('beforeend','<div></div>');
+                 for (let day=1; day<=daysInMonth; day++){
+                     const dayDate = new Date(year, month, day);
+                     const isToday = dayDate.toDateString() === today.toDateString();
+                     const isYesterday = dayDate.toDateString() === new Date(today.getTime() - 24*60*60*1000).toDateString();
+                     const isPast = dayDate < new Date(today.getTime() - 24*60*60*1000); 
+                     const isSelected = selectedDate && dayDate.toDateString() === selectedDate.toDateString();
+                     const classes = `pthbkg-day ${isToday ? 'pthbkg-today' : ''} ${isSelected ? 'pthbkg-selected' : ''} ${isPast ? 'pthbkg-disabled' : ''}`;
+                     calendarGrid.insertAdjacentHTML('beforeend', `<div class="${classes}" data-date="${year}-${month+1}-${day}">${day}</div>`);
+                 }
+         
+                 
+                 if (!selectedDate) {
+                     const todayElement = document.querySelector('.pthbkg-day.pthbkg-today');
+                     if (todayElement && !todayElement.classList.contains('pthbkg-disabled')) {
+                         todayElement.click();
+                     }
+                 }
+             }
+         
+             
+             function attachDayListeners() {
+                 const dayElements = Array.from(document.querySelectorAll('.pthbkg-day'));
+                 dayElements.forEach(d => {
+                     d.addEventListener('click', () => {
+                         if (!/^\d+$/.test(d.textContent.trim()) || d.classList.contains('pthbkg-disabled')) return;
+                         document.querySelectorAll('.pthbkg-day').forEach(x => x.classList.remove('pthbkg-selected'));
+                         d.classList.add('pthbkg-selected');
+                         const [year, month, day] = d.getAttribute('data-date').split('-').map(Number);
+                         selectedDate = new Date(year, month-1, day);
+                         selectedDateText.textContent = selectedDate.toLocaleString('default', { month: 'long', day: 'numeric', year: 'numeric' });
+                         updateTimeSlots();
+                         saveFormData();
+                         updateConfirmState();
+                     });
+                 });
+             }
+         
+             
+             function attachSlotListeners() {
+                 const slotEls = Array.from(document.querySelectorAll('.pthbkg-slot'));
+                 slotEls.forEach(s => {
+                     s.addEventListener('click', () => {
+                         if (s.classList.contains('pthbkg-booked') || s.classList.contains('pthbkg-expired')) {
+                             return; 
+                         }
+                         slotEls.forEach(x => x.classList.remove('pthbkg-slot-selected'));
+                         s.classList.add('pthbkg-slot-selected');
+                         selectedSlot = s.getAttribute('data-slot');
+                         saveFormData();
+                         updateConfirmState();
+                     });
+                 });
+             }
+         
+             
+             function updateConfirmState() {
+                 const validForm = validateForm(formSubmitted);
+                 const validTests = tests.length > 0;
+                 const ready = validForm && selectedDate && selectedSlot && validTests;
+                 confirmBtn.disabled = !ready;
+                 console.log('Confirm button state:', { validForm, validTests, selectedDate, selectedSlot, ready });
+             }
+         
+             
+             let currentYear = currentDate.getFullYear();
+             let currentMonth = currentDate.getMonth();
+         
+             prevBtn.addEventListener('click', () => {
+                 currentMonth--;
+                 if (currentMonth < 0) { currentMonth = 11; currentYear--; }
+                 renderCalendar(currentYear, currentMonth);
+                 attachDayListeners();
+             });
+             nextBtn.addEventListener('click', () => {
+                 currentMonth++;
+                 if (currentMonth > 11) { currentMonth = 0; currentYear++; }
+                 renderCalendar(currentYear, currentMonth);
+                 attachDayListeners();
+             });
+         
+             
+             nameInput.addEventListener('blur', () => { touched.name = true; validateForm(formSubmitted); saveFormData(); });
+             phoneInput.addEventListener('blur', () => { touched.phone = true; validateForm(formSubmitted); saveFormData(); });
+             addressInput.addEventListener('blur', () => { touched.address = true; validateForm(formSubmitted); saveFormData(); });
+         
+             
+             nameInput.addEventListener('input', () => {
+                 validateForm(formSubmitted);
+                 if (/^[a-zA-Z\s]{2,200}$/.test(nameInput.value.trim())) {
+                     phoneInput.focus();
+                 }
+                 saveFormData();
+             });
+             phoneInput.addEventListener('input', () => {
+                 validateForm(formSubmitted);
+                 if (/^[6-9]\d{9}$/.test(phoneInput.value.trim())) {
+                     addressInput.focus();
+                 }
+                 saveFormData();
+             });
+             addressInput.addEventListener('input', () => { validateForm(formSubmitted); saveFormData(); });
+         
+             
+             document.getElementById('googleLoginBtn')?.addEventListener('click', () => {
+                 if (cart.length > 0) sessionStorage.setItem('temp_cart', JSON.stringify(cart));
+                 saveFormData();
+                 
+                 showProcess('Opening Google sign-in. Please complete the authentication window.');
+                 signInWithPopup(auth, googleProvider).then(async (result) => {
+                     
+                     const user = result.user;
+                     try {
+                         isLoggedIn = true;
+                         sessionStorage.setItem('astikan_logged_in', 'true');
+                         sessionStorage.setItem('astikan_member_session', JSON.stringify({
+                             uid: user.uid,
+                             email: user.email || '',
+                             name: user.displayName || '',
+                             avatar: user.photoURL || ''
+                         }));
+                         hideProcess();
+                         loginModal.hide();
+                     } catch (err) {
+                         hideProcess();
+                         console.error('Login session error:', err);
+                         alert('Error creating login session: ' + err.message);
+                     }
+                 }).catch(err => {
+                     hideProcess();
+                     console.error('Login error:', err);
+                     alert('Login failed: ' + (err.message || 'Please try again.'));
+                 });
+             });
+         
+             
+             confirmBtn.addEventListener('click', async () => {
+                 formSubmitted = true;
+                 if (confirmBtn.disabled) return;
+                 if (!validateForm(true)) return;
+                 if (!isLoggedIn) {
+                     console.log('User not logged in, showing login modal');
+                     loginModal.show();
+                     return;
+                 }
+         
+                 
+                 const payload = {
+                     action: 'book', 
+                     csrf_token: '',
+                     name: nameInput.value.trim(),
+                     phone: phoneInput.value.trim(),
+                     address: addressInput.value.trim(),
+                     date: selectedDate.toLocaleString('default', { month: 'long', day: 'numeric', year: 'numeric' }),
+                     slot: selectedSlot,
+                     test_codes: cart.map(item => ({ code: item.code, quantity: item.quantity })),
+                     total_amount: parseFloat(amountPayableEl.textContent.replace('₹', '').replace(/,/g, ''))
+                 };
+         
+                 try {
+                     console.log('Saving booking:', payload);
+                     showProcess('Creating booking. Please wait...');
+                     
+                     const bookingResponse = await fetch('book-test.php', {
+                         method: 'POST',
+                         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                         body: new URLSearchParams(payload)
+                     });
+                     if (!bookingResponse.ok) throw new Error(`HTTP error: ${bookingResponse.status}`);
+                     const bookingResult = await bookingResponse.json();
+                     console.log('Booking response:', bookingResult);
+                     if (bookingResult.status !== 'success') throw new Error(bookingResult.message || 'Booking failed');
+         
+                     
+                     const orderResponse = await fetch('book-test.php', {
+                         method: 'POST',
+                         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                         body: new URLSearchParams({
+                             action: 'create_order',
+                             csrf_token: '',
+                             amount: bookingResult.total_amount,
+                             booking_id: bookingResult.booking_id,
+                             phone: payload.phone,
+                             transaction_id: bookingResult.transaction_id,
+                             name: payload.name
+                         })
+                     });
+                     if (!orderResponse.ok) throw new Error(`HTTP error: ${orderResponse.status}`);
+                     const orderResult = await orderResponse.json();
+                     console.log('Order response:', orderResult);
+                     if (orderResult.status !== 'success') throw new Error(orderResult.message || 'Order creation failed');
+         
+                     
+                     const pending = { booking_id: bookingResult.booking_id, order_id: orderResult.order_id, transaction_id: bookingResult.transaction_id };
+                     sessionStorage.setItem('pendingOrder', JSON.stringify(pending));
+         
+                     
+                     showProcess('Redirecting to payment gateway...');
+                     
+                     const cashfree = new window.Cashfree({ mode: 'production' });
+                     cashfree.checkout({
+                         paymentSessionId: orderResult.payment_session_id,
+                         returnUrl: `https://${window.location.hostname}/book-test.php?order_id=${orderResult.order_id}&booking_id=${bookingResult.booking_id}`,
+                         redirectTarget: "_self",
+                         paymentMethod: { upi: true, card: true, netbanking: true, wallet: true }
+                     }).then(function (result) {
+                         
+                         if (result && result.error) {
+                             hideProcess();
+                             console.error('Payment error:', result.error);
+                             alert('Payment initiation failed: ' + result.error.message);
+                         } else {
+                             console.log('Payment initiated successfully (SDK). Waiting for redirect/return.');
+                         }
+                     }).catch(function (error) {
+                         hideProcess();
+                         console.error('Payment error:', error);
+                         alert('Payment initiation failed. Please try again.');
+                     });
+         
+                 } catch (err) {
+                     hideProcess();
+                     console.error('Booking error:', err);
+                     alert('Failed to process booking: ' + (err.message || 'Unknown error'));
+                 }
+             });
+         
+             
+             async function handlePaymentReturn() {
+                 
+                 if (urlParams.get('order_id') && urlParams.get('booking_id')) {
+                     console.log('Handling payment return:', urlParams.toString());
+                     showProcess('Verifying payment. Please wait...');
+                     const pendingOrder = JSON.parse(sessionStorage.getItem('pendingOrder') || '{}');
+         
+                     
+                     if (pendingOrder.order_id === urlParams.get('order_id')) {
+                         try {
+                             const verifyRes = await fetch('book-test.php', {
+                                 method: 'POST',
+                                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                                 body: new URLSearchParams({
+                                     action: 'update_payment',
+                                     booking_id: urlParams.get('booking_id'),
+                                     payment_status: 'completed',
+                                     csrf_token: ''
+                                 })
+                             });
+                             if (!verifyRes.ok) throw new Error(`HTTP error: ${verifyRes.status}`);
+                             const resJson = await verifyRes.json();
+                             console.log('Payment status update:', resJson);
+                             if (resJson.status === 'success') {
+                                 
+                                 sessionStorage.removeItem('cart');
+                                 sessionStorage.removeItem('pendingOrder');
+                                 sessionStorage.removeItem('bookingFormData');
+                                 
+                                 hideProcess();
+                                 showSuccessModal();
+                             } else {
+                                 hideProcess();
+                                 alert('Failed to update payment status: ' + (resJson.message || 'Unknown error occurred'));
+                             }
+                         } catch (err) {
+                             hideProcess();
+                             console.error('Payment status update error:', err);
+                             alert('Failed to update payment status.');
+                         }
+                     } else {
+                         
+                         hideProcess();
+                         console.error('Order ID mismatch');
+                         alert('Payment verification failed (order mismatch). Please contact support.');
+                     }
+                 } else {
+                     
+                     
+                     const pending = JSON.parse(sessionStorage.getItem('pendingOrder') || '{}');
+                     if (pending && pending.order_id) {
+                         
+                         try {
+                             showProcess('Checking payment status...');
+                             const checkRes = await fetch('book-test.php', {
+                                 method: 'POST',
+                                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                                 body: new URLSearchParams({
+                                     action: 'check_payment_status',
+                                     order_id: pending.order_id,
+                                     booking_id: pending.booking_id,
+                                     csrf_token: ''
+                                 })
+                             });
+                             if (!checkRes.ok) throw new Error(`HTTP error: ${checkRes.status}`);
+                             const json = await checkRes.json();
+                             hideProcess();
+                             if (json.status === 'completed') {
+                                 
+                                 sessionStorage.removeItem('pendingOrder');
+                                 sessionStorage.removeItem('cart');
+                                 sessionStorage.removeItem('bookingFormData');
+                                 
+                                 showSuccessModal();
+                             } else if (json.status === 'failed' || json.status === 'cancelled') {
+                                 
+                                 showProcess('Cancelling pending booking since payment was not completed...');
+                                 const cancelRes = await fetch('book-test.php', {
+                                     method: 'POST',
+                                     headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                                     body: new URLSearchParams({
+                                         action: 'cancel_booking',
+                                         booking_id: pending.booking_id,
+                                         csrf_token: ''
+                                     })
+                                 });
+                                 if (cancelRes.ok) {
+                                     sessionStorage.removeItem('pendingOrder');
+                                     hideProcess();
+                                     alert('Payment not completed. Your booking has been cancelled. Please try booking again if you wish.');
+                                 } else {
+                                     hideProcess();
+                                     console.error('Failed to cancel booking on server');
+                                     alert('Payment not completed. Please contact support to cancel the pending booking.');
+                                 }
+                             } else {
+                                 
+                                 hideProcess();
+                                 console.log('Payment still pending, not showing success modal.');
+                             }
+                         } catch (err) {
+                             hideProcess();
+                             console.error('Error checking payment status:', err);
+                         }
+                     } else {
+                         
+                     }
+                 }
+             }
+         
+             
+             function showSuccessModal() {
+                 try { successModal.style.display = 'flex'; } catch(e){}
+                 let seconds = 5;
+                 if (countdownInterval) clearInterval(countdownInterval);
+                 countdownEl.textContent = seconds;
+                 countdownInterval = setInterval(() => {
+                     seconds--;
+                     countdownEl.textContent = seconds;
+                     if (seconds <= 0) {
+                         clearInterval(countdownInterval);
+                         redirectToPastTests();
+                     }
+                 }, 1000);
+             }
+            function redirectToPastTests() {
+                if (countdownInterval) clearInterval(countdownInterval);
+                if (window.self !== window.top) {
+                    var stored = null;
+                    try { stored = JSON.parse(localStorage.getItem('astikanLastEnrollment') || 'null'); } catch (e) {}
+                    var dashUrl = '../membership-dashboard.html';
+                    if (stored && stored.enrollmentId) {
+                        dashUrl += '?enrollmentId=' + encodeURIComponent(stored.enrollmentId);
+                    }
+                    window.top.location.href = dashUrl;
+                    return;
+                }
+                window.location.href = '../user/lab-tests.php';
+            }
+         
+             
+             console.log('Initializing page');
+             renderCalendar(currentYear, currentMonth);
+             attachDayListeners();
+             attachSlotListeners();
+             selectedDateText.textContent = selectedDate ? selectedDate.toLocaleString('default', { month: 'long', day: 'numeric', year: 'numeric' }) : '';
+             updateTimeSlots();
+             fetchTests();
+         
+             
+             if (sessionStorage.getItem('restore_cart') === 'true') {
+                 const temp = sessionStorage.getItem('temp_cart');
+                 if (temp) {
+                     try {
+                         cart = JSON.parse(temp);
+                         console.log('Restored cart after login:', cart);
+                         sessionStorage.removeItem('temp_cart');
+                     } catch (e) { console.error('Failed to restore cart after login:', e); }
+                 }
+                 sessionStorage.removeItem('restore_cart');
+                 
+                 fetchTests();
+             }
+         
+             
+             if (urlParams.get('auth_return') === '1') {
+                 showProcess('Completing login...'); 
+                 setTimeout(() => { hideProcess(); window.location.href = window.location.pathname; }, 1200);
+             }
+         
+             
+             handlePaymentReturn();
+         
+             
+             document.addEventListener('visibilitychange', () => {
+                 if (!document.hidden) {
+                     
+                     const pending = JSON.parse(sessionStorage.getItem('pendingOrder') || '{}');
+                     if (pending && pending.order_id) {
+                         
+                         (async () => {
+                             try {
+                                 const checkRes = await fetch('book-test.php', {
+                                     method: 'POST',
+                                     headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                                     body: new URLSearchParams({
+                                         action: 'check_payment_status',
+                                         order_id: pending.order_id,
+                                         booking_id: pending.booking_id,
+                                         csrf_token: ''
+                                     })
+                                 });
+                                 if (!checkRes.ok) throw new Error(`HTTP error: ${checkRes.status}`);
+                                 const json = await checkRes.json();
+                                 if (json.status === 'completed') {
+                                     sessionStorage.removeItem('pendingOrder');
+                                     sessionStorage.removeItem('cart');
+                                     sessionStorage.removeItem('bookingFormData');
+                                     hideProcess();
+                                     showSuccessModal();
+                                 }
+                             } catch (err) { console.error('Visibility change check error:', err); }
+                         })();
+                     }
+                 }
+             });
+         
+         })(); 
+      </script>
+
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-RYQR7RZR0Y"></script>
+<script>
+         window.dataLayer = window.dataLayer || [];
+         function gtag() { dataLayer.push(arguments); }
+         gtag('js', new Date());
+         
+         gtag('config', 'G-RYQR7RZR0Y');
+      </script>
+<script type="text/javascript">
+         (function (c, l, a, r, i, t, y) {
+             c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+             t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+             y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+         })(window, document, "clarity", "script", "twq4peq2u7");
+      </script>
+<script src="assets/member-site-login.js"></script>
+<script src="assets/offcanvas-auth.js"></script>
+<script src="script.js"></script><footer class="futrr futrr-compact p-3">
+<div class="container futrr-main py-4">
+<div class="row gy-3 align-items-start">
+<div class="col-lg-4 col-md-6 futrr-about">
+<h6><i aria-hidden="true" class="bi bi-heart me-2 text-gradient"></i>Astikan</h6>
+<p class="mb-2">Affordable healthcare access, lab tests, medical finance, consultations, medicine delivery and emergency support.</p>
+<p class="mb-1"><i aria-hidden="true" class="bi bi-geo-alt me-2"></i>B-45, Sector 56, Noida</p>
+<p class="mb-1"><i aria-hidden="true" class="bi bi-telephone me-2"></i>+91 99900 71792, +91 73033 34931</p>
+<p class="mb-0"><i aria-hidden="true" class="bi bi-envelope me-2"></i>care@astikan.com</p>
+</div>
+<div class="col-lg-2 col-md-6">
+<h6>Company</h6>
+<ul>
+<li><a href="/membership/index.html">Home</a></li>
+<li><a href="/membership/about-us.html">About Us</a></li>
+<li><a href="/membership/contact-us.html">Contact Us</a></li>
+<li><a href="/membership/index.html#download-app">Download App</a></li>
+</ul>
+</div>
+<div class="col-lg-3 col-md-6">
+<h6>Services</h6>
+<ul>
+<li><a href="/membership/lab-test.html">Lab Tests</a></li>
+<li><a href="/membership/find-doctors.html">Find Doctors</a></li>
+<li><a href="/membership/video-consultation.html">Video Consultation</a></li>
+<li><a href="/membership/medicine-delivery.html">Medicine Delivery</a></li>
+<li><a href="/membership/medical-finance.html">Medical Finance</a></li>
+</ul>
+</div>
+<div class="col-lg-3 col-md-6">
+<h6>Legal &amp; Support</h6>
+<ul>
+<li><a href="/membership/privacy-policy.html">Privacy Policy</a></li>
+<li><a href="/membership/terms-and-conditions.html">Terms &amp; Conditions</a></li>
+<li><a href="/membership/refund-policy.html">Refund Policy</a></li>
+<li><a href="/membership/disclaimer.html">Disclaimer</a></li>
+<li><a href="/membership/grevience-portal.html">Grievance Portal</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="futrr-bottom py-3">
+<div class="container d-flex flex-column flex-md-row align-items-center justify-content-between gap-2">
+<div>
+<p class="mb-0">© 2025 Astikan Healthcare Private Limited - All Rights Reserved.</p>
+<small>CIN: U74999UP2018PTC103568</small>
+</div>
+<div class="text-md-end">
+<span class="me-2">Follow us:</span>
+<a aria-label="Facebook" href="#"><i aria-hidden="true" class="bi bi-facebook"></i></a>
+<a aria-label="Twitter" href="#"><i aria-hidden="true" class="bi bi-twitter"></i></a>
+<a aria-label="Instagram" href="#"><i aria-hidden="true" class="bi bi-instagram"></i></a>
+<a aria-label="LinkedIn" href="#"><i aria-hidden="true" class="bi bi-linkedin"></i></a>
+</div>
+</div>
+</div>
+</footer></body>
+</html>

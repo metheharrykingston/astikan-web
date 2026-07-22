@@ -1,5 +1,6 @@
-import { useEffect } from 'react';
+import { useLayoutEffect } from 'react';
 import { gsap } from 'gsap';
+import Lenis from 'lenis';
 import './motion-experience.css';
 
 type CounterParts = {
@@ -43,13 +44,99 @@ function formatCounter(parts: CounterParts, value: number) {
 }
 
 export default function MotionExperience() {
-  useEffect(() => {
-    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reducedMotion) return undefined;
-
+  useLayoutEffect(() => {
     const desktopPointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    const compactMotion = window.matchMedia('(max-width: 767px), (pointer: coarse)').matches;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const cleanups: Array<() => void> = [];
     const animations: gsap.core.Animation[] = [];
+    const lenis = reducedMotion
+      ? null
+      : new Lenis({
+          autoRaf: true,
+          smoothWheel: true,
+          duration: compactMotion ? 1.65 : 2.15,
+          easing: (value: number) => value * value * value * (value * (value * 6 - 15) + 10),
+          wheelMultiplier: compactMotion ? 0.42 : 0.3,
+          syncTouch: false,
+          syncTouchLerp: 0.05,
+          touchMultiplier: 0.52,
+          virtualScroll: (data) => {
+            if (!(data.event instanceof WheelEvent)) return true;
+            const maximumWheelStep = 64;
+            data.deltaY = Math.max(-maximumWheelStep, Math.min(maximumWheelStep, data.deltaY));
+            data.deltaX = Math.max(-maximumWheelStep, Math.min(maximumWheelStep, data.deltaX));
+            return true;
+          },
+        });
+    if (lenis) cleanups.push(() => lenis.destroy());
+
+    if (compactMotion && lenis) {
+      let touchStartY = 0;
+      let touchStartX = 0;
+      let trackingGesture = false;
+      let scrollLocked = false;
+      const ignoredTouchTarget = (target: EventTarget | null) => (
+        target instanceof Element
+        && Boolean(target.closest('[data-lenis-prevent], [data-native-scroll], input, textarea, select'))
+      );
+      const smootherStep = (value: number) => (
+        value * value * value * (value * (value * 6 - 15) + 10)
+      );
+
+      const handleTouchStart = (event: TouchEvent) => {
+        if (ignoredTouchTarget(event.target) || event.touches.length !== 1) {
+          trackingGesture = false;
+          return;
+        }
+        trackingGesture = true;
+        touchStartY = event.touches[0].clientY;
+        touchStartX = event.touches[0].clientX;
+      };
+
+      const handleTouchMove = (event: TouchEvent) => {
+        if (!trackingGesture || event.touches.length !== 1) return;
+        const verticalDistance = Math.abs(event.touches[0].clientY - touchStartY);
+        const horizontalDistance = Math.abs(event.touches[0].clientX - touchStartX);
+        if (verticalDistance > horizontalDistance && event.cancelable) event.preventDefault();
+      };
+
+      const handleTouchEnd = (event: TouchEvent) => {
+        if (!trackingGesture) return;
+        trackingGesture = false;
+        const touch = event.changedTouches[0];
+        if (!touch || scrollLocked) return;
+        const distanceY = touchStartY - touch.clientY;
+        const distanceX = touchStartX - touch.clientX;
+        if (Math.abs(distanceY) < 22 || Math.abs(distanceY) <= Math.abs(distanceX)) return;
+
+        scrollLocked = true;
+        const direction = Math.sign(distanceY);
+        const travel = Math.min(window.innerHeight * 0.72, 620);
+        const maximumScroll = document.documentElement.scrollHeight - window.innerHeight;
+        const destination = Math.max(0, Math.min(maximumScroll, window.scrollY + direction * travel));
+        if (Math.abs(destination - window.scrollY) < 1) {
+          scrollLocked = false;
+          return;
+        }
+        lenis.scrollTo(destination, {
+          duration: 1.9,
+          easing: smootherStep,
+          lock: true,
+          force: true,
+          onComplete: () => { scrollLocked = false; },
+        });
+      };
+
+      document.addEventListener('touchstart', handleTouchStart, { capture: true, passive: true });
+      document.addEventListener('touchmove', handleTouchMove, { capture: true, passive: false });
+      document.addEventListener('touchend', handleTouchEnd, { capture: true, passive: true });
+      cleanups.push(() => {
+        document.removeEventListener('touchstart', handleTouchStart, true);
+        document.removeEventListener('touchmove', handleTouchMove, true);
+        document.removeEventListener('touchend', handleTouchEnd, true);
+      });
+    }
 
     const page = document.querySelector<HTMLElement>('.astikan-page-content');
     const progress = document.querySelector<HTMLElement>('.motion-progress');
@@ -60,14 +147,13 @@ export default function MotionExperience() {
       animations.push(
         gsap.fromTo(
           page,
-          { autoAlpha: 0, y: 16, filter: 'blur(7px)' },
+          { autoAlpha: 0.72, y: 12 },
           {
             autoAlpha: 1,
             y: 0,
-            filter: 'blur(0px)',
             duration: 0.8,
             ease: 'power3.out',
-            clearProps: 'opacity,visibility,transform,filter',
+            clearProps: 'opacity,visibility,transform',
           },
         ),
       );
@@ -102,10 +188,124 @@ export default function MotionExperience() {
           sectionObserver.unobserve(entry.target);
         });
       },
-      { threshold: 0.12, rootMargin: '0px 0px -7% 0px' },
+      compactMotion
+        ? { threshold: 0.025, rootMargin: '0px 0px 12% 0px' }
+        : { threshold: 0.12, rootMargin: '0px 0px -7% 0px' },
     );
     sections.forEach((section) => sectionObserver.observe(section));
     cleanups.push(() => sectionObserver.disconnect());
+
+    const textElements = Array.from(
+      document.querySelectorAll<HTMLElement>(
+        'main section h1, main section h2, main section h3, main section p',
+      ),
+    ).filter((element) => {
+      if (element.hasAttribute('data-aos')) return false;
+      if (element.closest('article, nav, form, [data-motion-text="off"]')) return false;
+      const text = element.textContent?.trim() ?? '';
+      return text.length > 2;
+    });
+
+    textElements.forEach((element, index) => {
+      element.classList.add('motion-text-reveal');
+      element.dataset.motionTextIndex = String(index);
+      element.style.setProperty('--motion-reveal-delay', `${(index % 4) * 70}ms`);
+    });
+
+    const textObserver = new IntersectionObserver(
+      (entries) => {
+        const visibleEntries = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+
+        visibleEntries.forEach((entry, entryIndex) => {
+          const element = entry.target as HTMLElement;
+          element.style.setProperty('--motion-reveal-delay', `${entryIndex * 90}ms`);
+          element.classList.add('motion-text-visible');
+          textObserver.unobserve(element);
+        });
+      },
+      compactMotion
+        ? { threshold: 0.025, rootMargin: '0px 0px 14% 0px' }
+        : { threshold: 0.12, rootMargin: '0px 0px -8% 0px' },
+    );
+
+    textElements.forEach((element) => textObserver.observe(element));
+    cleanups.push(() => {
+      textObserver.disconnect();
+      textElements.forEach((element) => {
+        element.classList.remove('motion-text-reveal', 'motion-text-visible');
+        delete element.dataset.motionTextIndex;
+        element.style.removeProperty('--motion-reveal-delay');
+      });
+    });
+
+    if (compactMotion) {
+      let safetyFrame = 0;
+      const revealVisibleElements = () => {
+        safetyFrame = 0;
+        const viewportTrigger = window.innerHeight * 1.12;
+
+        document.querySelectorAll<HTMLElement>('.motion-text-reveal:not(.motion-text-visible)').forEach((element) => {
+          const bounds = element.getBoundingClientRect();
+          if (bounds.top <= viewportTrigger && bounds.bottom >= -80) {
+            element.classList.add('motion-text-visible');
+            textObserver.unobserve(element);
+          }
+        });
+
+        document.querySelectorAll<HTMLElement>('[data-aos]:not(.aos-animate)').forEach((element) => {
+          const bounds = element.getBoundingClientRect();
+          if (bounds.top <= viewportTrigger && bounds.bottom >= -80) element.classList.add('aos-animate');
+        });
+      };
+      const scheduleSafetyReveal = () => {
+        if (safetyFrame) return;
+        safetyFrame = window.requestAnimationFrame(revealVisibleElements);
+      };
+
+      const safetyTimer = window.setTimeout(revealVisibleElements, 450);
+      window.addEventListener('scroll', scheduleSafetyReveal, { passive: true });
+      window.addEventListener('resize', scheduleSafetyReveal);
+      cleanups.push(() => {
+        window.clearTimeout(safetyTimer);
+        window.cancelAnimationFrame(safetyFrame);
+        window.removeEventListener('scroll', scheduleSafetyReveal);
+        window.removeEventListener('resize', scheduleSafetyReveal);
+      });
+    }
+
+    const handleAnchorClick = (event: MouseEvent) => {
+      const link = (event.target as HTMLElement).closest<HTMLAnchorElement>('a[href^="#"]');
+      if (!link) return;
+
+      const hash = link.getAttribute('href');
+      if (!hash || hash === '#') return;
+
+      let target: HTMLElement | null = null;
+      try {
+        target = document.querySelector<HTMLElement>(hash);
+      } catch {
+        return;
+      }
+      if (!target) return;
+
+      event.preventDefault();
+      const headerHeight = document.querySelector<HTMLElement>('header')?.offsetHeight ?? 76;
+      const targetTop = target.getBoundingClientRect().top + window.scrollY - headerHeight - 16;
+      if (lenis) {
+        lenis.scrollTo(Math.max(0, targetTop), {
+          duration: 1.35,
+          easing: (value: number) => 1 - Math.pow(1 - value, 4),
+        });
+      } else {
+        window.scrollTo({ top: Math.max(0, targetTop), behavior: 'smooth' });
+      }
+      window.history.replaceState(null, '', hash);
+    };
+
+    document.addEventListener('click', handleAnchorClick);
+    cleanups.push(() => document.removeEventListener('click', handleAnchorClick));
 
     const cardSelector = [
       'main article',
@@ -115,8 +315,29 @@ export default function MotionExperience() {
     ].join(',');
     const cards = Array.from(document.querySelectorAll<HTMLElement>(cardSelector));
 
+    const cardRevealObserver = new IntersectionObserver(
+      (entries) => {
+        entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)
+          .forEach((entry, index) => {
+            const card = entry.target as HTMLElement;
+            card.style.setProperty('--motion-card-delay', `${Math.min(index * 85, 340)}ms`);
+            card.classList.add('motion-card-visible');
+            cardRevealObserver.unobserve(card);
+          });
+      },
+      compactMotion
+        ? { threshold: 0.035, rootMargin: '0px 0px 12% 0px' }
+        : { threshold: 0.16, rootMargin: '0px 0px -6% 0px' },
+    );
+
     cards.forEach((card) => {
       card.classList.add('motion-card');
+      if (!card.hasAttribute('data-aos')) {
+        card.classList.add('motion-card-reveal');
+        cardRevealObserver.observe(card);
+      }
       const icon = card.querySelector<HTMLElement>('svg, img');
       icon?.classList.add('motion-card-icon');
 
@@ -159,6 +380,13 @@ export default function MotionExperience() {
       cleanups.push(() => {
         card.removeEventListener('pointermove', move);
         card.removeEventListener('pointerleave', leave);
+      });
+    });
+    cleanups.push(() => {
+      cardRevealObserver.disconnect();
+      cards.forEach((card) => {
+        card.classList.remove('motion-card-reveal', 'motion-card-visible');
+        card.style.removeProperty('--motion-card-delay');
       });
     });
 

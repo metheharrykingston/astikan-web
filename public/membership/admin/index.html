@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="noindex, nofollow" name="robots"/>
+<title>Astikan Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="admin.css" rel="stylesheet"/>
+</head>
+<body class="admin-app">
+
+<div id="loginView" class="admin-login-wrap">
+  <div class="admin-login-card">
+    <h1>Astikan Admin</h1>
+    <p>Membership database — secure login required</p>
+    <form id="loginForm" autocomplete="off">
+      <div class="admin-field">
+        <label for="username">Username</label>
+        <input id="username" name="username" required type="text"/>
+      </div>
+      <div class="admin-field">
+        <label for="password">Password</label>
+        <input id="password" name="password" required type="password"/>
+      </div>
+      <div class="admin-field">
+        <label for="captcha">Captcha</label>
+        <div class="admin-captcha-row">
+          <span id="captchaQuestion" style="font-weight:600;min-width:120px;">Loading…</span>
+          <button class="admin-btn admin-btn-ghost admin-btn-sm" id="refreshCaptchaBtn" type="button">↻</button>
+          <input id="captcha" name="captcha" placeholder="Answer" required type="number"/>
+        </div>
+      </div>
+      <button class="admin-btn admin-btn-primary" type="submit">Sign in</button>
+      <div class="admin-error" id="loginError"></div>
+    </form>
+  </div>
+</div>
+
+<div class="admin-shell hidden" id="appView">
+  <aside class="admin-sidebar">
+    <h2>Tables</h2>
+    <button class="admin-nav-btn active" data-table="membership_enrollments" type="button">Enrollments</button>
+    <button class="admin-nav-btn" data-table="users" type="button">Users</button>
+    <button class="admin-nav-btn" data-table="member_service_requests" type="button">Service Requests</button>
+    <button class="admin-btn admin-btn-ghost admin-btn-sm" id="logoutBtn" style="margin-top:auto;" type="button">Logout</button>
+  </aside>
+
+  <main class="admin-main">
+    <div class="admin-topbar">
+      <h1 id="tableTitle">Membership Enrollments</h1>
+      <div class="admin-toolbar">
+        <input class="admin-search" id="searchInput" placeholder="Search… (Enter)" type="search"/>
+        <button class="admin-btn admin-btn-primary admin-btn-sm" id="addRowBtn" type="button">+ Add row</button>
+      </div>
+    </div>
+
+    <div class="admin-table-wrap">
+      <table class="admin-table">
+        <thead id="tableHead"></thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+    </div>
+
+    <div class="admin-pager">
+      <button class="admin-btn admin-btn-ghost admin-btn-sm" id="prevPageBtn" type="button">← Prev</button>
+      <span id="pagerInfo">—</span>
+      <button class="admin-btn admin-btn-ghost admin-btn-sm" id="nextPageBtn" type="button">Next →</button>
+    </div>
+  </main>
+</div>
+
+<div class="admin-modal-backdrop hidden" id="editModal">
+  <div class="admin-modal">
+    <h3 id="editModalTitle">Edit row</h3>
+    <form id="editForm"></form>
+    <div class="admin-modal-actions">
+      <button class="admin-btn admin-btn-ghost" id="cancelEditBtn" type="button">Cancel</button>
+      <button class="admin-btn admin-btn-primary" form="editForm" type="submit">Save</button>
+      <button class="admin-btn admin-btn-ghost hidden" id="closeModalBtn" type="button"></button>
+    </div>
+  </div>
+</div>
+
+<script src="/membership/assets/astikan-config.js"></script>
+<script src="/membership/assets/astikan-format.js"></script>
+<script src="/membership/admin/admin.js?v=20260705a"></script>
+</body>
+</html>

@@ -158,9 +158,6 @@ export default function TrustPage() {
   const pageRef = useRef(null);
 
   useLayoutEffect(() => {
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduceMotion) return undefined;
-
     const context = gsap.context(() => {
       const timeline = gsap.timeline({ defaults: { ease: 'power3.out' } });
       timeline

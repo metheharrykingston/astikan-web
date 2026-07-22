@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Plan Details | Astikan Member Portal</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet"/>
+<link href="../assets/membership-dashboard.css?v=20260705b" rel="stylesheet"/>
+</head>
+<body class="dash-body" data-member-page="plan-details" data-dash-view="plan-details">
+
+<main class="dash-main" id="dashboardApp">
+  <div class="dash-loading" id="dashLoading">
+    <div class="spinner-border text-primary" role="status"></div>
+    <p class="mt-3 mb-0">Loading your plan...</p>
+  </div>
+
+  <div id="dashEmpty" style="display:none;">
+    <div class="dash-empty">
+      <i class="bi bi-person-x fs-1 text-muted"></i>
+      <h2 class="h4 mt-3">No active membership found</h2>
+      <p class="text-muted">Enroll in a Silver, Gold, or Platinum plan to access your dashboard.</p>
+      <a href="../index.html#memsec-section">Browse Membership Plans</a>
+    </div>
+  </div>
+
+  <div id="dashContent" style="display:none;">
+    <div id="paymentPendingBanner" style="display:none;"></div>
+    <h1 class="dash-page-title">Plan Details</h1>
+    <p class="dash-page-desc">Your membership plan summary, payment status, and included benefits.</p>
+
+    <div class="dash-card" id="plan-details">
+      <h3><i class="bi bi-shield-check text-primary"></i> Plan Summary</h3>
+      <div class="dash-meta-row"><span>Plan</span><strong id="metaPlan">—</strong></div>
+      <div class="dash-meta-row"><span>Plan ID</span><strong id="metaPlanId">—</strong></div>
+      <div class="dash-meta-row"><span>Annual Premium</span><strong id="metaPremium">—</strong></div>
+      <div class="dash-meta-row"><span>Payment Status</span><strong id="metaPayment">—</strong></div>
+      <div class="dash-meta-row"><span>Enrollment Status</span><strong id="metaStatus">—</strong></div>
+      <div class="dash-meta-row"><span>Policy Certificate No.</span><strong id="metaPolicyNumber">—</strong></div>
+      <div class="dash-meta-row"><span>Certificate Email</span><strong id="metaCertificate">—</strong></div>
+      <div class="dash-meta-row"><span>Member Since</span><strong id="metaSince">—</strong></div>
+      <div class="mt-3 dash-cert-actions" id="certificateActions" style="display:none;">
+        <button class="dash-cert-btn dash-cert-btn-outline" id="previewCertificateBtn" type="button">
+          <i class="bi bi-file-earmark-pdf"></i> View Certificate Preview
+        </button>
+        <button class="member-request-submit dash-cert-btn" id="resendCertificateBtn" type="button">
+          <i class="bi bi-envelope-check"></i> Email Policy Certificate
+        </button>
+      </div>
+    </div>
+
+    <div class="dash-card mt-4">
+      <h3><i class="bi bi-person-vcard text-primary"></i> Member Profile</h3>
+      <div class="dash-meta-row"><span>Full Name</span><strong id="metaName">—</strong></div>
+      <div class="dash-meta-row"><span>Email</span><strong id="metaEmail">—</strong></div>
+      <div class="dash-meta-row"><span>Mobile</span><strong id="metaMobile">—</strong></div>
+      <div id="memberDetailsList" class="mt-2"></div>
+    </div>
+
+    <div class="dash-card mt-4">
+      <h3><i class="bi bi-folder2-open text-primary"></i> Uploaded Documents</h3>
+      <div id="memberDocumentsList"></div>
+    </div>
+
+    <div class="dash-card mt-4">
+      <h3><i class="bi bi-gift text-primary"></i> Your Plan Benefits</h3>
+      <ul class="dash-benefits-list" id="benefitsList"></ul>
+    </div>
+  </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../assets/astikan-config.js"></script>
+<script src="../assets/member-enrollment-fields.js"></script>
+<script src="../assets/member-enrollment-store.js"></script>
+<script src="../assets/member-portal-routes.js"></script>
+<script src="../assets/member-portal-nav.js?v=20260703c"></script>
+<script src="../assets/certificate-preview-modal.js"></script>
+<script src="../assets/membership-certificate.js?v=20260704d"></script>
+<script src="../assets/document-preview-modal.js?v=20260705b"></script>
+<script src="../assets/enrollment-documents.js?v=20260705b"></script>
+<script src="../assets/astikan-format.js?v=20260704f"></script>
+<script src="../assets/membership-dashboard-legacy.js?v=20260705b"></script>
+</body>
+</html>

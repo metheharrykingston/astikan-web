@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import '@fontsource-variable/manrope';
 import 'aos/dist/aos.css';
 import './index.css';
 import './desktop-fixes.css';

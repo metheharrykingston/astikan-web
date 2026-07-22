@@ -262,8 +262,6 @@ export default function App() {
   }, []);
 
   useLayoutEffect(() => {
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduceMotion) return undefined;
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
       tl.from('.hero-copy > *', { y: 30, opacity: 0, duration: .7, stagger: .09 })

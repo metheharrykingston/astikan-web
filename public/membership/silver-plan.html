@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+
+<html class="plan-page-root" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>Silver Plan Enrollment | Complete Health Profile</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet"/>
+<style>
+        
+        :root {
+            --primary: #6366f1; 
+            --primary-dark: #4f46e5;
+            --secondary: #ec4899; 
+            --accent-bg: #eef2ff;
+            
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --text-light: #94a3b8;
+            
+            --bg-body: #f8fafc;
+            --bg-card: #ffffff;
+            
+            --border-light: #e2e8f0;
+            --radius-lg: 24px;
+            --radius-md: 16px;
+            --radius-sm: 12px;
+            
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.05);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.05);
+            --shadow-glow: 0 0 20px rgba(99, 102, 241, 0.15);
+            
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --plan-navbar-height: 68px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            padding-bottom: 4rem;
+        }
+
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        
+        body.plan-page {
+            overflow-x: hidden;
+            padding-top: var(--plan-navbar-height);
+        }
+
+        .navbar,
+        .plan-navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            z-index: 1050;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.5);
+            padding: 1rem 0;
+            box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            padding-top: 2rem;
+        }
+
+        @media (min-width: 992px) {
+            .main-grid {
+                grid-template-columns: 340px 1fr; 
+                align-items: start;
+            }
+        }
+
+        
+        .card {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-light);
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+        
+        
+        @media (min-width: 992px) {
+            .sticky-sidebar {
+                position: sticky;
+                top: calc(var(--plan-navbar-height) + 16px);
+            }
+        }
+
+        
+        .sidebar-list {
+            list-style: none;
+            margin-top: 1.5rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .sidebar-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 0.6rem 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .sidebar-list li strong {
+            color: var(--text-main);
+            font-weight: 600;
+        }
+
+        
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .section-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        
+        .form-section {
+            margin-bottom: 2.5rem;
+            border-bottom: 1px solid var(--border-light);
+            padding-bottom: 2.5rem;
+        }
+
+        .form-section:last-of-type {
+            border-bottom: none;
+        }
+
+        .form-row {
+            display: grid;
+            gap: 1.25rem;
+            margin-bottom: 1.25rem;
+        }
+
+        
+        @media (min-width: 640px) {
+            .form-row.grid-2 { grid-template-columns: 1fr 1fr; }
+            .form-row.grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+        }
+        
+        @media (max-width: 639px) {
+            .form-row.grid-2, .form-row.grid-3 { grid-template-columns: 1fr; }
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 0.4rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .input-field, .select-field {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            font-family: inherit;
+            font-size: 0.95rem;
+            color: var(--text-main);
+            background: #f8fafc;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            transition: var(--transition);
+        }
+
+        .input-field:focus, .select-field:focus {
+            outline: none;
+            background: #fff;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px var(--accent-bg);
+        }
+
+        
+        .file-upload-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100px;
+            border: 2px dashed var(--border-light);
+            border-radius: var(--radius-sm);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #f8fafc;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .file-upload-wrapper:hover {
+            border-color: var(--primary);
+            background: var(--accent-bg);
+        }
+
+        .file-upload-wrapper input[type="file"] {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .file-icon {
+            font-size: 1.5rem;
+            color: var(--text-light);
+            margin-bottom: 0.25rem;
+        }
+
+        .file-text {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        
+        .chips-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 0.5rem;
+        }
+
+        .chip-check {
+            display: none;
+        }
+
+        .chip-label {
+            padding: 0.5rem 1rem;
+            background: #f1f5f9;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            cursor: pointer;
+            border: 1px solid transparent;
+            transition: var(--transition);
+            user-select: none;
+        }
+
+        .chip-check:checked + .chip-label {
+            background: var(--accent-bg);
+            color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        
+        .family-member-card {
+            background: #f8fafc;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            position: relative;
+            margin-bottom: 1rem;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .remove-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: transparent;
+            border: none;
+            color: #ef4444;
+            cursor: pointer;
+            padding: 0.25rem;
+        }
+
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 2rem;
+            font-weight: 600;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-size: 1rem;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            width: 100%;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px dashed var(--primary);
+            color: var(--primary);
+            width: 100%;
+        }
+        
+        .btn-outline:hover {
+            background: var(--accent-bg);
+        }
+
+        .btn-social {
+            background: #fff;
+            border: 1px solid var(--border-light);
+            color: var(--text-main);
+            width: 100%;
+            margin-bottom: 0.75rem;
+        }
+        
+        .btn-social:hover {
+            background: #f8fafc;
+            border-color: var(--text-muted);
+        }
+
+        
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(4px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-card {
+            background: white;
+            width: 90%;
+            max-width: 400px;
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            transform: scale(0.9);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .modal-overlay.active .modal-card {
+            transform: scale(1);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            cursor: pointer;
+        }
+
+        
+        .plan-price {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: var(--radius-md);
+            color: white;
+            text-align: center;
+        }
+        .plan-price .big { font-size: 2rem; font-weight: 800; }
+        .plan-price .sub { font-size: 0.8rem; opacity: 0.9; }
+
+        
+        .coverage-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .coverage-item {
+            background: #f8fafc;
+            padding: 1rem;
+            border-radius: var(--radius-sm);
+            border-left: 4px solid var(--primary);
+            text-align: center;
+        }
+        
+        .coverage-item h6 {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            color: var(--text-light);
+            margin-bottom: 0.25rem;
+            letter-spacing: 0.5px;
+        }
+        
+        .coverage-item p {
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--text-main);
+        }
+
+        .plan-back-link { color: var(--text-main) !important; }
+        .plan-back-link:hover { color: var(--primary) !important; }
+        body.plan-page > .sticky-header, body.plan-page > .custom-offcanvas, body.plan-page > .emergency-btn { display: none !important; }
+        .declaration-card {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            background: #fff;
+        }
+        .declaration-label {
+            display: grid;
+            grid-template-columns: 22px 1fr;
+            gap: 0.75rem;
+            align-items: start;
+            cursor: pointer;
+        }
+        .declaration-label input { width: 18px; height: 18px; margin-top: 0.2rem; accent-color: var(--primary); }
+        .declaration-title { font-weight: 800; color: var(--text-main); margin-bottom: 0.35rem; }
+        .declaration-text { color: var(--text-muted); font-size: 0.84rem; line-height: 1.6; margin: 0; text-transform: none; letter-spacing: 0; }
+        .auth-status { min-height: 20px; color: var(--text-muted); font-size: 0.82rem; margin-top: 0.7rem; text-align: center; }
+        .phone-otp-row { display: grid; grid-template-columns: 1fr auto; gap: 0.65rem; align-items: end; }
+        .phone-otp-row .btn { padding: 0.75rem 1rem; white-space: nowrap; }
+        @media (max-width: 767px) {
+            body { padding-bottom: 1.5rem; }
+            .container { padding: 0 1rem; }
+            .plan-navbar { padding: 0.75rem 0; }
+            .nav-content { gap: 0.75rem; }
+            .nav-content .nav-link { font-size: 0.86rem; }
+            .main-grid { gap: 1rem; padding-top: 1rem; }
+            .card { padding: 1.1rem; border-radius: 16px; }
+            .plan-price .big { font-size: 1.5rem; }
+            h1 { font-size: 1.35rem !important; }
+            .coverage-grid { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+            .modal-card { width: calc(100% - 24px); max-height: 92vh; overflow-y: auto; padding: 1.25rem; }
+            .btn { width: 100%; padding: 0.85rem 1rem; font-size: 0.92rem; }
+            .phone-otp-row { grid-template-columns: 1fr; }
+        }
+
+    </style>
+<link href="assets/plan-enrollment.css?v=20260718a" rel="stylesheet"/></head>
+<body class="plan-page">
+<header class="plan-topbar">
+<div class="nav-content">
+<a class="nav-link plan-back-link" href="/membership/index.html#memsec-section">
+<i class="bi bi-arrow-left-circle plan-nav-icon"></i>
+<span>Back to Plans</span>
+</a>
+<div class="nav-link" style="color: var(--primary);">
+<i class="bi bi-shield-check"></i>
+<span>Secure Enrollment</span>
+</div>
+</div>
+</header>
+<main class="container main-grid">
+<aside class="sticky-sidebar">
+<div class="card">
+<div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:1rem;">
+<div style="width:40px; height:40px; background:var(--accent-bg); border-radius:50%; display:flex; align-items:center; justify-content:center; color:var(--primary);">
+<i class="bi bi-star-fill"></i>
+</div>
+<div>
+<h3 class="plan-title" style="font-size:1rem; margin:0;">Silver Plan</h3>
+<span style="font-size:0.75rem; color:var(--text-muted);">Small recharge, big protection</span>
+</div>
+</div>
+<div class="plan-price">
+<div class="big">₹8,499</div>
+<div class="sub">per year • ₹23.23/day</div>
+</div>
+<ul class="sidebar-list">
+<li><i class="bi bi-check-circle-fill" style="color:#10b981;"></i> Medical Card: <strong>1</strong></li>
+<li><i class="bi bi-check-circle-fill" style="color:#10b981;"></i> Free Full Body Lab Test: <strong>2</strong></li>
+<li><i class="bi bi-check-circle-fill" style="color:#10b981;"></i> Free OPD (upto ₹500): <strong>2</strong></li>
+<li><i class="bi bi-check-circle-fill" style="color:#10b981;"></i> Teleconsultation: <strong>Unlimited</strong></li>
+<li><i class="bi bi-check-circle-fill" style="color:#10b981;"></i> Wallet Topup <strong>1,00,000 Pts</strong></li>
+<li><i class="bi bi-check-circle-fill" style="color:#10b981;"></i> IPD Coverage: <strong>₹50,000</strong></li>
+<li><i class="bi bi-check-circle-fill" style="color:#10b981;"></i> Daily Cash: <strong>₹30,000</strong></li>
+<li><i class="bi bi-check-circle-fill" style="color:#10b981;"></i> Wellness Vouchers: <strong>₹50,000</strong></li>
+<li><i class="bi bi-check-circle-fill" style="color:#10b981;"></i> Accidental Coverage: <strong>₹2L</strong></li>
+<li><i class="bi bi-check-circle-fill" style="color:#10b981;"></i> Medical Credit Limit: <strong>₹10L</strong></li>
+<li><i class="bi bi-check-circle-fill" style="color:#10b981;"></i> Panel Discounts: <strong>Up to 40%</strong></li>
+</ul>
+</div>
+</aside>
+<section class="form-section">
+<div style="margin-bottom:2rem;">
+<h1 style="font-size:1.75rem; font-weight:700;">Enrollment Details</h1>
+<p style="color:var(--text-muted);">Please fill in the details carefully to activate your policy.</p>
+</div>
+<form action="#" data-static-disabled="true" id="enrollmentForm">
+<div class="card" style="margin-bottom: 2rem;">
+<div class="section-title"><i class="bi bi-person-vcard"></i> Personal Information</div>
+<p class="section-desc">Details as per your Government ID proof.</p>
+<div class="form-row grid-2">
+<div class="form-group">
+<label class="label">Full Name</label>
+<input class="input-field" id="fieldFullName" placeholder="As per Aadhaar/PAN" required="" type="text"/>
+</div>
+<div class="form-group">
+<label class="label">Date of Birth</label>
+<input class="input-field" id="dobInput" onchange="calculateAge()" required="" type="date"/>
+</div>
+</div>
+<div class="form-row grid-3">
+<div class="form-group">
+<label class="label">Age</label>
+<input class="input-field" id="ageDisplay" placeholder="Auto-calculated" readonly="" style="background:#e2e8f0;" type="text"/>
+</div>
+<div class="form-group">
+<label class="label">Gender</label>
+<select class="select-field" id="fieldGender" required="">
+<option value="">Select Gender</option>
+<option value="male">Male</option>
+<option value="female">Female</option>
+<option value="other">Other</option>
+</select>
+</div>
+<div class="form-group">
+<label class="label">Marital Status</label>
+<select class="select-field">
+<option value="single">Single</option>
+<option value="married">Married</option>
+</select>
+</div>
+</div>
+<div class="form-row grid-2">
+<div class="form-group">
+<label class="label">Nationality</label>
+<select class="select-field">
+<option value="Indian">Indian</option>
+<option value="Other">Other</option>
+</select>
+</div>
+<div class="form-group">
+<label class="label">Mobile Number</label>
+<input class="input-field" id="fieldMobile" inputmode="numeric" maxlength="14" placeholder="+91 98765 43210" required="" type="tel"/>
+</div>
+</div>
+<div class="form-group">
+<label class="label">Residential Address</label>
+<textarea class="input-field" id="fieldAddress" placeholder="Full street address, city, state, pincode" required="" rows="3"></textarea>
+</div>
+<div class="form-group" style="margin-top:1rem;">
+<label class="label">Email ID</label>
+<input class="input-field" id="fieldEmail" placeholder="For policy communication" required="" type="email"/>
+</div>
+</div>
+<div class="card" style="margin-bottom: 2rem;">
+<div class="section-title"><i class="bi bi-pass"></i> KYC Details</div>
+<p class="section-desc">Mandatory documents for policy issuance.</p>
+<div class="form-row grid-2">
+<div class="form-group">
+<label class="label">Aadhaar Number</label>
+<input class="input-field" id="fieldAadhaar" inputmode="numeric" maxlength="12" placeholder="12 digit Aadhaar" required="" style="letter-spacing: 2px;" type="text"/>
+<small style="color:var(--text-light); font-size:0.7rem;">Masked for privacy verification</small>
+</div>
+<div class="form-group">
+<label class="label">PAN Number <span style="color:red">*</span></label>
+<input class="input-field" id="fieldPan" maxlength="10" placeholder="ABCDE1234F" required="" style="text-transform:uppercase;" type="text"/>
+</div>
+</div>
+<div class="form-row grid-2">
+<div class="form-group">
+<label class="label">Photograph</label>
+<div class="file-upload-wrapper">
+<input accept="image/*" id="fieldPhoto" onchange="updateFileName(this)" required="" type="file"/>
+<i class="bi bi-camera file-icon"></i>
+<div class="file-text">Click to upload Passport Size Photo</div>
+</div>
+</div>
+<div class="form-group">
+<label class="label">Address Proof</label>
+<div class="file-upload-wrapper">
+<input accept="image/*,.pdf" id="fieldAddressProof" onchange="updateFileName(this)" required="" type="file"/>
+<i class="bi bi-file-earmark-pdf file-icon"></i>
+<div class="file-text">Upload Aadhaar/Voter ID/Utility Bill</div>
+</div>
+</div>
+</div>
+</div>
+<div class="card" style="margin-bottom: 2rem;">
+<div class="section-title"><i class="bi bi-person-heart"></i> Nominee Details</div>
+<div class="form-row grid-2">
+<div class="form-group">
+<label class="label">Nominee Name</label>
+<input class="input-field" id="fieldNomineeName" required="" type="text"/>
+</div>
+<div class="form-group">
+<label class="label">Relationship</label>
+<select class="select-field" id="fieldNomineeRelation" required="">
+<option value="">Select Relationship</option>
+<option>Spouse</option>
+<option>Child</option>
+<option>Parent</option>
+<option>Other</option>
+</select>
+</div>
+</div>
+<div class="form-row grid-2">
+<div class="form-group">
+<label class="label">Nominee DOB</label>
+<input class="input-field" id="fieldNomineeDob" required="" type="date"/>
+</div>
+<div class="form-group">
+<label class="label">Contact Details</label>
+<input class="input-field" id="fieldNomineeContact" inputmode="numeric" maxlength="14" placeholder="+91" required="" type="tel"/>
+</div>
+</div>
+<div style="margin-top:1.5rem; padding-top:1.5rem; border-top:1px dashed var(--border-light);">
+<div class="form-group">
+<label class="label" style="display:flex; align-items:center; gap:0.5rem; cursor:pointer;">
+<input checked="" id="samePolicyHolder" type="checkbox"/>
+<span style="text-transform:none; font-weight:500; color:var(--text-main);">Policyholder details are same as Insured person</span>
+</label>
+</div>
+<div id="policyHolderDetails" style="display:none; margin-top:1rem; animation:fadeIn 0.3s;">
+<div class="form-group">
+<label class="label">Relationship with Insured</label>
+<input class="input-field" id="fieldPolicyHolderRelation" placeholder="e.g. Self, Father, etc." type="text"/>
+</div>
+</div>
+</div>
+</div>
+<div class="card" style="margin-bottom: 2rem;">
+<div class="section-title"><i class="bi bi-people"></i> Family Members Covered</div>
+<p class="section-desc">Add up to 3 additional members (Max 4 total).</p>
+<div id="familyMembersList">
+</div>
+<button class="btn btn-outline" id="addMemberBtn" onclick="addFamilyMember()" type="button">
+<i class="bi bi-plus-circle"></i> Add Family Member
+                    </button>
+</div>
+<div class="card" style="margin-bottom: 2rem;">
+<div class="section-title"><i class="bi bi-activity"></i> Medical History &amp; Lifestyle</div>
+<p class="section-desc">Risk assessment for accurate pricing.</p>
+<label class="label">Pre-existing Diseases (Select all that apply)</label>
+<div class="chips-container">
+<input class="chip-check" id="d1" type="checkbox"/><label class="chip-label" for="d1">Diabetes</label>
+<input class="chip-check" id="d2" type="checkbox"/><label class="chip-label" for="d2">Blood Pressure</label>
+<input class="chip-check" id="d3" type="checkbox"/><label class="chip-label" for="d3">Heart Disease</label>
+<input class="chip-check" id="d4" type="checkbox"/><label class="chip-label" for="d4">Asthma</label>
+<input class="chip-check" id="d5" type="checkbox"/><label class="chip-label" for="d5">Thyroid</label>
+<input class="chip-check" id="d6" type="checkbox"/><label class="chip-label" for="d6">None</label>
+</div>
+<div class="form-row grid-2" style="margin-top:1.5rem;">
+<div class="form-group">
+<label class="label">Past Surgeries</label>
+<input class="input-field" placeholder="If any, mention year" type="text"/>
+</div>
+<div class="form-group">
+<label class="label">Current Medications</label>
+<input class="input-field" placeholder="List regular medicines" type="text"/>
+</div>
+</div>
+<div class="form-row grid-3" style="margin-top:1.5rem;">
+<div class="form-group">
+<label class="label">Height (cm)</label>
+<input class="input-field" id="heightInput" oninput="calculateBMI()" type="number"/>
+</div>
+<div class="form-group">
+<label class="label">Weight (kg)</label>
+<input class="input-field" id="weightInput" oninput="calculateBMI()" type="number"/>
+</div>
+<div class="form-group">
+<label class="label">BMI (Auto)</label>
+<input class="input-field" id="bmiResult" placeholder="--" readonly="" style="background:#f1f5f9;" type="text"/>
+</div>
+</div>
+<div class="form-row grid-2" style="margin-top:1.5rem;">
+<div class="form-group">
+<label class="label">Habits</label>
+<select class="select-field">
+<option value="none">Non-Smoker / Non-Drinker</option>
+<option value="smoker">Smoker</option>
+<option value="drinker">Consumer of Alcohol</option>
+<option value="both">Both</option>
+</select>
+</div>
+<div class="form-group">
+<label class="label">Occupation</label>
+<select class="select-field">
+<option value="low">Sedentary (Office Work)</option>
+<option value="medium">Moderate (Field Work)</option>
+<option value="high">High Risk (Mining, Construction, etc.)</option>
+</select>
+</div>
+</div>
+</div>
+<div class="card" style="background: linear-gradient(to bottom right, #fff, #f8fafc);">
+<div class="section-title" style="font-size:1rem; margin-bottom:0.5rem;">Coverage Breakdown</div>
+<div class="coverage-grid">
+<div class="coverage-item">
+<h6>IPD Coverage</h6>
+<p>₹50,000</p>
+</div>
+<div class="coverage-item" style="border-left-color: var(--secondary);">
+<h6>Medical Credit</h6>
+<p>₹10L</p>
+</div>
+<div class="coverage-item" style="border-left-color: #10b981;">
+<h6>Daily Cash</h6>
+<p>₹30,000</p>
+</div>
+<div class="coverage-item" style="border-left-color: #f59e0b;">
+<h6>Accidental Cover</h6>
+<p>₹2L</p>
+</div>
+</div>
+</div>
+<div class="card" style="margin-top: 2rem; border: 2px solid var(--primary); background: linear-gradient(to bottom right, #fff, #f5f3ff);">
+<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem;">
+<div>
+<div style="font-size:0.9rem; color:var(--text-muted);">Total Premium (Yearly)</div>
+<div style="font-size:2rem; font-weight:800; color:var(--primary);">₹8,499</div>
+</div>
+<div style="text-align:right; font-size:0.85rem; color:var(--text-muted);">
+<div>Incl. GST</div>
+<div>Secure SSL Payment</div>
+</div>
+</div>
+<div class="declaration-card">
+<label class="declaration-label" for="goodHealthDeclaration">
+<input id="goodHealthDeclaration" name="good_health_declaration" required="" type="checkbox"/>
+<span>
+<span class="declaration-title">Good Health Declaration | Declaration of Good Health (DoGH)</span>
+<p class="declaration-text">I declare that I am in sound state of health and I have not been hospitalized for more than one week in the last 5 years, have never suffered or suffering from diabetes, heart disease, cancer, or any medical illness for which I have undergone treatment or requires regular follow up or undergoing treatment.</p>
+<p class="declaration-text" style="margin-top:0.65rem;">I also declare that I have not experienced fever/cough/breathlessness/nausea/diarrhoea within last 2 weeks, not tested positive for COVID, not quarantined, not in contact with COVID positive person, not involved in management of any patient, not travelled abroad in past 1 month, no plans to travel abroad in next 3 months.</p>
+</span>
+</label>
+</div>
+<button class="btn btn-primary" onclick="openLoginModal()" type="button">
+<span>Proceed to Pay</span>
+<i class="bi bi-lock-fill"></i>
+</button>
+<p style="font-size:0.75rem; color:var(--text-light); text-align:center; margin-top:1rem;">
+                        By clicking Proceed, you agree to our Terms &amp; Conditions.
+                    </p>
+</div>
+</form>
+</section>
+</main>
+<div class="modal-overlay" id="loginModal">
+<div class="modal-card auth-modal-card">
+<button class="close-modal" onclick="closeLoginModal()" type="button"><i class="bi bi-x-lg"></i></button>
+<div style="text-align:center; margin-bottom:1.25rem;">
+<h3 style="font-weight:700; margin-bottom:0.5rem;">Login to Enroll</h3>
+<p style="color:var(--text-muted); font-size:0.9rem;">Choose how you want to verify your identity.</p>
+</div>
+<div class="auth-method-tabs">
+<button class="auth-tab active" data-auth-method="google" type="button"><i class="bi bi-google"></i> Google</button>
+<button class="auth-tab" data-auth-method="phone" type="button"><i class="bi bi-phone"></i> Phone</button>
+</div>
+<div class="auth-panel auth-panel-google active" id="authPanelGoogle">
+<p class="auth-panel-desc">Continue with your Google account.</p>
+<button class="btn btn-social btn-google" onclick="loginWithGoogle()" type="button">
+<i class="bi bi-google" style="color:#DB4437; margin-right:0.5rem;"></i> Continue with Google
+</button>
+</div>
+<div class="auth-panel auth-panel-phone" id="authPanelPhone">
+<p class="auth-panel-desc">Enter your 10-digit mobile number — OTP sends automatically.</p>
+<div id="phoneStep1">
+<div class="phone-prefix-wrap">
+<span class="phone-prefix">+91</span>
+<input class="input-field" id="authPhone" inputmode="numeric" maxlength="10" placeholder="98765 43210" type="tel"/>
+</div>
+<div id="recaptcha-container" aria-hidden="true"></div>
+<p class="phone-otp-hint">OTP is sent as soon as you enter 10 digits.</p>
+</div>
+<div id="phoneStep2" style="display:none;">
+<div class="form-group">
+<label class="label" for="authOtp">Enter OTP</label>
+<input autocomplete="one-time-code" class="input-field" id="authOtp" inputmode="numeric" maxlength="6" placeholder="6-digit OTP" type="tel"/>
+</div>
+<button class="btn btn-primary" onclick="verifyPhoneOtp()" style="width:100%;" type="button">Verify &amp; Continue</button>
+<button class="auth-link-btn" onclick="resetPhoneOtpStep()" type="button">Change phone number</button>
+</div>
+</div>
+<p class="auth-status" id="authStatus"></p>
+</div>
+</div>
+<script>
+        
+        function calculateAge() {
+            const dobInput = document.getElementById('dobInput').value;
+            const ageDisplay = document.getElementById('ageDisplay');
+            
+            if(dobInput) {
+                const dob = new Date(dobInput);
+                const diff_ms = Date.now() - dob.getTime();
+                const age_dt = new Date(diff_ms); 
+                const age = Math.abs(age_dt.getUTCFullYear() - 1970);
+                ageDisplay.value = age + " Years";
+            }
+        }
+
+        
+        function calculateBMI() {
+            const h = document.getElementById('heightInput').value;
+            const w = document.getElementById('weightInput').value;
+            const res = document.getElementById('bmiResult');
+            
+            if(h > 0 && w > 0) {
+                
+                const hM = h / 100;
+                const bmi = (w / (hM * hM)).toFixed(1);
+                res.value = bmi;
+                
+                
+                if(bmi < 18.5) res.style.color = "#f59e0b"; 
+                else if(bmi < 25) res.style.color = "#10b981"; 
+                else res.style.color = "#ef4444"; 
+            } else {
+                res.value = "--";
+                res.style.color = "var(--text-main)";
+            }
+        }
+
+        
+        let memberCount = 0;
+        const maxMembers = 3;
+
+        function addFamilyMember() {
+            if(memberCount >= maxMembers) {
+                alert("You can add a maximum of 3 additional family members.");
+                return;
+            }
+
+            memberCount++;
+            const container = document.getElementById('familyMembersList');
+            
+            const html = `
+                <div class="family-member-card" id="member-${memberCount}">
+                    <button type="button" class="remove-btn" onclick="removeMember(${memberCount})">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                    <h4 style="font-size:0.95rem; font-weight:700; margin-bottom:1rem;">Member #${memberCount + 1}</h4>
+                    
+                    <div class="form-row grid-2">
+                        <div class="form-group">
+                            <label class="label">Name</label>
+                            <input type="text" class="input-field" placeholder="Name">
+                        </div>
+                        <div class="form-group">
+                            <label class="label">Relationship</label>
+                            <select class="select-field">
+                                <option>Spouse</option>
+                                <option>Son</option>
+                                <option>Daughter</option>
+                                <option>Father</option>
+                                <option>Mother</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row grid-2">
+                        <div class="form-group">
+                            <label class="label">Date of Birth</label>
+                            <input type="date" class="input-field">
+                        </div>
+                        <div class="form-group">
+                            <label class="label">Gender</label>
+                            <select class="select-field">
+                                <option>Male</option>
+                                <option>Female</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            container.insertAdjacentHTML('beforeend', html);
+            
+            
+            if(memberCount >= maxMembers) {
+                document.getElementById('addMemberBtn').disabled = true;
+                document.getElementById('addMemberBtn').style.opacity = "0.5";
+                document.getElementById('addMemberBtn').innerText = "Max Members Added";
+            }
+        }
+
+        function removeMember(id) {
+            const el = document.getElementById(`member-${id}`);
+            if(el) {
+                el.remove();
+                memberCount--;
+                
+                document.getElementById('addMemberBtn').disabled = false;
+                document.getElementById('addMemberBtn').style.opacity = "1";
+                document.getElementById('addMemberBtn').innerHTML = '<i class="bi bi-plus-circle"></i> Add Family Member';
+            }
+        }
+
+        
+        document.getElementById('samePolicyHolder').addEventListener('change', function() {
+            const details = document.getElementById('policyHolderDetails');
+            if(this.checked) {
+                details.style.display = 'none';
+            } else {
+                details.style.display = 'block';
+            }
+        });
+
+        
+        function updateFileName(input) {
+            const wrapper = input.parentElement;
+            const text = wrapper.querySelector('.file-text');
+            const icon = wrapper.querySelector('.file-icon');
+            
+            if(input.files && input.files[0]) {
+                text.innerText = "Selected: " + input.files[0].name;
+                text.style.color = "var(--primary)";
+                text.style.fontWeight = "600";
+                icon.className = "bi bi-check-circle-fill file-icon";
+                icon.style.color = "var(--primary)";
+                wrapper.style.borderColor = "var(--primary)";
+                wrapper.style.background = "var(--accent-bg)";
+            }
+        }
+
+        
+        function openLoginModal() {
+            if (typeof window.validateEnrollmentForm === "function") {
+                const validation = window.validateEnrollmentForm();
+                if (!validation.valid) return;
+            }
+            if (window.astikanMemberAuthenticated && typeof window.submitMembershipEnrollment === "function") {
+                window.submitMembershipEnrollment().catch((error) => {
+                    alert(error.message || "Unable to save membership details.");
+                });
+                return;
+            }
+            if (typeof window.resetAuthModal === 'function') window.resetAuthModal();
+            document.getElementById('loginModal').classList.add('active');
+        }
+
+        function closeLoginModal() {
+            document.getElementById('loginModal').classList.remove('active');
+        }document.getElementById('loginModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeLoginModal();
+            }
+        });
+
+    </script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/astikan-config.js"></script>
+<script src="assets/astikan-format.js?v=20260704f"></script>
+<script src="assets/plan-validation-legacy.js?v=20260704f"></script>
+<script src="assets/plan-enrollment-form.js?v=20260718a"></script>
+<script src="assets/firebase-phone-errors.js?v=20260704f"></script>
+<script src="assets/enrollment-confirmation-preview.js?v=20260718a"></script>
+<script src="assets/plan-login-modal.js?v=20260704f"></script>
+<script src="assets/otp-autofill.js"></script>
+<script src="assets/membership-enrollment-email.js"></script>
+<script src="assets/enrollment-documents.js?v=20260705b"></script>
+<script src="assets/plan-auth-legacy.js?v=20260705a"></script>
+</body>
+</html>

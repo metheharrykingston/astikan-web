@@ -1,0 +1,2109 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Book Appointment - Dr.  | Astikan Health</title>
+<meta content="Book an appointment with Dr.  at Astikan Health" name="description"/>
+<meta content="appointment booking, Dr. , " name="keywords"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://unpkg.com/aos@next/dist/aos.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" rel="stylesheet"/>
+<link href="favicon.avif" rel="icon" type="image/avif"/>
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.gstatic.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Alan+Sans:wght@300..900&amp;family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet"/>
+<link href="child.css" rel="stylesheet"/>
+<link href="responsive.css" rel="stylesheet"/>
+<style>
+         :root {
+         --primary-color: #6f42c1;
+         --secondary-color: #f8f9fa;
+         --accent-color: #7b2ff7;
+         --text-dark: #212529;
+         --text-light: #6c757d;
+         --border-color: #e9ecef;
+         --success-color: #28a745;
+         --danger-color: #dc3545;
+         --warning-color: #ffc107;
+         --info-color: #17a2b8;
+         --light-color: #f8f9fa;
+         --dark-color: #343a40;
+         --gradient: linear-gradient(135deg, #7b2ff7, #f107a3);
+         --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+         --transition: all 0.3s ease;
+         }
+         * {
+         margin: 0;
+         padding: 0;
+         box-sizing: border-box;
+         }
+         body {
+         font-family: 'Poppins', sans-serif;
+         background-color: #f5f7fa;
+         color: var(--text-dark);
+         line-height: 1.6;
+         overflow-x: hidden;
+         min-height: 100vh;
+         }
+         .appointment-container {
+         max-width: 100%;
+         margin: 0;
+         background: white;
+         min-height: 100vh;
+         display: flex;
+         flex-direction: column;
+         }
+         .progress-container {
+         padding: 20px 15px;
+         background: linear-gradient(135deg, #7b2ff7, #f107a3);
+         color: white;
+         position: sticky;
+         top: 0;
+         z-index: 9999;
+         }
+         .progress-header {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         margin-bottom: 20px;
+         }
+         .progress-title {
+         font-size: 1.2rem;
+         font-weight: 600;
+         }
+         .back-button {
+         background: rgba(255, 255, 255, 0.2);
+         border: none;
+         border-radius: 50%;
+         width: 40px;
+         height: 40px;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         color: white;
+         cursor: pointer;
+         transition: var(--transition);
+         }
+         .back-button:hover {
+         background: rgba(255, 255, 255, 0.3);
+         transform: translateX(-5px);
+         }
+         .progress-steps {
+         display: flex;
+         justify-content: space-between;
+         position: relative;
+         }
+         .progress-line {
+         position: absolute;
+         top: 20px;
+         left: 0;
+         width: 100%;
+         height: 2px;
+         background: rgba(255, 255, 255, 0.3);
+         z-index: 1;
+         }
+         .progress-line-fill {
+         position: absolute;
+         top: 0;
+         left: 0;
+         height: 100%;
+         background: white;
+         width: 0;
+         transition: width 0.5s ease;
+         }
+         .step {
+         position: relative;
+         z-index: 2;
+         text-align: center;
+         flex: 1;
+         }
+         .step-circle {
+         width: 40px;
+         height: 40px;
+         border-radius: 50%;
+         background: rgba(255, 255, 255, 0.3);
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         margin: 0 auto 10px;
+         font-weight: 600;
+         transition: var(--transition);
+         }
+         .step.active .step-circle {
+         background: white;
+         color: var(--primary-color);
+         box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.3);
+         }
+         .step.completed .step-circle {
+         background: white;
+         color: var(--success-color);
+         }
+         .step-label {
+         font-size: 0.7rem;
+         opacity: 0.8;
+         }
+         .step.active .step-label {
+         opacity: 1;
+         font-weight: 600;
+         }
+         .content {
+         padding: 20px 15px;
+         flex-grow: 1;
+         overflow-y: auto;
+         margin-bottom: 3em;
+         }
+         .doctor-card {
+         display: flex;
+         align-items: center;
+         padding: 20px;
+         border-radius: 15px;
+         background: var(--secondary-color);
+         margin-bottom: 20px;
+         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+         transition: var(--transition);
+         }
+         .doctor-card:hover {
+         transform: translateY(-5px);
+         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+         }
+         .doctor-avatar {
+         width: 80px;
+         height: 80px;
+         border-radius: 15px;
+         background: var(--gradient);
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         color: white;
+         font-weight: 700;
+         font-size: 1.5rem;
+         margin-right: 15px;
+         flex-shrink: 0;
+         }
+         .doctor-info h3 {
+         margin: 0 0 5px 0;
+         font-weight: 600;
+         color: var(--text-dark);
+         font-size: 1.1rem;
+         }
+         .doctor-info p {
+         margin: 0 0 5px 0;
+         font-size: 0.85rem;
+         color: var(--text-light);
+         }
+         .doctor-info .rating {
+         color: var(--warning-color);
+         }
+         .doctor-badges {
+         display: flex;
+         flex-wrap: wrap;
+         gap: 5px;
+         margin-top: 8px;
+         }
+         .badge-custom {
+         padding: 3px 8px;
+         border-radius: 20px;
+         font-size: 0.65rem;
+         font-weight: 500;
+         }
+         .step-content {
+         display: none;
+         animation: fadeIn 0.5s ease;
+         }
+         .step-content.active {
+         display: block;
+         }
+         @keyframes fadeIn {
+         from {
+         opacity: 0;
+         transform: translateY(10px);
+         }
+         to {
+         opacity: 1;
+         transform: translateY(0);
+         }
+         }
+         .form-section {
+         margin-bottom: 25px;
+         }
+         .form-section h5 {
+         margin-bottom: 15px;
+         font-weight: 600;
+         color: var(--text-dark);
+         position: relative;
+         padding-bottom: 8px;
+         font-size: 1.1rem;
+         }
+         .form-section h5::after {
+         content: '';
+         position: absolute;
+         bottom: 0;
+         left: 0;
+         width: 40px;
+         height: 3px;
+         background: var(--gradient);
+         border-radius: 3px;
+         }
+         .form-control,
+         .form-select {
+         border: 1px solid var(--border-color);
+         border-radius: 10px;
+         padding: 12px 15px;
+         font-size: 0.9rem;
+         transition: var(--transition);
+         }
+         .form-control:focus,
+         .form-select:focus {
+         border-color: var(--primary-color);
+         box-shadow: 0 0 0 0.2rem rgba(111, 66, 193, 0.25);
+         }
+         .form-label {
+         font-weight: 500;
+         margin-bottom: 8px;
+         color: var(--text-dark);
+         font-size: 0.9rem;
+         }
+         .consult-options {
+         display: grid;
+         grid-template-columns: 1fr;
+         gap: 15px;
+         margin-bottom: 25px;
+         }
+         .consult-option {
+         padding: 15px;
+         border: 2px solid var(--border-color);
+         border-radius: 15px;
+         cursor: pointer;
+         transition: var(--transition);
+         display: flex;
+         align-items: center;
+         }
+         .consult-option:hover {
+         border-color: var(--primary-color);
+         transform: translateY(-3px);
+         box-shadow: 0 5px 15px rgba(111, 66, 193, 0.1);
+         }
+         .consult-option.active {
+         border-color: var(--primary-color);
+         background: rgba(111, 66, 193, 0.05);
+         box-shadow: 0 5px 15px rgba(111, 66, 193, 0.1);
+         }
+         .consult-option i {
+         font-size: 1.3rem;
+         color: var(--primary-color);
+         margin-right: 12px;
+         }
+         .consult-option-content h6 {
+         margin: 0 0 3px 0;
+         font-weight: 600;
+         font-size: 0.95rem;
+         }
+         .consult-option-content p {
+         margin: 0;
+         font-size: 0.8rem;
+         color: var(--text-light);
+         }
+         .date-picker-container {
+         margin-bottom: 25px;
+         }
+         .flatpickr-calendar {
+         border-radius: 15px;
+         box-shadow: var(--box-shadow);
+         border: none;
+         }
+         .flatpickr-day.selected {
+         background: var(--primary-color);
+         border-color: var(--primary-color);
+         }
+         .time-slots-container {
+         margin-bottom: 25px;
+         }
+         .time-slots-header {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         margin-bottom: 12px;
+         }
+         .time-slots-grid {
+         display: grid;
+         grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+         gap: 10px;
+         }
+         .time-slot {
+         padding: 10px;
+         border: 1px solid var(--border-color);
+         border-radius: 10px;
+         text-align: center;
+         cursor: pointer;
+         transition: var(--transition);
+         font-weight: 500;
+         font-size: 0.85rem;
+         }
+         .time-slot:hover {
+         border-color: var(--primary-color);
+         background: rgba(111, 66, 193, 0.05);
+         }
+         .time-slot.selected {
+         background: var(--primary-color);
+         color: white;
+         border-color: var(--primary-color);
+         }
+         .radio-group {
+         display: flex;
+         flex-wrap: wrap;
+         gap: 15px;
+         margin-bottom: 15px;
+         }
+         .radio-option {
+         display: flex;
+         align-items: center;
+         }
+         .radio-option input[type="radio"] {
+         margin-right: 6px;
+         width: 16px;
+         height: 16px;
+         }
+         .radio-option label {
+         cursor: pointer;
+         font-weight: 500;
+         font-size: 0.9rem;
+         }
+         .summary-card {
+         background: var(--secondary-color);
+         border-radius: 15px;
+         padding: 20px;
+         margin-bottom: 15px;
+         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+         }
+         .summary-card h6 {
+         margin-bottom: 12px;
+         font-weight: 600;
+         color: var(--text-dark);
+         display: flex;
+         align-items: center;
+         font-size: 1rem;
+         }
+         .summary-card h6 i {
+         margin-right: 8px;
+         color: var(--primary-color);
+         }
+         .summary-row {
+         display: flex;
+         justify-content: space-between;
+         margin-bottom: 10px;
+         padding-bottom: 10px;
+         border-bottom: 1px solid var(--border-color);
+         font-size: 0.9rem;
+         }
+         .summary-row:last-child {
+         border-bottom: none;
+         margin-bottom: 0;
+         padding-bottom: 0;
+         }
+         .summary-label {
+         font-weight: 500;
+         color: var(--text-light);
+         }
+         .summary-value {
+         font-weight: 600;
+         color: var(--text-dark);
+         }
+         .payment-methods {
+         display: grid;
+         grid-template-columns: 1fr;
+         gap: 15px;
+         margin-bottom: 25px;
+         }
+         .payment-method {
+         padding: 15px;
+         border: 2px solid var(--border-color);
+         border-radius: 15px;
+         cursor: pointer;
+         transition: var(--transition);
+         text-align: start;
+         }
+         .payment-method:hover {
+         border-color: var(--primary-color);
+         transform: translateY(-3px);
+         box-shadow: 0 5px 15px rgba(111, 66, 193, 0.1);
+         }
+         .payment-method.active {
+         border-color: var(--primary-color);
+         background: rgba(111, 66, 193, 0.05);
+         box-shadow: 0 5px 15px rgba(111, 66, 193, 0.1);
+         }
+         .payment-method i {
+         font-size: 1.5rem;
+         color: var(--primary-color);
+         margin-bottom: 8px;
+         }
+         .payment-method h6 {
+         margin: 0;
+         font-weight: 600;
+         font-size: 0.95rem;
+         }
+         .payment-method p {
+         margin: 3px 0 0 0;
+         font-size: 0.8rem;
+         color: var(--text-light);
+         }
+         .coupon-section {
+         background: var(--secondary-color);
+         border-radius: 15px;
+         padding: 15px;
+         margin-bottom: 15px;
+         }
+         .coupon-input-group {
+         display: flex;
+         gap: 10px;
+         }
+         .coupon-input {
+         flex-grow: 1;
+         }
+         .apply-coupon-btn {
+         background: var(--primary-color);
+         color: white;
+         border: none;
+         border-radius: 10px;
+         padding: 10px 15px;
+         font-weight: 500;
+         cursor: pointer;
+         transition: var(--transition);
+         font-size: 0.9rem;
+         }
+         .apply-coupon-btn:hover {
+         background: #5a32a3;
+         }
+         .price-breakdown {
+         background: var(--secondary-color);
+         border-radius: 15px;
+         padding: 15px;
+         margin-bottom: 15px;
+         }
+         .price-row {
+         display: flex;
+         justify-content: space-between;
+         margin-bottom: 8px;
+         font-size: 0.9rem;
+         }
+         .price-row.total {
+         font-weight: 600;
+         font-size: 1rem;
+         border-top: 1px solid var(--border-color);
+         padding-top: 8px;
+         margin-top: 8px;
+         }
+         .discount-row {
+         color: var(--success-color);
+         }
+         .button-container {
+         display: flex;
+         justify-content: space-between;
+         padding: 15px;
+         background: white;
+         border-top: 1px solid var(--border-color);
+         }
+         .btn-custom {
+         padding: 10px 20px;
+         border-radius: 10px;
+         font-weight: 500;
+         cursor: pointer;
+         transition: var(--transition);
+         border: none;
+         display: inline-flex;
+         align-items: center;
+         justify-content: center;
+         font-size: 0.9rem;
+         }
+         .btn-custom i {
+         margin-right: 6px;
+         }
+         .btn-back {
+         background: var(--text-light);
+         color: white;
+         }
+         .btn-back:hover {
+         background: #5a6268;
+         transform: translateY(-2px);
+         box-shadow: 0 5px 15px rgba(108, 117, 125, 0.3);
+         }
+         .btn-continue {
+         background: var(--gradient);
+         color: white;
+         }
+         .btn-continue:hover {
+         transform: translateY(-2px);
+         box-shadow: 0 5px 15px rgba(123, 47, 247, 0.3);
+         }
+         .btn-continue:disabled {
+         background: #ccc;
+         cursor: not-allowed;
+         transform: none;
+         box-shadow: none;
+         }
+         .btn-pay {
+         background: var(--gradient);
+         color: white;
+         font-size: 1rem;
+         padding: 12px 25px;
+         }
+         .btn-pay:hover {
+         transform: translateY(-2px);
+         box-shadow: 0 5px 15px rgba(123, 47, 247, 0.3);
+         }
+         .alert-custom {
+         padding: 12px 15px;
+         border-radius: 10px;
+         margin-bottom: 15px;
+         display: flex;
+         align-items: center;
+         font-size: 0.9rem;
+         }
+         .alert-custom i {
+         margin-right: 8px;
+         font-size: 1rem;
+         }
+         .alert-danger {
+         background: rgba(220, 53, 69, 0.1);
+         color: var(--danger-color);
+         border-left: 4px solid var(--danger-color);
+         }
+         .alert-success {
+         background: rgba(40, 167, 69, 0.1);
+         color: var(--success-color);
+         border-left: 4px solid var(--success-color);
+         }
+         .spinner-container {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         height: 40px;
+         }
+         .spinner {
+         width: 30px;
+         height: 30px;
+         border: 3px solid rgba(111, 66, 193, 0.1);
+         border-radius: 50%;
+         border-top-color: var(--primary-color);
+         animation: spin 1s ease-in-out infinite;
+         }
+         @keyframes spin {
+         to {
+         transform: rotate(360deg);
+         }
+         }
+         @media (max-width: 576px) {
+         .progress-title {
+         font-size: 1rem;
+         }
+         .step-label {
+         font-size: 0.6rem;
+         }
+         .doctor-card {
+         flex-direction: column;
+         text-align: center;
+         padding: 15px;
+         }
+         .doctor-avatar {
+         margin-right: 0;
+         margin-bottom: 10px;
+         width: 60px;
+         height: 60px;
+         font-size: 1.2rem;
+         }
+         .doctor-info h3 {
+         font-size: 1rem;
+         }
+         .doctor-info p {
+         font-size: 0.8rem;
+         }
+         .time-slots-grid {
+         grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+         }
+         .time-slot {
+         padding: 8px;
+         font-size: 0.8rem;
+         }
+         .button-container {
+         flex-direction: column;
+         gap: 10px;
+         }
+         .btn-custom {
+         width: 100%;
+         }
+         }
+      </style>
+<link href="style.css" rel="stylesheet"/></head>
+<body><a aria-label="Emergency Call" class="emergency-btn d-lg-none" href="tel:+919990071792" id="emergencyBtn">
+<i class="bi bi-telephone-fill me-2"></i> Emergency
+      </a><header class="sticky-header bg-white shadow-sm">
+<div class="container px-2">
+<div class="d-flex align-items-center justify-content-between py-2">
+<a class="d-flex align-items-center" href="/membership/index.html">
+<img alt="Astikan Health" class="logo" fetchpriority="high" src="logo.avif" style="height:50px;"/>
+</a>
+<nav class="nav-menu d-none d-xl-flex align-items-center">
+<a class="nav-link" href="/membership/index.html">Home</a>
+<a class="nav-link" href="/membership/about-us.html">About</a>
+<a class="nav-link" href="/membership/find-doctors.html">Doctors</a>
+<a class="nav-link" href="/membership/lab-test.html">Lab Tests</a>
+<a class="nav-link" href="/membership/medical-finance.html">Finance</a>
+<a class="nav-link healthpocket-nav-premium" href="https://healthpocket.in"><i aria-hidden="true" class="bi bi-credit-card-2-front me-1"></i><span class="hp-nav-text">HealthPocket</span></a>
+<div class="nav-item dropdown">
+<a aria-expanded="false" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" id="surgeryDropdown" role="button">Surgery</a>
+<ul aria-labelledby="surgeryDropdown" class="dropdown-menu shadow border-0">
+<li class="dropdown-submenu">
+<a class="dropdown-item dropdown-toggle" href="#">❤️ Heart Surgeries</a>
+<ul class="dropdown-menu">
+<li><a class="dropdown-item" href="/membership/surgery/aortic-root-arch-surgeries.html">Aortic Root &amp; Arch Surgery</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/congenital-heart-surgeries.html">Congenital Heart Surgery</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/coronary-artery-bypass-grafting.html">Coronary Artery Bypass Grafting (CABG)</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/heart-transplants.html">Heart Transplant</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/left-ventricular-assist-device.html">Left Ventricular Assist Device (LVAD)</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/valve-replacement-avr-mvr-dvr.html">Valve Replacement (AVR/MVR/DVR)</a></li>
+</ul>
+</li>
+<li class="dropdown-submenu">
+<a class="dropdown-item dropdown-toggle" href="#">🩸 Vascular Surgeries</a>
+<ul class="dropdown-menu">
+<li><a class="dropdown-item" href="/membership/surgery/vascular-surgery/aneurysm-repair.html">Aneurysm Repair</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/vascular-surgery/angioplasty-stenting.html">Angioplasty &amp; Stent Placement</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/vascular-surgery/av-fistula-creation.html">AV Fistula Creation</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/vascular-surgery/av-graft-placement.html">AV Graft Placement</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/vascular-surgery/carotid-endarterectomy-stenting.html">Carotid Endarterectomy &amp; Stenting</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/vascular-surgery/dvt-surgery-ivc-filter.html">DVT / IVC Filter</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/vascular-surgery/embolectomy-thrombectomy.html">Embolectomy &amp; Thrombectomy</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/vascular-surgery/lymphedema-surgery.html">Lymphedema Surgery</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/vascular-surgery/peripheral-arterial-bypass.html">Peripheral Arterial Bypass</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/vascular-surgery/peripheral-endarterectomy.html">Peripheral Endarterectomy</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/vascular-surgery/thoracic-outlet-decompression.html">Thoracic Outlet Decompression</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/vascular-surgery/trauma-vascular-repairs.html">Trauma Vascular Repair</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/vascular-surgery/venous-ulcer-surgery.html">Venous Ulcer Surgery</a></li>
+</ul>
+</li>
+<li class="dropdown-submenu">
+<a class="dropdown-item dropdown-toggle" href="#">🫁 Thoracic Conditions</a>
+<ul class="dropdown-menu">
+<li><a class="dropdown-item" href="/membership/surgery/thoracic-surgery/aspergilloma.html">Aspergilloma</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/thoracic-surgery/bronchiectasis.html">Bronchiectasis</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/thoracic-surgery/chest-trauma.html">Chest Trauma</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/thoracic-surgery/empyema.html">Empyema</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/thoracic-surgery/hernia-diaphragm.html">Hernia Diaphragm</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/thoracic-surgery/lung-cancer.html">Lung Cancer</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/thoracic-surgery/lung-nodules.html">Lung Nodules</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/thoracic-surgery/lung-cysts.html">Lung Cysts</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/thoracic-surgery/myasthenia-thymoma.html">Myasthenia Thymoma</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/thoracic-surgery/palmar-hyperhidrosis.html">Palmar Hyperhidrosis</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/thoracic-surgery/pleural-effusion.html">Pleural Effusion</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/thoracic-surgery/pneumothorax.html">Pneumothorax</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/thoracic-surgery/tracheal-stenosis.html">Tracheal Stenosis</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/thoracic-surgery/tracheoesophageal-fistula.html">Tracheoesophageal Fistula</a></li>
+</ul>
+</li>
+<li class="dropdown-submenu">
+<a class="dropdown-item dropdown-toggle" href="#">🦵 Varicose &amp; Venous</a>
+<ul class="dropdown-menu">
+<li><a class="dropdown-item" href="/membership/surgery/vericose/vericose-veins.html">Varicose Veins Surgery</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="nav-item dropdown">
+<a aria-expanded="false" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" id="moreDropdown" role="button">More</a>
+<ul aria-labelledby="moreDropdown" class="dropdown-menu shadow-lg border-0">
+<li><a class="dropdown-item" href="/membership/join-as-doctor.html">Join as a Doctor</a></li>
+<li><a class="dropdown-item" href="/membership/join-as-hospital.html">Join as a Hospital</a></li>
+<li><a class="dropdown-item" href="/membership/membership-assistance.html">Insurance Assistance</a></li>
+<li><a class="dropdown-item" href="/membership/ambulance-emergency.html">Ambulance &amp; Emergency</a></li>
+<li><a class="dropdown-item" href="/membership/contact-us.html">Contact Us</a></li>
+<li><a class="dropdown-item" href="/membership/disclaimer.html">Disclaimer</a></li>
+</ul>
+</div>
+</nav>
+<span aria-controls="offcanvasMenu" aria-label="Open Menu" class="menu-ellipsis d-xl-none" data-bs-target="#offcanvasMenu" data-bs-toggle="offcanvas"></span>
+<div class="d-flex align-items-center">
+<a aria-label="Get Astikan App" class="btn btn-danger mx-2 d-none d-xl-flex align-items-center app-download-cta" href="/membership/index.html#download-app"><i aria-hidden="true" class="bi bi-phone me-2"></i><span>Get App</span></a>
+<button aria-controls="offcanvasMenu" aria-label="Toggle Navigation" class="navbar-toggler d-xl-none ms-2" data-bs-target="#offcanvasMenu" data-bs-toggle="offcanvas" type="button">
+<i class="bi bi-list fs-3"></i>
+</button>
+</div>
+</div>
+</div>
+</header><div aria-labelledby="offcanvasMenuLabel" class="offcanvas offcanvas-end custom-offcanvas" id="offcanvasMenu" style="width: 355px;" tabindex="-1">
+<div class="offcanvas-header custom-offcanvas-header">
+<button aria-label="Close" class="btn-close text-reset" data-bs-dismiss="offcanvas" type="button"></button>
+</div>
+<div class="offcanvas-body custom-offcanvas-body">
+<nav class="nav flex-column gap-2">
+<a class="nav-link custom-link" href="/membership/index.html">Home</a>
+<a class="nav-link custom-link" href="/membership/about-us.html">About</a>
+<a class="nav-link custom-link" href="/membership/find-doctors.html">Doctors</a>
+<a class="nav-link custom-link" href="/membership/lab-test.html">Lab Tests</a>
+<a class="nav-link custom-link" href="/membership/medical-finance.html">Finance</a>
+<a class="nav-link custom-link healthpocket-nav-premium" href="https://healthpocket.in"><i aria-hidden="true" class="bi bi-credit-card-2-front me-1"></i><span class="hp-nav-text">HealthPocket</span></a>
+<div class="accordion" id="surgeryAccordion">
+<div class="accordion-item border-0">
+<h2 class="accordion-header" id="headingSurgeryMobile">
+<button aria-controls="collapseSurgeryMobile" aria-expanded="false" class="accordion-button collapsed custom-link highlighted-link" data-bs-target="#collapseSurgeryMobile" data-bs-toggle="collapse" type="button">
+<i aria-hidden="true" class="bi bi-hospital me-2"></i>Surgeries
+                        </button>
+</h2>
+<div aria-labelledby="headingSurgeryMobile" class="accordion-collapse collapse" data-bs-parent="#surgeryAccordion" id="collapseSurgeryMobile">
+<div class="accordion-body ps-4">
+<div class="accordion" id="heartAccordion">
+<div class="accordion-item border-0">
+<h2 class="accordion-header" id="headingHeart">
+<button aria-controls="collapseHeart" aria-expanded="false" class="accordion-button collapsed bg-transparent px-0" data-bs-target="#collapseHeart" data-bs-toggle="collapse" type="button">
+                                    ❤️ Heart Surgeries
+                                    </button>
+</h2>
+<div aria-labelledby="headingHeart" class="accordion-collapse collapse" data-bs-parent="#heartAccordion" id="collapseHeart">
+<div class="accordion-body ps-3">
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/aortic-root-arch-surgeries.html">Aortic Root &amp; Arch Surgery</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/congenital-heart-surgeries.html">Congenital Heart Surgery</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/coronary-artery-bypass-grafting.html">Coronary Artery Bypass Grafting (CABG)</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/heart-transplants.html">Heart Transplant</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/left-ventricular-assist-device.html">Left Ventricular Assist Device (LVAD)</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/valve-replacement-avr-mvr-dvr.html">Valve Replacement (AVR/MVR/DVR)</a>
+</div>
+</div>
+</div>
+</div>
+<div class="accordion mt-2" id="vascularAccordion">
+<div class="accordion-item border-0">
+<h2 class="accordion-header" id="headingVascular">
+<button aria-controls="collapseVascular" aria-expanded="false" class="accordion-button collapsed bg-transparent px-0" data-bs-target="#collapseVascular" data-bs-toggle="collapse" type="button">
+                                    🩸 Vascular Surgeries
+                                    </button>
+</h2>
+<div aria-labelledby="headingVascular" class="accordion-collapse collapse" data-bs-parent="#vascularAccordion" id="collapseVascular">
+<div class="accordion-body ps-3">
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/vascular-surgery/aneurysm-repair.html">Aneurysm Repair</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/vascular-surgery/angioplasty-stenting.html">Angioplasty &amp; Stent Placement</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/vascular-surgery/av-fistula-creation.html">AV Fistula Creation</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/vascular-surgery/av-graft-placement.html">AV Graft Placement</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/vascular-surgery/carotid-endarterectomy-stenting.html">Carotid Endarterectomy &amp; Stenting</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/vascular-surgery/dvt-surgery-ivc-filter.html">DVT / IVC Filter</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/vascular-surgery/embolectomy-thrombectomy.html">Embolectomy &amp; Thrombectomy</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/vascular-surgery/lymphedema-surgery.html">Lymphedema Surgery</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/vascular-surgery/peripheral-arterial-bypass.html">Peripheral Arterial Bypass</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/vascular-surgery/peripheral-endarterectomy.html">Peripheral Endarterectomy</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/vascular-surgery/thoracic-outlet-decompression.html">Thoracic Outlet Decompression</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/vascular-surgery/trauma-vascular-repairs.html">Trauma Vascular Repair</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/vascular-surgery/venous-ulcer-surgery.html">Venous Ulcer Surgery</a>
+</div>
+</div>
+</div>
+</div>
+<div class="accordion mt-2" id="thoracicAccordion">
+<div class="accordion-item border-0">
+<h2 class="accordion-header" id="headingThoracic">
+<button aria-controls="collapseThoracic" aria-expanded="false" class="accordion-button collapsed bg-transparent px-0" data-bs-target="#collapseThoracic" data-bs-toggle="collapse" type="button">
+                                    🫁 Thoracic Conditions
+                                    </button>
+</h2>
+<div aria-labelledby="headingThoracic" class="accordion-collapse collapse" data-bs-parent="#thoracicAccordion" id="collapseThoracic">
+<div class="accordion-body ps-3">
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/thoracic-surgery/aspergilloma.html">Aspergilloma</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/thoracic-surgery/bronchiectasis.html">Bronchiectasis</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/thoracic-surgery/chest-trauma.html">Chest Trauma</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/thoracic-surgery/empyema.html">Empyema</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/thoracic-surgery/hernia-diaphragm.html">Hernia Diaphragm</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/thoracic-surgery/lung-cancer.html">Lung Cancer</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/thoracic-surgery/lung-nodules.html">Lung Nodules</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/thoracic-surgery/lung-cysts.html">Lung Cysts</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/thoracic-surgery/myasthenia-thymoma.html">Myasthenia Thymoma</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/thoracic-surgery/palmar-hyperhidrosis.html">Palmar Hyperhidrosis</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/thoracic-surgery/pleural-effusion.html">Pleural Effusion</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/thoracic-surgery/pneumothorax.html">Pneumothorax</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/thoracic-surgery/tracheal-stenosis.html">Tracheal Stenosis</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/thoracic-surgery/tracheoesophageal-fistula.html">Tracheoesophageal Fistula</a>
+</div>
+</div>
+</div>
+</div>
+<div class="accordion mt-2" id="varicoseAccordion">
+<div class="accordion-item border-0">
+<h2 class="accordion-header" id="headingVaricose">
+<button aria-controls="collapseVaricose" aria-expanded="false" class="accordion-button collapsed bg-transparent px-0" data-bs-target="#collapseVaricose" data-bs-toggle="collapse" type="button">
+                                    🦵 Varicose &amp; Venous
+                                    </button>
+</h2>
+<div aria-labelledby="headingVaricose" class="accordion-collapse collapse" data-bs-parent="#varicoseAccordion" id="collapseVaricose">
+<div class="accordion-body ps-3">
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/vericose/vericose-veins.html">Varicose Veins Surgery</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="accordion mt-2" id="moreAccordionMobile">
+<div class="accordion-item border-0">
+<h2 class="accordion-header" id="headingMoreMobile">
+<button aria-controls="collapseMoreMobile" aria-expanded="false" class="accordion-button collapsed custom-link bg-transparent px-0" data-bs-target="#collapseMoreMobile" data-bs-toggle="collapse" type="button">
+<i aria-hidden="true" class="bi bi-three-dots me-2"></i>More +
+                           </button>
+</h2>
+<div aria-labelledby="headingMoreMobile" class="accordion-collapse collapse" data-bs-parent="#moreAccordionMobile" id="collapseMoreMobile">
+<div class="accordion-body ps-4">
+<a class="dropdown-item d-block small py-2" href="/membership/join-as-doctor.html">Join as a Doctor</a>
+<a class="dropdown-item d-block small py-2" href="/membership/join-as-hospital.html">Join as a Hospital</a>
+<a class="dropdown-item d-block small py-2" href="/membership/membership-assistance.html">Insurance Assistance</a>
+<a class="dropdown-item d-block small py-2" href="/membership/ambulance-emergency.html">Ambulance &amp; Emergency</a>
+<a class="dropdown-item d-block small py-2" href="/membership/contact-us.html">Contact Us</a>
+<a class="dropdown-item d-block small py-2" href="/membership/disclaimer.html">Disclaimer</a>
+</div>
+</div>
+</div>
+</div>
+<a aria-label="Get Astikan App" class="btn btn-danger w-100 my-2" href="/membership/index.html#download-app"><i aria-hidden="true" class="bi bi-phone me-2"></i>Get Astikan App</a>
+<div class="user-profile-box d-flex align-items-center justify-content-start mt-1 p-2 rounded-3 shadow-sm">
+<a class="dropdown-item d-flex align-items-center text-decoration-none" href="#">
+<img alt="User Avatar" class="rounded-circle user-avatar me-2" src="" style="width: 45px; height: 45px; object-fit: cover;"/>
+<h6 class="fw-semibold mb-0 ms-1 text-dark"></h6>
+</a>
+</div>
+<button aria-label="Consultation" class="btn btn-outline-secondary rounded-pill d-lg-block d-none px-2 py-2" id="consultationBtn">
+<img alt="Consultation Icon" src="assets/free.avif" style="width: 32px;"/>
+                  Consultation
+                  </button>
+</div></nav>
+</div>
+</div>
+<div class="appointment-container" data-aos="fade-up" data-aos-duration="1000">
+<div class="progress-container">
+<div class="progress-header">
+<h2 class="progress-title">Book Appointment</h2>
+<button class="back-button" onclick="history.back()">
+<i class="fas fa-xmark"></i>
+</button>
+</div>
+<div class="progress-steps">
+<div class="progress-line">
+<div class="progress-line-fill" id="progress-fill"></div>
+</div>
+<div class="step active" id="step1">
+<div class="step-circle">1</div>
+<div class="step-label">Select Slot</div>
+</div>
+<div class="step" id="step2">
+<div class="step-circle">2</div>
+<div class="step-label">Patient Details</div>
+</div>
+<div class="step" id="step3">
+<div class="step-circle">3</div>
+<div class="step-label">Review</div>
+</div>
+<div class="step" id="step4">
+<div class="step-circle">4</div>
+<div class="step-label">Payment</div>
+</div>
+</div>
+</div>
+<div class="content">
+<div class="doctor-card">
+<div class="doctor-avatar">
+<span></span>
+</div>
+<div class="doctor-info">
+<h3></h3>
+<p> • 
+                  </p>
+<p><i class="fas fa-hospital"></i> </p>
+<p><i class="fas fa-star rating"></i>  •
+                     + years
+                  </p>
+<div class="doctor-badges">
+<span class="badge badge-custom"></span>
+</div>
+</div>
+</div>
+<div id="alert-container"></div>
+<div class="step-content active" id="step1-content">
+<div class="form-section">
+<h5>Consultation Type</h5>
+<div class="consult-options">
+<div class="consult-option" onclick="selectConsultType(this, 'video')">
+<i class="fas fa-video"></i>
+<div class="consult-option-content">
+<h6>Video Consultation</h6>
+<p>Online meeting</p>
+</div>
+</div>
+<div class="consult-option" onclick="selectConsultType(this, 'in-person')">
+<i class="fas fa-hospital"></i>
+<div class="consult-option-content">
+<h6>In-Person Visit</h6>
+<p>Clinic visit</p>
+</div>
+</div>
+</div>
+</div>
+<div class="form-section">
+<h5>Select Date</h5>
+<div class="date-picker-container">
+<input class="form-control" id="date-picker" placeholder="Select appointment date" type="text"/>
+</div>
+</div>
+<div class="form-section">
+<h5>Available Time Slots</h5>
+<div class="time-slots-container">
+<div class="time-slots-header"><span>Morning</span></div>
+<div class="time-slots-grid">
+<div class="time-slot" onclick="selectTimeSlot(this, '09:00 AM')">09:00 AM</div>
+<div class="time-slot" onclick="selectTimeSlot(this, '09:30 AM')">09:30 AM</div>
+<div class="time-slot" onclick="selectTimeSlot(this, '10:00 AM')">10:00 AM</div>
+<div class="time-slot" onclick="selectTimeSlot(this, '10:30 AM')">10:30 AM</div>
+<div class="time-slot" onclick="selectTimeSlot(this, '11:00 AM')">11:00 AM</div>
+<div class="time-slot" onclick="selectTimeSlot(this, '11:30 AM')">11:30 AM</div>
+</div>
+<div class="time-slots-header"><span>Afternoon</span></div>
+<div class="time-slots-grid">
+<div class="time-slot" onclick="selectTimeSlot(this, '12:00 PM')">12:00 PM</div>
+<div class="time-slot" onclick="selectTimeSlot(this, '12:30 PM')">12:30 PM</div>
+<div class="time-slot" onclick="selectTimeSlot(this, '01:00 PM')">01:00 PM</div>
+<div class="time-slot" onclick="selectTimeSlot(this, '01:30 PM')">01:30 PM</div>
+<div class="time-slot" onclick="selectTimeSlot(this, '02:00 PM')">02:00 PM</div>
+<div class="time-slot" onclick="selectTimeSlot(this, '02:30 PM')">02:30 PM</div>
+<div class="time-slot" onclick="selectTimeSlot(this, '03:00 PM')">03:00 PM</div>
+<div class="time-slot" onclick="selectTimeSlot(this, '03:30 PM')">03:30 PM</div>
+<div class="time-slot" onclick="selectTimeSlot(this, '04:00 PM')">04:00 PM</div>
+<div class="time-slot" onclick="selectTimeSlot(this, '04:30 PM')">04:30 PM</div>
+</div>
+<div class="time-slots-header"><span>Evening</span></div>
+<div class="time-slots-grid">
+<div class="time-slot" onclick="selectTimeSlot(this, '05:00 PM')">05:00 PM</div>
+<div class="time-slot" onclick="selectTimeSlot(this, '05:30 PM')">05:30 PM</div>
+<div class="time-slot" onclick="selectTimeSlot(this, '06:00 PM')">06:00 PM</div>
+<div class="time-slot" onclick="selectTimeSlot(this, '06:30 PM')">06:30 PM</div>
+<div class="time-slot" onclick="selectTimeSlot(this, '07:00 PM')">07:00 PM</div>
+<div class="time-slot" onclick="selectTimeSlot(this, '07:30 PM')">07:30 PM</div>
+<div class="time-slot" onclick="selectTimeSlot(this, '08:00 PM')">08:00 PM</div>
+</div>
+</div>
+</div>
+</div>
+<div class="step-content" id="step2-content">
+<div class="form-section">
+<h5>Patient Information</h5>
+<div class="row">
+<div class="col-md-6 mb-3">
+<label class="form-label" for="patient_name">Full Name *</label>
+<input class="form-control" id="patient_name" name="patient_name" required="" type="text" value=""/>
+</div>
+<div class="col-md-6 mb-3">
+<label class="form-label" for="patient_age">Age *</label>
+<select class="form-control" id="patient_age" name="patient_age" required="">
+<option disabled="" selected="" value="">Select your age</option>
+<script>
+                              document.addEventListener('DOMContentLoaded', function() {
+                                  const ageSelect = document.getElementById('patient_age');
+                                  for(let i = 1; i <= 120; i++) {
+                                      const option = document.createElement('option');
+                                      option.value = i;
+                                      option.textContent = i;
+                                      ageSelect.appendChild(option);
+                                  }
+                              });
+                           </script>
+</select>
+</div>
+</div>
+<div class="row">
+<div class="col-md-6 mb-3">
+<label class="form-label">Gender *</label>
+<div class="radio-group">
+<div class="radio-option">
+<input id="male" name="patient_gender" required="" type="radio" value="Male"/>
+<label for="male">Male</label>
+</div>
+<div class="radio-option">
+<input id="female" name="patient_gender" required="" type="radio" value="Female"/>
+<label for="female">Female</label>
+</div>
+<div class="radio-option">
+<input id="other" name="patient_gender" required="" type="radio" value="Other"/>
+<label for="other">Other</label>
+</div>
+</div>
+</div>
+<div class="col-md-6 mb-3">
+<label class="form-label" for="patient_phone">Phone Number *</label>
+<input class="form-control" id="patient_phone" maxlength="10" name="patient_phone" pattern="[0-9]{10}" required="" type="tel" value=""/>
+<small class="text-muted">Enter 10-digit mobile number</small>
+</div>
+</div>
+<div class="row">
+<div class="col-md-6 mb-3">
+<label class="form-label" for="patient_email">Email Address *</label>
+<input class="form-control" id="patient_email" name="patient_email" required="" type="email" value=""/>
+</div>
+</div>
+<div class="mb-3">
+<label class="form-label" for="reason">Reason for Visit</label>
+<select class="form-control" id="reason" name="reason" required="">
+<option disabled="" selected="" value="">Select a reason for your visit</option>
+<option value="general_checkup">General Checkup</option>
+<option value="follow_up">Follow-up Appointment</option>
+<option value="fever">Fever</option>
+<option value="cough_cold">Cough/Cold</option>
+<option value="headache">Headache</option>
+<option value="stomach_issues">Stomach Issues</option>
+<option value="pain_management">Pain Management</option>
+<option value="injury">Injury</option>
+<option value="prescription_refill">Prescription Refill</option>
+<option value="other">Other</option>
+</select>
+<div class="mt-2" id="other-reason-container" style="display: none;">
+<textarea class="form-control" id="other_reason" name="other_reason" placeholder="Please describe your reason for visit" rows="3"></textarea>
+</div>
+</div>
+<script>
+                     document.getElementById('reason').addEventListener('change', function() {
+                         const otherField = document.getElementById('other-reason-container');
+                         
+                         otherField.style.display = this.value === 'other' ? 'block' : 'none';
+                         
+                         document.getElementById('other_reason').required = this.value === 'other';
+                     });
+                  </script>
+</div>
+</div>
+<div class="step-content" id="step3-content">
+<div class="summary-card">
+<h6><i class="fas fa-user-md"></i> Doctor Information</h6>
+<div class="summary-row">
+<span class="summary-label">Doctor Name</span>
+<span class="summary-value"></span>
+</div>
+<div class="summary-row">
+<span class="summary-label">Specialty</span>
+<span class="summary-value"></span>
+</div>
+<div class="summary-row">
+<span class="summary-label">Hospital</span>
+<span class="summary-value"></span>
+</div>
+</div>
+<div class="summary-card">
+<h6><i class="fas fa-calendar-check"></i> Appointment Details</h6>
+<div class="summary-row">
+<span class="summary-label">Consultation Type</span>
+<span class="summary-value" id="review-consultation-type"></span>
+</div>
+<div class="summary-row">
+<span class="summary-label">Date</span>
+<span class="summary-value" id="review-date"></span>
+</div>
+<div class="summary-row">
+<span class="summary-label">Time</span>
+<span class="summary-value" id="review-time"></span>
+</div>
+</div>
+<div class="summary-card">
+<h6><i class="fas fa-user"></i> Patient Information</h6>
+<div class="summary-row">
+<span class="summary-label">Name</span>
+<span class="summary-value" id="review-patient-name"></span>
+</div>
+<div class="summary-row">
+<span class="summary-label">Age</span>
+<span class="summary-value" id="review-patient-age"></span>
+</div>
+<div class="summary-row">
+<span class="summary-label">Gender</span>
+<span class="summary-value" id="review-patient-gender"></span>
+</div>
+<div class="summary-row">
+<span class="summary-label">Phone</span>
+<span class="summary-value" id="review-patient-phone"></span>
+</div>
+<div class="summary-row">
+<span class="summary-label">Email</span>
+<span class="summary-value" id="review-patient-email"></span>
+</div>
+<div class="summary-row" id="review-reason-row" style="display: none;">
+<span class="summary-label">Reason</span>
+<span class="summary-value" id="review-reason"></span>
+</div>
+</div>
+<div class="summary-card">
+<h6><i class="fas fa-credit-card"></i> Payment Details</h6>
+<div class="summary-row">
+<span class="summary-label">Consultation Fee</span>
+<span class="summary-value">₹</span>
+</div>
+<div class="summary-row">
+<span class="summary-label">Platform Fee</span>
+<span class="summary-value">₹</span>
+</div>
+<div class="summary-row total">
+<span class="summary-label">Total Amount</span>
+<span class="summary-value" id="total-amount">₹</span>
+</div>
+</div>
+</div>
+<div class="step-content" id="step4-content">
+<div class="summary-card">
+<h6><i class="fas fa-credit-card"></i> Payment Method</h6>
+<div class="payment-methods">
+<div class="payment-method active" onclick="selectPaymentMethod(this, 'cashfree')">
+<i class="fas fa-mobile-alt"></i>
+<h6>Cashfree</h6>
+<p>Credit/Debit Card, UPI, Net Banking</p>
+</div>
+</div>
+</div>
+<div class="coupon-section">
+<h6><i class="fas fa-tag"></i> Have a Coupon Code?</h6>
+<div class="coupon-input-group">
+<input class="form-control coupon-input" id="coupon-code" placeholder="Enter coupon code" type="text"/>
+<button class="apply-coupon-btn" onclick="applyCoupon()">Apply</button>
+</div>
+<div id="coupon-message"></div>
+</div>
+<div class="price-breakdown">
+<h6><i class="fas fa-receipt"></i> Price Breakdown</h6>
+<div class="price-row">
+<span>Consultation Fee</span>
+<span>₹</span>
+</div>
+<div class="price-row">
+<span>Platform Fee</span>
+<span>₹</span>
+</div>
+<div class="price-row discount-row d-none" id="discount-row">
+<span>Discount</span>
+<span id="discount-amount">-₹0</span>
+</div>
+<div class="price-row total">
+<span>Total Amount</span>
+<span id="payment-total-amount">₹</span>
+</div>
+</div>
+<div class="summary-card">
+<h6><i class="fas fa-shield-alt"></i> Secure Payment</h6>
+<p>Your payment information is secure and encrypted. We do not store your card details.</p>
+<div class="d-flex align-items-center mt-3">
+<i class="fas fa-lock me-2"></i>
+<span>SSL Secured Transaction</span>
+</div>
+</div>
+</div>
+</div>
+<div class="button-container position-fixed bottom-0 w-100">
+<div>
+<button class="btn-custom btn-back d-none" id="back-btn" onclick="previousStep()">
+<i class="fas fa-arrow-left"></i>
+</button>
+</div>
+<button class="btn-custom btn-continue" disabled="" id="continue-btn" onclick="nextStep()">
+            Continue <i class="fas fa-arrow-right ms-2"></i>
+</button>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://sdk.cashfree.com/js/v3/cashfree.js"></script>
+<script>
+         function debugLog(message) {
+             console.log("[DEBUG] " + new Date().toISOString() + " - " + message);
+         }
+         
+         AOS.init();
+         
+         let currentStep = 1;
+         let selectedDate = null;
+         let discountAmount = 0;
+         let couponApplied = false;
+         let appointmentData = {};
+         let patientData = {};
+         let appointmentId = null;
+         let totalAmount = ;
+         let orderId = null;
+         
+         debugLog("Page loaded with total amount: " + totalAmount);
+         
+         (function injectUXStyles() {
+             const css = `
+             /* Input focus glow */
+             .input-animate:focus {
+                 outline: none !important;
+                 border-color: #3f8cff !important;
+                 box-shadow: 0 0 10px rgba(63, 140, 255, 0.28) !important;
+                 transition: box-shadow .25s ease, border-color .25s ease;
+             }
+         
+             /* Disabled time slot */
+             .disabled-slot {
+                 background: #eee !important;
+                 color: #8a8a8a !important;
+                 cursor: not-allowed !important;
+                 opacity: 0.5 !important;
+                 pointer-events: none !important;
+             }
+         
+             /* Shake animation */
+             .shake { animation: shakeAnim 0.36s ease; }
+             @keyframes shakeAnim {
+                 0% { transform: translateX(0); }
+                 25% { transform: translateX(-6px); }
+                 50% { transform: translateX(6px); }
+                 75% { transform: translateX(-4px); }
+                 100% { transform: translateX(0); }
+             }
+         
+             /* Smooth step content transition */
+             .step-content { opacity: 0; transform: translateX(16px); transition: opacity .32s ease, transform .32s ease; }
+             .step-content.active { opacity: 1; transform: translateX(0); }
+         
+             /* Subtle toast/notification animation */
+             .alert-custom { transition: transform .3s ease, opacity .3s ease; transform-origin: right top; }
+         
+             /* Small spotlight for total on review */
+             .pulse-once {
+                 animation: pulseOnce 0.9s ease;
+             }
+             @keyframes pulseOnce {
+                 0% { box-shadow: 0 0 0 rgba(63,140,255,0.0); }
+                 50% { box-shadow: 0 6px 20px rgba(63,140,255,0.12); }
+                 100% { box-shadow: 0 0 0 rgba(63,140,255,0.0); }
+             }
+             `;
+             const style = document.createElement('style');
+             style.appendChild(document.createTextNode(css));
+             document.head.appendChild(style);
+         })();
+         
+         function smoothFocus(element) {
+             if (!element) return;
+             try {
+                 element.scrollIntoView({ behavior: "smooth", block: "center" });
+             } catch (e) { }
+             
+             
+             setTimeout(() => {
+                 try {
+                     
+                     if (element.type === 'radio') {
+                         element.focus({ preventScroll: true });
+                         
+                         element.click();
+                     } 
+                     
+                     else if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA' || element.tagName === 'SELECT') {
+                         element.focus({ preventScroll: true });
+                         
+                         if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                             element.setSelectionRange(element.value.length, element.value.length);
+                         }
+                     }
+                     
+                     else if (element.tagName === 'DIV') {
+                         
+                         const focusableChild = element.querySelector('input, select, textarea, button, [tabindex]:not([tabindex="-1"])');
+                         if (focusableChild) {
+                             focusableChild.focus({ preventScroll: true });
+                         } else {
+                             
+                             element.style.outline = '2px solid #3f8cff';
+                             element.style.outlineOffset = '2px';
+                             
+                             setTimeout(() => {
+                                 element.style.outline = '';
+                                 element.style.outlineOffset = '';
+                             }, 2000);
+                         }
+                     }
+                     
+                     else {
+                         element.focus({ preventScroll: true });
+                     }
+                 } catch (e) { 
+                     try { element.focus(); } catch (e) {} 
+                 }
+             }, 500); 
+         }
+         
+         function fieldErrorShake(element) {
+             if (!element) return;
+             element.classList.add('shake');
+             setTimeout(() => element.classList.remove('shake'), 420);
+         }
+         
+         function ensureInputAnimate() {
+             const ids = ['patient_name','patient_age','patient_phone','patient_email','reason','coupon-code'];
+             ids.forEach(id => {
+                 const el = document.getElementById(id);
+                 if (el && !el.classList.contains('input-animate')) el.classList.add('input-animate');
+             });
+         }
+         
+         function disablePastTimeSlots() {
+             if (!selectedDate) return;
+             const now = new Date();
+             const todayStr = now.toISOString().split('T')[0];
+             
+             debugLog("Disabling past time slots for date: " + selectedDate + ", current time: " + now.toTimeString());
+         
+             document.querySelectorAll('.time-slot').forEach(slot => {
+                 const timeText = slot.getAttribute('data-time') || slot.textContent.trim();
+                 if (!timeText) return;
+         
+                 
+                 const timeParts = timeText.match(/(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+                 if (!timeParts) {
+                     debugLog("Could not parse time: " + timeText);
+                     return;
+                 }
+                 
+                 let hours = parseInt(timeParts[1], 10);
+                 const minutes = parseInt(timeParts[2], 10);
+                 const ampm = timeParts[3].toUpperCase();
+                 
+                 
+                 if (ampm === 'PM' && hours < 12) {
+                     hours += 12;
+                 } else if (ampm === 'AM' && hours === 12) {
+                     hours = 0;
+                 }
+                 
+                 
+                 const slotDate = new Date(selectedDate);
+                 slotDate.setHours(hours, minutes, 0, 0);
+                 
+                 
+                 if (selectedDate === todayStr && slotDate < now) {
+                     slot.classList.add('disabled-slot');
+                     slot.classList.remove('selected');
+                     if (appointmentData.time && appointmentData.time === timeText) {
+                         delete appointmentData.time;
+                     }
+                     debugLog("Disabled past time slot: " + timeText);
+                 } else {
+                     slot.classList.remove('disabled-slot');
+                 }
+             });
+         }
+         
+         document.addEventListener('DOMContentLoaded', function () {
+             debugLog("DOM content loaded");
+             ensureInputAnimate();
+         
+             const datePicker = flatpickr("#date-picker", {
+                 minDate: "today",
+                 dateFormat: "Y-m-d",
+                 onChange: function (selectedDates, dateStr) {
+                     debugLog("Date selected: " + dateStr);
+                     selectedDate = dateStr;
+                     appointmentData.date = dateStr;
+                     disablePastTimeSlots();
+                     smoothFocus(document.getElementById("time-slots-container") || document.querySelector(".time-slot"));
+                     checkFormValidity();
+                 }
+             });
+         
+             const patientFieldOrder = ['patient_name','patient_age','patient_phone','patient_email','reason'];
+             patientFieldOrder.forEach((id, idx) => {
+                 const el = document.getElementById(id);
+                 if (!el) return;
+                 el.addEventListener('keydown', function(e) {
+                     if (e.key === 'Enter') {
+                         e.preventDefault();
+                         const nextId = patientFieldOrder[idx+1];
+                         if (nextId) {
+                             const nextEl = document.getElementById(nextId);
+                             smoothFocus(nextEl);
+                         } else {
+                             const cont = document.getElementById('continue-btn');
+                             if (cont && !cont.disabled) cont.click();
+                         }
+                     }
+                 });
+             });
+         
+             const timeContainer = document.getElementById('time-slots-container');
+             if (timeContainer) {
+                 const obs = new MutationObserver(() => disablePastTimeSlots());
+                 obs.observe(timeContainer, { childList: true, subtree: true });
+             }
+         });
+         
+         function selectConsultType(element, type) {
+             debugLog("Consultation type selected: " + type);
+             document.querySelectorAll('.consult-option').forEach(opt => opt.classList.remove('active'));
+             element.classList.add('active');
+             appointmentData.consultation_type = type;
+             checkFormValidity();
+             const dateEl = document.getElementById('date-picker');
+             if (dateEl) smoothFocus(dateEl);
+         }
+         
+         function selectTimeSlot(element, time) {
+             debugLog("Time slot selected: " + time);
+             document.querySelectorAll('.time-slot').forEach(slot => slot.classList.remove('selected'));
+             element.classList.add('selected');
+             appointmentData.time = time;
+             checkFormValidity();
+             const cont = document.getElementById('continue-btn');
+             if (cont) smoothFocus(cont);
+         }
+         
+         function selectPaymentMethod(element, method) {
+             debugLog("Payment method selected: " + method);
+             document.querySelectorAll('.payment-method').forEach(opt => opt.classList.remove('active'));
+             element.classList.add('active');
+             appointmentData.payment_method = method;
+         }
+         
+         function applyCoupon() {
+             const couponCode = document.getElementById('coupon-code').value.trim();
+             const couponMessage = document.getElementById('coupon-message');
+         
+             debugLog("Applying coupon: " + couponCode);
+         
+             if (!couponCode) {
+                 couponMessage.innerHTML = '<div class="alert-custom alert-danger"><i class="fas fa-exclamation-circle"></i> Please enter a coupon code</div>';
+                 return;
+             }
+         
+             couponMessage.innerHTML = '<div class="spinner-container"><div class="spinner"></div></div>';
+         
+             setTimeout(() => {
+                 if (couponCode === 'SAVE10') {
+                     discountAmount = Math.round(totalAmount * 0.1);
+         
+                     document.getElementById('discount-row').classList.remove('d-none');
+                     document.getElementById('discount-amount').textContent = `-₹${discountAmount}`;
+                     document.getElementById('payment-total-amount').textContent = `₹${totalAmount - discountAmount}`;
+         
+                     couponMessage.innerHTML = '<div class="alert-custom alert-success"><i class="fas fa-check-circle"></i> Coupon applied successfully! You saved ₹' + discountAmount + '</div>';
+                     couponApplied = true;
+                     debugLog("Coupon applied successfully. Discount: " + discountAmount);
+                     const totalEl = document.getElementById('payment-total-amount');
+                     if (totalEl) {
+                         totalEl.classList.add('pulse-once');
+                         setTimeout(() => totalEl.classList.remove('pulse-once'), 1000);
+                     }
+                 } else {
+                     couponMessage.innerHTML = '<div class="alert-custom alert-danger"><i class="fas fa-exclamation-circle"></i> Invalid coupon code</div>';
+                     debugLog("Invalid coupon code: " + couponCode);
+                 }
+             }, 1000);
+         }
+         
+         function checkFormValidity() {
+             const isValid = appointmentData.consultation_type && selectedDate && appointmentData.time;
+             const btn = document.getElementById('continue-btn');
+             if (btn) btn.disabled = !isValid;
+             debugLog("Form validity check: " + isValid);
+         }
+         
+         function validateStep3Data() {
+             if (!appointmentData.consultation_type || !appointmentData.date || !appointmentData.time) {
+                 showNotification('Missing appointment details', 'error');
+                 return false;
+             }
+         
+             if (!patientData.patient_name || !patientData.patient_age || !patientData.patient_gender ||
+                 !patientData.patient_phone || !patientData.patient_email) {
+                 showNotification('Missing patient details', 'error');
+         
+                 if (!patientData.patient_name) fieldErrorShake(document.getElementById('patient_name'));
+                 if (!patientData.patient_age) fieldErrorShake(document.getElementById('patient_age'));
+                 if (!patientData.patient_gender) {
+                     const g = document.querySelector('input[name="patient_gender"]');
+                     if (g) fieldErrorShake(g.closest('label') || g);
+                 }
+                 if (!patientData.patient_phone) fieldErrorShake(document.getElementById('patient_phone'));
+                 if (!patientData.patient_email) fieldErrorShake(document.getElementById('patient_email'));
+                 return false;
+             }
+         
+             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+             if (!emailRegex.test(patientData.patient_email)) {
+                 showNotification('Invalid email address', 'error');
+                 fieldErrorShake(document.getElementById('patient_email'));
+                 return false;
+             }
+         
+             const phoneRegex = /^\d{10}$/;
+             if (!phoneRegex.test(patientData.patient_phone)) {
+                 showNotification('Invalid phone number. Please enter a 10-digit number', 'error');
+                 fieldErrorShake(document.getElementById('patient_phone'));
+                 return false;
+             }
+         
+             return true;
+         }
+         
+         function nextStep() {
+             debugLog("Moving to next step from step " + currentStep);
+         
+             if (currentStep === 1) {
+                 if (!appointmentData.consultation_type || !selectedDate || !appointmentData.time) {
+                     showNotification('Please select consultation type, date and time', 'error');
+                     return;
+                 }
+         
+                 const continueBtn = document.getElementById('continue-btn');
+                 const originalText = continueBtn.innerHTML;
+                 continueBtn.disabled = true;
+                 continueBtn.innerHTML = '<div class="spinner-container"><div class="spinner"></div></div>';
+         
+                 debugLog("Sending step 1 data: " + JSON.stringify(appointmentData));
+         
+                 fetch('preview-booking.php?doctor_id=', {
+                     method: 'POST',
+                     headers: {
+                         'Content-Type': 'application/x-www-form-urlencoded',
+                     },
+                     body: new URLSearchParams({
+                         'csrf_token': '',
+                         'step': 1,
+                         'consultation_type': appointmentData.consultation_type,
+                         'date': appointmentData.date,
+                         'time': appointmentData.time
+                     })
+                 })
+                     .then(response => {
+                         debugLog("Step 1 response status: " + response.status);
+                         return response.json();
+                     })
+                     .then(data => {
+                         debugLog("Step 1 response data: " + JSON.stringify(data));
+                         continueBtn.disabled = false;
+                         continueBtn.innerHTML = originalText;
+         
+                         if (data.status === 'success') {
+                             showStep(2);
+                             setTimeout(() => smoothFocus(document.getElementById('patient_name')), 320);
+                         } else {
+                             showNotification(data.message || 'Failed to save appointment details', 'error');
+                             console.error('Server error:', data);
+                         }
+                     })
+                     .catch(error => {
+                         debugLog("Step 1 error: " + error.message);
+                         continueBtn.disabled = false;
+                         continueBtn.innerHTML = originalText;
+                         showNotification('An error occurred. Please try again.', 'error');
+                         console.error('Error:', error);
+                     });
+             } else if (currentStep === 2) {
+                 const patientName = document.getElementById('patient_name').value.trim();
+                 const patientAge = document.getElementById('patient_age').value.trim();
+                 const patientGender = document.querySelector('input[name="patient_gender"]:checked');
+                 const patientPhone = document.getElementById('patient_phone').value.trim();
+                 const patientEmail = document.getElementById('patient_email').value.trim();
+                 const reason = document.getElementById('reason').value.trim();
+         
+                 if (!patientName || !patientAge || !patientGender || !patientPhone || !patientEmail) {
+                     showNotification('Please fill all required fields', 'error');
+         
+                     if (!patientName) fieldErrorShake(document.getElementById('patient_name'));
+                     if (!patientAge) fieldErrorShake(document.getElementById('patient_age'));
+                     if (!patientGender) {
+                         const g = document.querySelector('input[name="patient_gender"]');
+                         if (g) fieldErrorShake(g.closest('label') || g);
+                     }
+                     if (!patientPhone) fieldErrorShake(document.getElementById('patient_phone'));
+                     if (!patientEmail) fieldErrorShake(document.getElementById('patient_email'));
+         
+                     return;
+                 }
+         
+                 patientData = {
+                     patient_name: patientName,
+                     patient_age: patientAge,
+                     patient_gender: patientGender.value,
+                     patient_phone: patientPhone,
+                     patient_email: patientEmail,
+                     reason: reason
+                 };
+         
+                 debugLog("Patient data: " + JSON.stringify(patientData));
+         
+                 const continueBtn = document.getElementById('continue-btn');
+                 const originalText = continueBtn.innerHTML;
+                 continueBtn.disabled = true;
+                 continueBtn.innerHTML = '<div class="spinner-container"><div class="spinner"></div></div>';
+         
+                 fetch('preview-booking.php?doctor_id=', {
+                     method: 'POST',
+                     headers: {
+                         'Content-Type': 'application/x-www-form-urlencoded',
+                     },
+                     body: new URLSearchParams({
+                         'csrf_token': '',
+                         'step': 2,
+                         'patient_name': patientData.patient_name,
+                         'patient_age': patientData.patient_age,
+                         'patient_gender': patientData.patient_gender,
+                         'patient_phone': patientData.patient_phone,
+                         'patient_email': patientData.patient_email,
+                         'reason': patientData.reason
+                     })
+                 })
+                     .then(response => {
+                         debugLog("Step 2 response status: " + response.status);
+                         return response.json();
+                     })
+                     .then(data => {
+                         debugLog("Step 2 response data: " + JSON.stringify(data));
+                         continueBtn.disabled = false;
+                         continueBtn.innerHTML = originalText;
+         
+                         if (data.status === 'success') {
+                             updateReviewSection();
+                             showStep(3);
+                             setTimeout(() => smoothFocus(document.getElementById('review-consultation-type')), 320);
+                         } else {
+                             showNotification(data.message || 'Failed to save patient details', 'error');
+                             console.error('Server error:', data);
+                         }
+                     })
+                     .catch(error => {
+                         debugLog("Step 2 error: " + error.message);
+                         continueBtn.disabled = false;
+                         continueBtn.innerHTML = originalText;
+                         showNotification('An error occurred. Please try again.', 'error');
+                         console.error('Error:', error);
+                     });
+             } else if (currentStep === 3) {
+                 if (!validateStep3Data()) {
+                     return;
+                 }
+         
+                 const continueBtn = document.getElementById('continue-btn');
+                 const originalText = continueBtn.innerHTML;
+                 continueBtn.disabled = true;
+                 continueBtn.innerHTML = '<div class="spinner-container"><div class="spinner"></div></div>';
+         
+                 const requestData = {
+                     'csrf_token': '',
+                     'step': 3,
+                     'consultation_type': appointmentData.consultation_type,
+                     'date': appointmentData.date,
+                     'time': appointmentData.time,
+                     'patient_name': patientData.patient_name,
+                     'patient_age': patientData.patient_age,
+                     'patient_gender': patientData.patient_gender,
+                     'patient_phone': patientData.patient_phone,
+                     'patient_email': patientData.patient_email,
+                     'reason': patientData.reason
+                 };
+         
+                 debugLog("Step 3 request data: " + JSON.stringify(requestData));
+         
+                 fetch('preview-booking.php?doctor_id=', {
+                     method: 'POST',
+                     headers: {
+                         'Content-Type': 'application/x-www-form-urlencoded',
+                     },
+                     body: new URLSearchParams(requestData)
+                 })
+                     .then(response => {
+                         debugLog("Step 3 response status: " + response.status);
+                         return response.json();
+                     })
+                     .then(data => {
+                         debugLog("Step 3 response data: " + JSON.stringify(data));
+                         continueBtn.disabled = false;
+                         continueBtn.innerHTML = originalText;
+         
+                         if (data.status === 'success') {
+                             appointmentId = data.appointment_id;
+                             totalAmount = data.total_amount;
+                             debugLog("Appointment created with ID: " + appointmentId);
+                             showStep(4);
+                             setTimeout(() => smoothFocus(document.querySelector('.payment-method') || document.getElementById('continue-btn')), 320);
+                         } else {
+                             showNotification(data.message || 'Failed to confirm appointment', 'error');
+                             console.error('Server error:', data);
+                         }
+                     })
+                     .catch(error => {
+                         debugLog("Step 3 error: " + error.message);
+                         continueBtn.disabled = false;
+                         continueBtn.innerHTML = originalText;
+                         showNotification('An error occurred. Please try again.', 'error');
+                         console.error('Error:', error);
+                     });
+             } else if (currentStep === 4) {
+                 processPayment();
+             }
+         }
+         
+         function previousStep() {
+             if (currentStep > 1) {
+                 debugLog("Moving to previous step from step " + currentStep);
+                 showStep(currentStep - 1);
+             }
+         }
+         
+         function showStep(step) {
+             debugLog("Showing step " + step);
+         
+             document.querySelectorAll('.step-content').forEach(content => {
+                 content.classList.remove('active');
+             });
+         
+             document.querySelectorAll('.step').forEach(stepEl => {
+                 stepEl.classList.remove('active');
+             });
+         
+             const newContent = document.getElementById(`step${step}-content`);
+             const newStepEl = document.getElementById(`step${step}`);
+             if (newContent) newContent.classList.add('active');
+             if (newStepEl) newStepEl.classList.add('active');
+         
+             for (let i = 1; i < step; i++) {
+                 const el = document.getElementById(`step${i}`);
+                 if (el) el.classList.add('completed');
+             }
+         
+             const progressFill = document.getElementById('progress-fill');
+             if (progressFill) progressFill.style.width = `${(step - 1) * 33.33}%`;
+         
+             currentStep = step;
+         
+             if (step > 1) {
+                 document.getElementById('back-btn').classList.remove('d-none');
+             } else {
+                 document.getElementById('back-btn').classList.add('d-none');
+             }
+         
+             if (step === 3) {
+                 document.getElementById('continue-btn').innerHTML = 'Confirm & Proceed to Payment <i class="fas fa-arrow-right ms-2"></i>';
+                 document.getElementById('continue-btn').disabled = false;
+                 updateReviewSection();
+             } else if (step === 4) {
+                 document.getElementById('continue-btn').innerHTML = 'Pay Now <i class="ms-2 fas fa-lock"></i>';
+                 document.getElementById('continue-btn').classList.add('btn-pay');
+                 document.getElementById('continue-btn').disabled = false;
+             } else {
+                 document.getElementById('continue-btn').innerHTML = 'Continue <i class="fas fa-arrow-right ms-2"></i>';
+                 document.getElementById('continue-btn').classList.remove('btn-pay');
+             }
+         
+             setTimeout(() => {
+                 if (step === 1) {
+                     disablePastTimeSlots();
+                     const sel = document.querySelector('.consult-option.active') || document.querySelector('.consult-option');
+                     if (sel) smoothFocus(sel);
+                 } else if (step === 2) {
+                     
+                     const nameField = document.getElementById('patient_name');
+                     if (nameField && !nameField.value.trim()) {
+                         smoothFocus(nameField);
+                     } else {
+                         const ageField = document.getElementById('patient_age');
+                         if (ageField && !ageField.value.trim()) {
+                             smoothFocus(ageField);
+                         } else {
+                             const genderField = document.querySelector('input[name="patient_gender"]');
+                             if (genderField && !document.querySelector('input[name="patient_gender"]:checked')) {
+                                 smoothFocus(genderField);
+                             } else {
+                                 const phoneField = document.getElementById('patient_phone');
+                                 if (phoneField && !phoneField.value.trim()) {
+                                     smoothFocus(phoneField);
+                                 } else {
+                                     const emailField = document.getElementById('patient_email');
+                                     if (emailField) smoothFocus(emailField);
+                                 }
+                             }
+                         }
+                     }
+                 } else if (step === 3) {
+                     smoothFocus(document.getElementById('review-consultation-type'));
+                     const tot = document.getElementById('total-amount');
+                     if (tot) {
+                         tot.classList.add('pulse-once');
+                         setTimeout(() => tot.classList.remove('pulse-once'), 1000);
+                     }
+                 } else if (step === 4) {
+                     const firstPaymentMethod = document.querySelector('.payment-method');
+                     if (firstPaymentMethod) {
+                         smoothFocus(firstPaymentMethod);
+                     } else {
+                         smoothFocus(document.getElementById('continue-btn'));
+                     }
+                 }
+             }, 220);
+         }
+         
+         function updateReviewSection() {
+             debugLog("Updating review section");
+         
+             try {
+                 const consultText = appointmentData.consultation_type ? appointmentData.consultation_type.charAt(0).toUpperCase() + appointmentData.consultation_type.slice(1).replace('-', ' ') : '';
+                 document.getElementById('review-consultation-type').textContent = consultText;
+                 document.getElementById('review-date').textContent = appointmentData.date ? new Date(appointmentData.date).toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: 'numeric' }) : '';
+                 document.getElementById('review-time').textContent = appointmentData.time || '';
+         
+                 document.getElementById('review-patient-name').textContent = patientData.patient_name || '';
+                 document.getElementById('review-patient-age').textContent = patientData.patient_age ? patientData.patient_age + ' years' : '';
+                 document.getElementById('review-patient-gender').textContent = patientData.patient_gender || '';
+                 document.getElementById('review-patient-phone').textContent = patientData.patient_phone || '';
+                 document.getElementById('review-patient-email').textContent = patientData.patient_email || '';
+         
+                 if (patientData.reason) {
+                     document.getElementById('review-reason').textContent = patientData.reason;
+                     document.getElementById('review-reason-row').style.display = 'flex';
+                 } else {
+                     const rr = document.getElementById('review-reason-row');
+                     if (rr) rr.style.display = 'none';
+                 }
+         
+                 const totalEl = document.getElementById('total-amount');
+                 if (totalEl) totalEl.textContent = '₹' + (totalAmount - discountAmount);
+             } catch (e) {
+                 debugLog("updateReviewSection error: " + e.message);
+             }
+         }
+         
+         function processPayment() {
+             debugLog("Processing payment");
+         
+             const paymentMethod = appointmentData.payment_method || 'cashfree';
+             const finalAmount = totalAmount - discountAmount;
+         
+             debugLog("Payment method: " + paymentMethod + ", Amount: " + finalAmount);
+         
+             if (paymentMethod === 'cashfree') {
+                 initializeCashfreePayment(finalAmount);
+             } else {
+                 initializeCashfreePayment(finalAmount);
+             }
+         }
+         
+         function initializeCashfreePayment(amount) {
+             debugLog("Initializing Cashfree payment for amount: " + amount);
+         
+             const payButton = document.getElementById('continue-btn');
+             const originalText = payButton.innerHTML;
+             payButton.disabled = true;
+             payButton.innerHTML = '<div class="spinner-container"><div class="spinner"></div></div>';
+         
+             const formData = new FormData();
+             formData.append('csrf_token', '');
+             formData.append('step', 5);
+             formData.append('appointment_id', appointmentId);
+             formData.append('amount', amount);
+             formData.append('customer_details[customer_id]', "");
+             formData.append('customer_details[customer_name]', patientData.patient_name);
+             formData.append('customer_details[customer_email]', patientData.patient_email);
+             formData.append('customer_details[customer_phone]', patientData.patient_phone);
+         
+             try {
+                 debugLog("Step 5 request data: " + JSON.stringify(Object.fromEntries(formData)));
+             } catch (e) { }
+         
+             fetch('preview-booking.php?doctor_id=', {
+                 method: 'POST',
+                 body: formData
+             })
+                 .then(response => {
+                     debugLog("Step 5 response status: " + response.status);
+                     return response.json();
+                 })
+                 .then(data => {
+                     debugLog("Step 5 response data: " + JSON.stringify(data));
+         
+                     if (data.status === 'success') {
+                         orderId = data.order_id;
+                         debugLog("Order created with ID: " + orderId);
+         
+                         sessionStorage.setItem('pendingOrder', JSON.stringify({
+                             appointment_id: appointmentId,
+                             order_id: orderId
+                         }));
+         
+                         console.log('Initiating Cashfree payment');
+                         const cashfree = new window.Cashfree({ mode: 'production' });
+                         cashfree.checkout({
+                             paymentSessionId: data.payment_session_id,
+                             returnUrl: `https://${window.location.hostname}/appointment-success.php?order_id=${orderId}&appointment_id=${appointmentId}`,
+                             redirectTarget: "_self",
+                             paymentMethod: {
+                                 upi: true,
+                                 card: true,
+                                 netbanking: true,
+                                 wallet: true
+                             }
+                         }).then(function (result) {
+                             if (result.error) {
+                                 console.error('Payment error:', result.error);
+                                 payButton.disabled = false;
+                                 payButton.innerHTML = originalText;
+                                 showNotification('Payment initiation failed: ' + result.error.message, 'error');
+                             } else {
+                                 console.log('Payment initiated successfully');
+                             }
+                         }).catch(function (error) {
+                             console.error('Payment error:', error);
+                             payButton.disabled = false;
+                             payButton.innerHTML = originalText;
+                             showNotification('Payment initiation failed. Please try again.', 'error');
+                         });
+                     } else {
+                         debugLog("Step 5 failed: " + data.message);
+                         payButton.disabled = false;
+                         payButton.innerHTML = originalText;
+                         showNotification('Failed to create payment order: ' + data.message, 'error');
+                     }
+                 })
+                 .catch(function (error) {
+                     debugLog("Step 5 error: " + error.message);
+                     payButton.disabled = false;
+                     payButton.innerHTML = originalText;
+                     showNotification('Payment initialization error: ' + error.message, 'error');
+                 });
+         }
+         
+         function showNotification(message, type) {
+             debugLog("Showing notification: " + message + ", Type: " + type);
+         
+             const notification = document.createElement('div');
+             notification.className = `alert-custom alert-${type}`;
+             notification.innerHTML = `
+                 <i class="fas fa-${type === 'error' ? 'exclamation-circle' : (type === 'success' ? 'check-circle' : 'info-circle')}"></i>
+                 ${message}
+             `;
+         
+             const alertContainer = document.getElementById('alert-container');
+             if (!alertContainer) {
+                 notification.style.position = 'fixed';
+                 notification.style.top = '20px';
+                 notification.style.right = '20px';
+                 notification.style.zIndex = 9999;
+                 document.body.appendChild(notification);
+             } else {
+                 alertContainer.innerHTML = '';
+                 alertContainer.appendChild(notification);
+             }
+         
+             setTimeout(() => {
+                 try { notification.remove(); } catch (e) {}
+             }, 5000);
+         }
+         
+         (function wireTimeSlotClicks() {
+             function bindSlots(container) {
+                 container.querySelectorAll('.time-slot').forEach(slot => {
+                     if (slot.getAttribute('data-ux-bound') === '1') return;
+                     slot.setAttribute('data-ux-bound', '1');
+                     slot.addEventListener('click', function (e) {
+                         if (slot.classList.contains('disabled-slot')) return;
+                         const t = slot.getAttribute('data-time') || slot.textContent.trim();
+                         selectTimeSlot(slot, t);
+                     });
+                 });
+             }
+         
+             document.addEventListener('DOMContentLoaded', function () {
+                 const container = document.getElementById('time-slots-container') || document;
+                 bindSlots(container);
+         
+                 const observer = new MutationObserver(mutations => {
+                     mutations.forEach(m => {
+                         if (m.addedNodes && m.addedNodes.length) {
+                             bindSlots(container);
+                             disablePastTimeSlots();
+                         }
+                     });
+                 });
+                 if (container) observer.observe(container, { childList: true, subtree: true });
+             });
+         })();
+      </script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-RYQR7RZR0Y"></script>
+<script>
+         window.dataLayer = window.dataLayer || [];
+         function gtag() { dataLayer.push(arguments); }
+         gtag('js', new Date());
+         
+         gtag('config', 'G-RYQR7RZR0Y');
+      </script>
+<script type="text/javascript">
+         (function (c, l, a, r, i, t, y) {
+             c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+             t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+             y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+         })(window, document, "clarity", "script", "twq4peq2u7");
+      </script>
+<script src="assets/astikan-config.js"></script>
+<script src="assets/member-site-login.js"></script>
+<script src="assets/offcanvas-auth.js"></script>
+<script src="script.js"></script><footer class="futrr futrr-compact p-3">
+<div class="container futrr-main py-4">
+<div class="row gy-3 align-items-start">
+<div class="col-lg-4 col-md-6 futrr-about">
+<h6><i aria-hidden="true" class="bi bi-heart me-2 text-gradient"></i>Astikan</h6>
+<p class="mb-2">Affordable healthcare access, lab tests, medical finance, consultations, medicine delivery and emergency support.</p>
+<p class="mb-1"><i aria-hidden="true" class="bi bi-geo-alt me-2"></i>B-45, Sector 56, Noida</p>
+<p class="mb-1"><i aria-hidden="true" class="bi bi-telephone me-2"></i>+91 99900 71792, +91 73033 34931</p>
+<p class="mb-0"><i aria-hidden="true" class="bi bi-envelope me-2"></i>care@astikan.com</p>
+</div>
+<div class="col-lg-2 col-md-6">
+<h6>Company</h6>
+<ul>
+<li><a href="/membership/index.html">Home</a></li>
+<li><a href="/membership/about-us.html">About Us</a></li>
+<li><a href="/membership/contact-us.html">Contact Us</a></li>
+<li><a href="/membership/index.html#download-app">Download App</a></li>
+</ul>
+</div>
+<div class="col-lg-3 col-md-6">
+<h6>Services</h6>
+<ul>
+<li><a href="/membership/lab-test.html">Lab Tests</a></li>
+<li><a href="/membership/find-doctors.html">Find Doctors</a></li>
+<li><a href="/membership/video-consultation.html">Video Consultation</a></li>
+<li><a href="/membership/medicine-delivery.html">Medicine Delivery</a></li>
+<li><a href="/membership/medical-finance.html">Medical Finance</a></li>
+</ul>
+</div>
+<div class="col-lg-3 col-md-6">
+<h6>Legal &amp; Support</h6>
+<ul>
+<li><a href="/membership/privacy-policy.html">Privacy Policy</a></li>
+<li><a href="/membership/terms-and-conditions.html">Terms &amp; Conditions</a></li>
+<li><a href="/membership/refund-policy.html">Refund Policy</a></li>
+<li><a href="/membership/disclaimer.html">Disclaimer</a></li>
+<li><a href="/membership/grevience-portal.html">Grievance Portal</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="futrr-bottom py-3">
+<div class="container d-flex flex-column flex-md-row align-items-center justify-content-between gap-2">
+<div>
+<p class="mb-0">© 2025 Astikan Healthcare Private Limited - All Rights Reserved.</p>
+<small>CIN: U74999UP2018PTC103568</small>
+</div>
+<div class="text-md-end">
+<span class="me-2">Follow us:</span>
+<a aria-label="Facebook" href="#"><i aria-hidden="true" class="bi bi-facebook"></i></a>
+<a aria-label="Twitter" href="#"><i aria-hidden="true" class="bi bi-twitter"></i></a>
+<a aria-label="Instagram" href="#"><i aria-hidden="true" class="bi bi-instagram"></i></a>
+<a aria-label="LinkedIn" href="#"><i aria-hidden="true" class="bi bi-linkedin"></i></a>
+</div>
+</div>
+</div>
+</footer></body>
+</html>

@@ -1,0 +1,303 @@
+@media (max-width: 375px) {
+  .dctnxt .doctor-card .btn {
+    width: 145px;
+  }
+}
+@media (max-width: 480px) {
+  [data-aos] {
+    opacity: 0.01; 
+    transform: translate3d(
+      0,
+      50px,
+      0
+    ); 
+    transition-property: opacity, transform; 
+    padding-top: 20px; 
+  }
+
+  [data-aos].aos-animate {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    padding-top: 0; 
+  }
+  .main {
+    margin: 0;
+    padding: 12px;
+  }
+  #loginModal {
+    width: 100%;
+  }
+  .health_g {
+    line-height: 1em;
+  }
+
+  #stickyPillNav {
+    width: 100%;
+  }
+
+  .pill-nav {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    gap: 10px;
+    padding-bottom: 5px;
+    width: 100%;
+    scrollbar-width: none;
+  }
+
+  .pill-nav li {
+    flex: 0 0 auto;
+    min-width: fit-content;
+    list-style: none;
+  }
+
+  .pill-nav::-webkit-scrollbar {
+    display: none;
+  }
+  .searchbar {
+    width: 36px;
+  }
+  .lndbn-btn {
+    width: 190px;
+    font-size: 13.5px;
+    padding: 12px 13px;
+  }
+  .lndbn-stat-box {
+    padding: 8px;
+    min-width: 120px;
+  }
+  .lndbn-stat-box p {
+    font-size: 12px;
+  }
+  .lndbn-trusted h5 {
+    font-size: 18px;
+  }
+  .frthmin-wrapper {
+    border-radius: 0px;
+  }
+  .futrr-newsletter-form input {
+    padding: 5px;
+  }
+  .health-buddy-container {
+    width: 300px;
+  }
+  .mrktingmdl-title {
+    font-size: 1.2rem;
+  }
+  .mrktingmdl-content {
+    margin: 16px;
+  }
+  .mrktingmdl-body {
+    padding: 12px;
+  }
+  .mrktingmdl-cta-btn {
+    font-size: 15px;
+  }
+  .mrktingmdl-icons {
+    gap: 0.5px;
+  }
+  .health-question {
+    font-size: 12.5px;
+  }
+  .health-buddy-header {
+    padding: 11px;
+  }
+  .message-bubble {
+    font-size: 12.5px;
+  }
+  .chat-input {
+    font-size: 12.5px;
+  }
+  .health-buddy-container {
+    width: 400px;
+  }
+  #offcanvasMenu {
+    z-index: 9999;
+  }
+  .custom-offcanvas-body {
+    padding: 0.2rem 0.5rem;
+  }
+  p.lead {
+    font-size: 14px;
+  }
+  #fnddct .search-box {
+    padding: 12px;
+  }
+  #fnddct .nav-pills .nav-link {
+    font-size: 0.7rem;
+  }
+  .form-control-lg,
+  .form-select-lg {
+    font-size: 15px;
+  }
+  p.text-light {
+    font-size: 12.5px;
+  }
+  .dctrd-why-book p {
+    font-size: 13px;
+  }
+  .notification-toast {
+    max-width: 250px;
+  }
+  .dctnxt .avatar-circle {
+    margin-bottom: 15px;
+    align-self: start;
+  }
+  .dctnxt .doctor-card .btn {
+    width: 170px;
+  }
+  .dctrd-why-book h2 {
+    font-size: 26px;
+  }
+  .raxc {
+    font-size: 15.5px;
+  }
+  .btn-gradient {
+    font-size: 15px;
+  }
+  .assessment h5 {
+    font-size: 16.2px;
+    font-weight: 600;
+  }
+  .assessment p {
+    font-size: 13.6px;
+  }
+  .nav-row {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    flex-wrap: nowrap;
+  }
+
+  .nav-row button {
+    width: 180px !important;
+    font-size: 15px;
+    padding: 10px;
+  }
+
+  .btn-skip {
+    order: 3;
+    font-size: 14px;
+    opacity: 0.8;
+  }
+  .opt.selected,
+  #options {
+    font-size: 14px;
+  }
+  #unlockButton {
+    font-weight: 500 !important;
+    font-size: 15.5px !important;
+    width: 100% !important;
+    font-family: "Alan Sans", sans-serif !important;
+    align-items: center !important;
+    padding: 12px 16px !important;
+    display: flex !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    background-color: #28a745 !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 6px !important;
+    cursor: pointer !important;
+    position: relative !important;
+    overflow: hidden !important;
+    transition: background 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 0 0 rgba(40, 167, 69, 0.4);
+    animation: pulseGlow 2s infinite;
+  }
+
+  
+  @keyframes pulseGlow {
+    0% {
+      box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.4);
+    }
+    70% {
+      box-shadow: 0 0 0 10px rgba(40, 167, 69, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(40, 167, 69, 0);
+    }
+  }
+
+  
+  #unlockButton::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      120deg,
+      transparent,
+      rgba(255, 255, 255, 0.3),
+      transparent
+    );
+    animation: shimmer 3s infinite;
+  }
+
+  @keyframes shimmer {
+    0% {
+      left: -100%;
+    }
+    50% {
+      left: 100%;
+    }
+    100% {
+      left: 100%;
+    }
+  }
+
+  #unlockButton:hover {
+    transform: scale(1.03);
+    background-color: #218838 !important;
+  }
+}
+@media (max-width: 1280px) {
+  .nav-menu .nav-link {
+    font-size: 14.5px;
+    margin: 7px;
+  }
+}
+@media (max-width: 1024px) {
+  .nav-menu .nav-link {
+    font-size: 13px;
+    margin: 4px;
+  }
+  .lndbn-stat-box {
+    min-width: 0px;
+  }
+  .lndbn-stats {
+    gap: 2px;
+  }
+  .gap-lg-4 {
+    gap: 0.25rem !important;
+  }
+}
+@media (max-width: 768px) {
+  [data-aos] {
+    opacity: 0.01; 
+    transform: translate3d(
+      0,
+      50px,
+      0
+    ); 
+    transition-property: opacity, transform; 
+    padding-top: 20px; 
+  }
+
+  [data-aos].aos-animate {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    padding-top: 0; 
+  }
+}
+@media (min-width: 1281px) and (max-width: 1399px) {
+  .nav-menu .nav-link {
+    font-size: 13px;
+    margin: 0 4px;
+  }
+}

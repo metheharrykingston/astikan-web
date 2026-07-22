@@ -6,6 +6,7 @@ const navItems = [
   { label: 'ASTIKAN', to: '/astikan', enabled: true },
   { label: 'ASTIKAN PAY', to: '/astikan-pay', enabled: true },
   { label: 'THE KIOSK', to: '/the-kiosk', enabled: true },
+  { label: 'MEMBERSHIP', to: '/membership/index.html', enabled: true },
   { label: 'RESEARCH', to: '/research', enabled: true },
   { label: 'MISSION', to: '/mission', enabled: true },
   { label: 'COMPANY', to: '/company', enabled: true },

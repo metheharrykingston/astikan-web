@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Membership Dashboard | Astikan Health</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet"/>
+<link href="assets/membership-dashboard.css?v=20260702" rel="stylesheet"/>
+</head>
+<body class="dash-body" data-member-page="dashboard" data-dash-view="overview">
+
+<header class="dash-header" id="dashHeader">
+  <div class="dash-header-inner">
+    <a class="dash-brand" href="membership-dashboard.html">
+      <img alt="Astikan Health" src="logo.avif"/>
+    </a>
+    <div class="dash-header-actions">
+      <div class="dash-user-chip" id="headerUserChip">
+        <img alt="" id="headerAvatar" src="assets/profile_img/default.avif"/>
+        <strong id="headerName">Member</strong>
+      </div>
+      <button aria-controls="dashSidebar" aria-label="Open menu" class="dash-hamburger" data-bs-target="#dashSidebar" data-bs-toggle="offcanvas" type="button">
+        <i class="bi bi-list"></i>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="dash-main" id="dashboardApp">
+  <div class="dash-loading" id="dashLoading">
+    <div class="spinner-border text-primary" role="status"></div>
+    <p class="mt-3 mb-0">Loading your membership...</p>
+  </div>
+
+  <div id="dashEmpty" style="display:none;">
+    <div class="dash-empty">
+      <i class="bi bi-person-x fs-1 text-muted"></i>
+      <h2 class="h4 mt-3">No active membership found</h2>
+      <p class="text-muted">Enroll in a Silver, Gold, or Platinum plan to access your dashboard.</p>
+      <a href="index.html#memsec-section">Browse Membership Plans</a>
+    </div>
+  </div>
+
+  <div id="dashContent" style="display:none;">
+    <div id="paymentPendingBanner" style="display:none;"></div>
+    <section class="dash-hero" id="heroSection">
+      <div class="dash-hero-content">
+        <div>
+          <p>Welcome back,</p>
+          <h1 id="heroName">Member</h1>
+          <p id="heroTagline">Your health membership is active</p>
+        </div>
+        <div class="dash-plan-badge" id="planBadge">
+          <span class="crown" id="planCrown"><i class="bi bi-crown-fill"></i></span>
+          <span id="planBadgeText">Silver Plan</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="dash-grid dash-grid-2" id="overview">
+      <div class="dash-card">
+        <h3><i class="bi bi-person-vcard text-primary"></i> Member Profile</h3>
+        <div class="dash-meta-row"><span>Full Name</span><strong id="metaName">—</strong></div>
+        <div class="dash-meta-row"><span>Email</span><strong id="metaEmail">—</strong></div>
+        <div class="dash-meta-row"><span>Mobile</span><strong id="metaMobile">—</strong></div>
+        <div class="dash-meta-row"><span>Member Since</span><strong id="metaSince">—</strong></div>
+      </div>
+
+      <div class="dash-card dash-quick-links-card">
+        <h3><i class="bi bi-compass text-primary"></i> Quick Access</h3>
+        <a class="dash-quick-link" href="member/plan-details.html" id="linkPlanDetails"><i class="bi bi-card-checklist"></i> View Plan Details</a>
+        <a class="dash-quick-link" href="member/enroll-services.html" id="linkEnrollServices"><i class="bi bi-heart-pulse"></i> Enroll Services</a>
+        <a class="dash-quick-link" href="member/claims.html" id="linkClaims"><i class="bi bi-file-earmark-medical"></i> Claims &amp; Assistance</a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/astikan-config.js?v=20260703c"></script>
+<script src="assets/member-enrollment-fields.js"></script>
+<script src="assets/member-enrollment-store.js"></script>
+<script src="assets/member-portal-routes.js?v=20260703c"></script>
+<script src="assets/member-portal-nav.js?v=20260703c"></script>
+<script src="assets/astikan-format.js?v=20260704f"></script>
+<script src="assets/membership-dashboard-legacy.js?v=20260704f"></script>
+</body>
+</html>

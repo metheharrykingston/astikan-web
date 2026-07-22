@@ -1,6 +1,7 @@
 import React from 'react';
 import astikanLogo from '../assets/logo.png';
 import astikanMark from '../assets/logo-mark.png';
+import astikanWhiteLogo from '../assets/white_icon.png';
 
 interface AstikanMarkProps {
   className?: string;
@@ -34,9 +35,9 @@ export default function AstikanLogo({ compact = false, light = false }: AstikanL
       aria-label="Astikan"
     >
       <img
-        src={astikanLogo}
+        src={light ? astikanWhiteLogo : astikanLogo}
         alt="Astikan"
-        className={`${compact ? 'h-9' : 'h-11'} block w-auto max-w-[220px] object-contain sm:max-w-none ${light ? 'brightness-0 invert' : ''}`}
+        className={`${compact ? 'h-9' : 'h-11'} block w-auto max-w-[220px] object-contain sm:max-w-none`}
         draggable="false"
       />
     </span>

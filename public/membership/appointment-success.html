@@ -1,0 +1,882 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Appointment Confirmed | Astikan HealthCare</title>
+<meta content="Your appointment has been confirmed successfully" name="description"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://unpkg.com/aos@next/dist/aos.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet"/>
+<style>
+        :root {
+            --primary-color: #6f42c1;
+            --secondary-color: #f8f9fa;
+            --accent-color: #7b2ff7;
+            --text-dark: #212529;
+            --text-light: #6c757d;
+            --border-color: #e9ecef;
+            --success-color: #28a745;
+            --warning-color: #ffc107;
+            --danger-color: #dc3545;
+            --gradient: linear-gradient(135deg, #7b2ff7, #f107a3);
+            --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f7fa;
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        .success-container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+        }
+
+        .header {
+            background: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .content {
+            flex-grow: 1;
+            padding: 40px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .success-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: var(--box-shadow);
+            text-align: center;
+            margin-bottom: 30px;
+            animation: fadeInUp 0.6s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .success-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 30px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: scaleIn 0.5s ease 0.2s both;
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0);
+            }
+
+            to {
+                transform: scale(1);
+            }
+        }
+
+        .success-icon i {
+            font-size: 3rem;
+            color: white;
+        }
+
+        .success-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+
+        .success-message {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+
+        .appointment-details {
+            background: var(--secondary-color);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            text-align: left;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-color);
+            min-height: 20px;
+        }
+
+        .detail-row:last-child {
+            border-bottom: none;
+        }
+
+        .detail-label {
+            font-weight: 500;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            flex: 1;
+        }
+
+        .detail-label i {
+            margin-right: 10px;
+            color: var(--primary-color);
+            width: 20px;
+            flex-shrink: 0;
+        }
+
+        .detail-value {
+            font-weight: 600;
+            color: var(--text-dark);
+            text-align: right;
+            flex: 1;
+            word-break: break-word;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-custom {
+            padding: 12px 30px;
+            border-radius: 10px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            min-width: 180px;
+            touch-action: manipulation;
+        }
+
+        .btn-custom i {
+            margin-right: 8px;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(123, 47, 247, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .info-box {
+            background: rgba(40, 167, 69, 0.1);
+            border: 1px solid rgba(40, 167, 69, 0.2);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .info-box i {
+            font-size: 1.5rem;
+            color: var(--success-color);
+            flex-shrink: 0;
+        }
+
+        .info-box-content {
+            text-align: left;
+            flex: 1;
+        }
+
+        .info-box-title {
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 5px;
+        }
+
+        .info-box-text {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .payment-status {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .payment-status.success {
+            background: rgba(40, 167, 69, 0.1);
+            color: var(--success-color);
+        }
+
+        .payment-status.pending {
+            background: rgba(255, 193, 7, 0.1);
+            color: var(--warning-color);
+        }
+
+        .payment-status.failed {
+            background: rgba(220, 53, 69, 0.1);
+            color: var(--danger-color);
+        }
+
+        
+        @media (max-width: 768px) {
+            .content {
+                padding: 20px 15px;
+            }
+
+            .success-card {
+                padding: 30px 20px;
+                border-radius: 15px;
+            }
+
+            .success-title {
+                font-size: 1.5rem;
+            }
+
+            .success-message {
+                font-size: 1rem;
+            }
+
+            .success-icon {
+                width: 80px;
+                height: 80px;
+            }
+
+            .success-icon i {
+                font-size: 2.5rem;
+            }
+
+            .appointment-details {
+                padding: 20px;
+                max-height: 350px;
+            }
+
+            .detail-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+                padding: 15px 0;
+            }
+
+            .detail-value {
+                text-align: left;
+                font-size: 1rem;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn-custom {
+                width: 100%;
+                min-width: auto;
+                padding: 14px 20px;
+                font-size: 1rem;
+            }
+
+            .info-box {
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+            }
+
+            .info-box-content {
+                flex: none;
+            }
+        }
+
+        
+        @media (max-width: 480px) {
+            .header {
+                padding: 15px 0;
+            }
+
+            .header-content {
+                padding: 0 15px;
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .logo {
+                font-size: 1.3rem;
+            }
+
+            .content {
+                padding: 15px 10px;
+            }
+
+            .success-card {
+                padding: 25px 15px;
+            }
+
+            .success-title {
+                font-size: 1.3rem;
+            }
+
+            .success-message {
+                font-size: 0.95rem;
+            }
+
+            .appointment-details {
+                padding: 15px;
+                max-height: 300px;
+                border-radius: 12px;
+            }
+
+            .detail-row {
+                padding: 12px 0;
+                gap: 5px;
+            }
+
+            .detail-label {
+                font-size: 0.9rem;
+            }
+
+            .detail-value {
+                font-size: 0.95rem;
+            }
+
+            .info-box {
+                padding: 15px;
+                border-radius: 8px;
+            }
+
+            .info-box i {
+                font-size: 1.3rem;
+            }
+
+            .info-box-text {
+                font-size: 0.85rem;
+            }
+
+            .btn-custom {
+                padding: 12px 15px;
+                font-size: 0.95rem;
+                border-radius: 8px;
+            }
+        }
+
+        
+        @media (max-width: 360px) {
+            .success-icon {
+                width: 70px;
+                height: 70px;
+            }
+
+            .success-icon i {
+                font-size: 2rem;
+            }
+
+            .payment-status {
+                font-size: 0.8rem;
+                padding: 4px 12px;
+            }
+
+            .detail-row {
+                padding: 10px 0;
+            }
+        }
+    </style>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet"/><link href="style.css" rel="stylesheet"/><link href="responsive.css" rel="stylesheet"/></head>
+<body><a aria-label="Emergency Call" class="emergency-btn d-lg-none" href="tel:+919990071792" id="emergencyBtn">
+<i class="bi bi-telephone-fill me-2"></i> Emergency
+      </a><header class="sticky-header bg-white shadow-sm">
+<div class="container px-2">
+<div class="d-flex align-items-center justify-content-between py-2">
+<a class="d-flex align-items-center" href="/membership/index.html">
+<img alt="Astikan Health" class="logo" fetchpriority="high" src="logo.avif" style="height:50px;"/>
+</a>
+<nav class="nav-menu d-none d-xl-flex align-items-center">
+<a class="nav-link" href="/membership/index.html">Home</a>
+<a class="nav-link" href="/membership/about-us.html">About</a>
+<a class="nav-link" href="/membership/find-doctors.html">Doctors</a>
+<a class="nav-link" href="/membership/lab-test.html">Lab Tests</a>
+<a class="nav-link" href="/membership/medical-finance.html">Finance</a>
+<a class="nav-link healthpocket-nav-premium" href="https://healthpocket.in"><i aria-hidden="true" class="bi bi-credit-card-2-front me-1"></i><span class="hp-nav-text">HealthPocket</span></a>
+<div class="nav-item dropdown">
+<a aria-expanded="false" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" id="surgeryDropdown" role="button">Surgery</a>
+<ul aria-labelledby="surgeryDropdown" class="dropdown-menu shadow border-0">
+<li class="dropdown-submenu">
+<a class="dropdown-item dropdown-toggle" href="#">❤️ Heart Surgeries</a>
+<ul class="dropdown-menu">
+<li><a class="dropdown-item" href="/membership/surgery/aortic-root-arch-surgeries.html">Aortic Root &amp; Arch Surgery</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/congenital-heart-surgeries.html">Congenital Heart Surgery</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/coronary-artery-bypass-grafting.html">Coronary Artery Bypass Grafting (CABG)</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/heart-transplants.html">Heart Transplant</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/left-ventricular-assist-device.html">Left Ventricular Assist Device (LVAD)</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/valve-replacement-avr-mvr-dvr.html">Valve Replacement (AVR/MVR/DVR)</a></li>
+</ul>
+</li>
+<li class="dropdown-submenu">
+<a class="dropdown-item dropdown-toggle" href="#">🩸 Vascular Surgeries</a>
+<ul class="dropdown-menu">
+<li><a class="dropdown-item" href="/membership/surgery/vascular-surgery/aneurysm-repair.html">Aneurysm Repair</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/vascular-surgery/angioplasty-stenting.html">Angioplasty &amp; Stent Placement</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/vascular-surgery/av-fistula-creation.html">AV Fistula Creation</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/vascular-surgery/av-graft-placement.html">AV Graft Placement</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/vascular-surgery/carotid-endarterectomy-stenting.html">Carotid Endarterectomy &amp; Stenting</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/vascular-surgery/dvt-surgery-ivc-filter.html">DVT / IVC Filter</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/vascular-surgery/embolectomy-thrombectomy.html">Embolectomy &amp; Thrombectomy</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/vascular-surgery/lymphedema-surgery.html">Lymphedema Surgery</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/vascular-surgery/peripheral-arterial-bypass.html">Peripheral Arterial Bypass</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/vascular-surgery/peripheral-endarterectomy.html">Peripheral Endarterectomy</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/vascular-surgery/thoracic-outlet-decompression.html">Thoracic Outlet Decompression</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/vascular-surgery/trauma-vascular-repairs.html">Trauma Vascular Repair</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/vascular-surgery/venous-ulcer-surgery.html">Venous Ulcer Surgery</a></li>
+</ul>
+</li>
+<li class="dropdown-submenu">
+<a class="dropdown-item dropdown-toggle" href="#">🫁 Thoracic Conditions</a>
+<ul class="dropdown-menu">
+<li><a class="dropdown-item" href="/membership/surgery/thoracic-surgery/aspergilloma.html">Aspergilloma</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/thoracic-surgery/bronchiectasis.html">Bronchiectasis</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/thoracic-surgery/chest-trauma.html">Chest Trauma</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/thoracic-surgery/empyema.html">Empyema</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/thoracic-surgery/hernia-diaphragm.html">Hernia Diaphragm</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/thoracic-surgery/lung-cancer.html">Lung Cancer</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/thoracic-surgery/lung-nodules.html">Lung Nodules</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/thoracic-surgery/lung-cysts.html">Lung Cysts</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/thoracic-surgery/myasthenia-thymoma.html">Myasthenia Thymoma</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/thoracic-surgery/palmar-hyperhidrosis.html">Palmar Hyperhidrosis</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/thoracic-surgery/pleural-effusion.html">Pleural Effusion</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/thoracic-surgery/pneumothorax.html">Pneumothorax</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/thoracic-surgery/tracheal-stenosis.html">Tracheal Stenosis</a></li>
+<li><a class="dropdown-item" href="/membership/surgery/thoracic-surgery/tracheoesophageal-fistula.html">Tracheoesophageal Fistula</a></li>
+</ul>
+</li>
+<li class="dropdown-submenu">
+<a class="dropdown-item dropdown-toggle" href="#">🦵 Varicose &amp; Venous</a>
+<ul class="dropdown-menu">
+<li><a class="dropdown-item" href="/membership/surgery/vericose/vericose-veins.html">Varicose Veins Surgery</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="nav-item dropdown">
+<a aria-expanded="false" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" id="moreDropdown" role="button">More</a>
+<ul aria-labelledby="moreDropdown" class="dropdown-menu shadow-lg border-0">
+<li><a class="dropdown-item" href="/membership/join-as-doctor.html">Join as a Doctor</a></li>
+<li><a class="dropdown-item" href="/membership/join-as-hospital.html">Join as a Hospital</a></li>
+<li><a class="dropdown-item" href="/membership/membership-assistance.html">Insurance Assistance</a></li>
+<li><a class="dropdown-item" href="/membership/ambulance-emergency.html">Ambulance &amp; Emergency</a></li>
+<li><a class="dropdown-item" href="/membership/contact-us.html">Contact Us</a></li>
+<li><a class="dropdown-item" href="/membership/disclaimer.html">Disclaimer</a></li>
+</ul>
+</div>
+</nav>
+<span aria-controls="offcanvasMenu" aria-label="Open Menu" class="menu-ellipsis d-xl-none" data-bs-target="#offcanvasMenu" data-bs-toggle="offcanvas"></span>
+<div class="d-flex align-items-center">
+<a aria-label="Get Astikan App" class="btn btn-danger mx-2 d-none d-xl-flex align-items-center app-download-cta" href="/membership/index.html#download-app"><i aria-hidden="true" class="bi bi-phone me-2"></i><span>Get App</span></a>
+<button aria-controls="offcanvasMenu" aria-label="Toggle Navigation" class="navbar-toggler d-xl-none ms-2" data-bs-target="#offcanvasMenu" data-bs-toggle="offcanvas" type="button">
+<i class="bi bi-list fs-3"></i>
+</button>
+</div>
+</div>
+</div>
+</header><div aria-labelledby="offcanvasMenuLabel" class="offcanvas offcanvas-end custom-offcanvas" id="offcanvasMenu" style="width: 355px;" tabindex="-1">
+<div class="offcanvas-header custom-offcanvas-header">
+<button aria-label="Close" class="btn-close text-reset" data-bs-dismiss="offcanvas" type="button"></button>
+</div>
+<div class="offcanvas-body custom-offcanvas-body">
+<nav class="nav flex-column gap-2">
+<a class="nav-link custom-link" href="/membership/index.html">Home</a>
+<a class="nav-link custom-link" href="/membership/about-us.html">About</a>
+<a class="nav-link custom-link" href="/membership/find-doctors.html">Doctors</a>
+<a class="nav-link custom-link" href="/membership/lab-test.html">Lab Tests</a>
+<a class="nav-link custom-link" href="/membership/medical-finance.html">Finance</a>
+<a class="nav-link custom-link healthpocket-nav-premium" href="https://healthpocket.in"><i aria-hidden="true" class="bi bi-credit-card-2-front me-1"></i><span class="hp-nav-text">HealthPocket</span></a>
+<div class="accordion" id="surgeryAccordion">
+<div class="accordion-item border-0">
+<h2 class="accordion-header" id="headingSurgeryMobile">
+<button aria-controls="collapseSurgeryMobile" aria-expanded="false" class="accordion-button collapsed custom-link highlighted-link" data-bs-target="#collapseSurgeryMobile" data-bs-toggle="collapse" type="button">
+<i aria-hidden="true" class="bi bi-hospital me-2"></i>Surgeries
+                        </button>
+</h2>
+<div aria-labelledby="headingSurgeryMobile" class="accordion-collapse collapse" data-bs-parent="#surgeryAccordion" id="collapseSurgeryMobile">
+<div class="accordion-body ps-4">
+<div class="accordion" id="heartAccordion">
+<div class="accordion-item border-0">
+<h2 class="accordion-header" id="headingHeart">
+<button aria-controls="collapseHeart" aria-expanded="false" class="accordion-button collapsed bg-transparent px-0" data-bs-target="#collapseHeart" data-bs-toggle="collapse" type="button">
+                                    ❤️ Heart Surgeries
+                                    </button>
+</h2>
+<div aria-labelledby="headingHeart" class="accordion-collapse collapse" data-bs-parent="#heartAccordion" id="collapseHeart">
+<div class="accordion-body ps-3">
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/aortic-root-arch-surgeries.html">Aortic Root &amp; Arch Surgery</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/congenital-heart-surgeries.html">Congenital Heart Surgery</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/coronary-artery-bypass-grafting.html">Coronary Artery Bypass Grafting (CABG)</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/heart-transplants.html">Heart Transplant</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/left-ventricular-assist-device.html">Left Ventricular Assist Device (LVAD)</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/valve-replacement-avr-mvr-dvr.html">Valve Replacement (AVR/MVR/DVR)</a>
+</div>
+</div>
+</div>
+</div>
+<div class="accordion mt-2" id="vascularAccordion">
+<div class="accordion-item border-0">
+<h2 class="accordion-header" id="headingVascular">
+<button aria-controls="collapseVascular" aria-expanded="false" class="accordion-button collapsed bg-transparent px-0" data-bs-target="#collapseVascular" data-bs-toggle="collapse" type="button">
+                                    🩸 Vascular Surgeries
+                                    </button>
+</h2>
+<div aria-labelledby="headingVascular" class="accordion-collapse collapse" data-bs-parent="#vascularAccordion" id="collapseVascular">
+<div class="accordion-body ps-3">
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/vascular-surgery/aneurysm-repair.html">Aneurysm Repair</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/vascular-surgery/angioplasty-stenting.html">Angioplasty &amp; Stent Placement</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/vascular-surgery/av-fistula-creation.html">AV Fistula Creation</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/vascular-surgery/av-graft-placement.html">AV Graft Placement</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/vascular-surgery/carotid-endarterectomy-stenting.html">Carotid Endarterectomy &amp; Stenting</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/vascular-surgery/dvt-surgery-ivc-filter.html">DVT / IVC Filter</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/vascular-surgery/embolectomy-thrombectomy.html">Embolectomy &amp; Thrombectomy</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/vascular-surgery/lymphedema-surgery.html">Lymphedema Surgery</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/vascular-surgery/peripheral-arterial-bypass.html">Peripheral Arterial Bypass</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/vascular-surgery/peripheral-endarterectomy.html">Peripheral Endarterectomy</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/vascular-surgery/thoracic-outlet-decompression.html">Thoracic Outlet Decompression</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/vascular-surgery/trauma-vascular-repairs.html">Trauma Vascular Repair</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/vascular-surgery/venous-ulcer-surgery.html">Venous Ulcer Surgery</a>
+</div>
+</div>
+</div>
+</div>
+<div class="accordion mt-2" id="thoracicAccordion">
+<div class="accordion-item border-0">
+<h2 class="accordion-header" id="headingThoracic">
+<button aria-controls="collapseThoracic" aria-expanded="false" class="accordion-button collapsed bg-transparent px-0" data-bs-target="#collapseThoracic" data-bs-toggle="collapse" type="button">
+                                    🫁 Thoracic Conditions
+                                    </button>
+</h2>
+<div aria-labelledby="headingThoracic" class="accordion-collapse collapse" data-bs-parent="#thoracicAccordion" id="collapseThoracic">
+<div class="accordion-body ps-3">
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/thoracic-surgery/aspergilloma.html">Aspergilloma</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/thoracic-surgery/bronchiectasis.html">Bronchiectasis</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/thoracic-surgery/chest-trauma.html">Chest Trauma</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/thoracic-surgery/empyema.html">Empyema</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/thoracic-surgery/hernia-diaphragm.html">Hernia Diaphragm</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/thoracic-surgery/lung-cancer.html">Lung Cancer</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/thoracic-surgery/lung-nodules.html">Lung Nodules</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/thoracic-surgery/lung-cysts.html">Lung Cysts</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/thoracic-surgery/myasthenia-thymoma.html">Myasthenia Thymoma</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/thoracic-surgery/palmar-hyperhidrosis.html">Palmar Hyperhidrosis</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/thoracic-surgery/pleural-effusion.html">Pleural Effusion</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/thoracic-surgery/pneumothorax.html">Pneumothorax</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/thoracic-surgery/tracheal-stenosis.html">Tracheal Stenosis</a>
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/thoracic-surgery/tracheoesophageal-fistula.html">Tracheoesophageal Fistula</a>
+</div>
+</div>
+</div>
+</div>
+<div class="accordion mt-2" id="varicoseAccordion">
+<div class="accordion-item border-0">
+<h2 class="accordion-header" id="headingVaricose">
+<button aria-controls="collapseVaricose" aria-expanded="false" class="accordion-button collapsed bg-transparent px-0" data-bs-target="#collapseVaricose" data-bs-toggle="collapse" type="button">
+                                    🦵 Varicose &amp; Venous
+                                    </button>
+</h2>
+<div aria-labelledby="headingVaricose" class="accordion-collapse collapse" data-bs-parent="#varicoseAccordion" id="collapseVaricose">
+<div class="accordion-body ps-3">
+<a class="dropdown-item d-block small py-2" href="/membership/surgery/vericose/vericose-veins.html">Varicose Veins Surgery</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="accordion mt-2" id="moreAccordionMobile">
+<div class="accordion-item border-0">
+<h2 class="accordion-header" id="headingMoreMobile">
+<button aria-controls="collapseMoreMobile" aria-expanded="false" class="accordion-button collapsed custom-link bg-transparent px-0" data-bs-target="#collapseMoreMobile" data-bs-toggle="collapse" type="button">
+<i aria-hidden="true" class="bi bi-three-dots me-2"></i>More +
+                           </button>
+</h2>
+<div aria-labelledby="headingMoreMobile" class="accordion-collapse collapse" data-bs-parent="#moreAccordionMobile" id="collapseMoreMobile">
+<div class="accordion-body ps-4">
+<a class="dropdown-item d-block small py-2" href="/membership/join-as-doctor.html">Join as a Doctor</a>
+<a class="dropdown-item d-block small py-2" href="/membership/join-as-hospital.html">Join as a Hospital</a>
+<a class="dropdown-item d-block small py-2" href="/membership/membership-assistance.html">Insurance Assistance</a>
+<a class="dropdown-item d-block small py-2" href="/membership/ambulance-emergency.html">Ambulance &amp; Emergency</a>
+<a class="dropdown-item d-block small py-2" href="/membership/contact-us.html">Contact Us</a>
+<a class="dropdown-item d-block small py-2" href="/membership/disclaimer.html">Disclaimer</a>
+</div>
+</div>
+</div>
+</div>
+<a aria-label="Get Astikan App" class="btn btn-danger w-100 my-2" href="/membership/index.html#download-app"><i aria-hidden="true" class="bi bi-phone me-2"></i>Get Astikan App</a>
+<div class="user-profile-box d-flex align-items-center justify-content-start mt-1 p-2 rounded-3 shadow-sm">
+<a class="dropdown-item d-flex align-items-center text-decoration-none" href="#">
+<img alt="User Avatar" class="rounded-circle user-avatar me-2" src="" style="width: 45px; height: 45px; object-fit: cover;"/>
+<h6 class="fw-semibold mb-0 ms-1 text-dark"></h6>
+</a>
+</div>
+<button aria-label="Consultation" class="btn btn-outline-secondary rounded-pill d-lg-block d-none px-2 py-2" id="consultationBtn">
+<img alt="Consultation Icon" src="assets/free.avif" style="width: 32px;"/>
+                  Consultation
+                  </button>
+</div></nav>
+</div>
+</div>
+<div class="success-container">
+<div class="content">
+<div class="success-card" data-aos="fade-up">
+<div class="success-icon">
+<i class="fas fa-check"></i>
+<i class="fas fa-clock"></i>
+</div>
+<h1 class="success-title">
+                    
+                        Appointment Confirmed!
+                    
+                        Payment Processing
+                    
+                </h1>
+<p class="success-message">
+                    
+                        Your appointment has been successfully booked and confirmed. We've sent a confirmation to your
+                        email.
+                    
+                        Your appointment booking is being processed. We'll confirm your appointment once the payment is
+                        verified.
+                    
+                </p>
+<div class="payment-status">
+<i class="fas fa-check-circle me-2"></i>Payment Successful
+                        
+                            <i class="fas fa-clock me-2"></i>Payment Verification Pending
+                        
+                    </div>
+<div class="appointment-details">
+<div class="detail-row">
+<span class="detail-label">
+<i class="fas fa-user-md"></i>
+                                Doctor
+                            </span>
+<span class="detail-value">
+                                Dr. 
+                            </span>
+</div>
+<div class="detail-row">
+<span class="detail-label">
+<i class="fas fa-stethoscope"></i>
+                                Specialty
+                            </span>
+<span class="detail-value">
+</span>
+</div>
+<div class="detail-row">
+<span class="detail-label">
+<i class="fas fa-calendar-check"></i>
+                                Appointment ID
+                            </span>
+<span class="detail-value">
+</span>
+</div>
+<div class="detail-row">
+<span class="detail-label">
+<i class="fas fa-video"></i>
+                                Consultation Type
+                            </span>
+<span class="detail-value">
+</span>
+</div>
+<div class="detail-row">
+<span class="detail-label">
+<i class="fas fa-calendar"></i>
+                                Date
+                            </span>
+<span class="detail-value">
+</span>
+</div>
+<div class="detail-row">
+<span class="detail-label">
+<i class="fas fa-clock"></i>
+                                Time
+                            </span>
+<span class="detail-value">
+</span>
+</div>
+<div class="detail-row">
+<span class="detail-label">
+<i class="fas fa-user"></i>
+                                Patient Name
+                            </span>
+<span class="detail-value">
+</span>
+</div>
+<div class="detail-row">
+<span class="detail-label">
+<i class="fas fa-credit-card"></i>
+                                Amount Paid
+                            </span>
+<span class="detail-value">
+                                ₹
+                            </span>
+</div>
+</div>
+<div class="action-buttons">
+<a class="btn-custom btn-primary" href="#">
+<i class="fas fa-list"></i>
+                        View My Appointments
+                    </a>
+<a class="btn-custom btn-outline" href="#">
+<i class="fas fa-home"></i>
+                        Back to Home
+                    </a>
+</div>
+</div>
+</div>
+</div>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+
+        
+        
+            setTimeout(function () {
+                window.location.reload();
+            }, 10000); 
+        
+    </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script><script src="assets/astikan-config.js"></script>
+<script src="assets/member-site-login.js"></script>
+<script src="assets/offcanvas-auth.js"></script>
+<script src="script.js"></script><footer class="futrr futrr-compact p-3">
+<div class="container futrr-main py-4">
+<div class="row gy-3 align-items-start">
+<div class="col-lg-4 col-md-6 futrr-about">
+<h6><i aria-hidden="true" class="bi bi-heart me-2 text-gradient"></i>Astikan</h6>
+<p class="mb-2">Affordable healthcare access, lab tests, medical finance, consultations, medicine delivery and emergency support.</p>
+<p class="mb-1"><i aria-hidden="true" class="bi bi-geo-alt me-2"></i>B-45, Sector 56, Noida</p>
+<p class="mb-1"><i aria-hidden="true" class="bi bi-telephone me-2"></i>+91 99900 71792, +91 73033 34931</p>
+<p class="mb-0"><i aria-hidden="true" class="bi bi-envelope me-2"></i>care@astikan.com</p>
+</div>
+<div class="col-lg-2 col-md-6">
+<h6>Company</h6>
+<ul>
+<li><a href="/membership/index.html">Home</a></li>
+<li><a href="/membership/about-us.html">About Us</a></li>
+<li><a href="/membership/contact-us.html">Contact Us</a></li>
+<li><a href="/membership/index.html#download-app">Download App</a></li>
+</ul>
+</div>
+<div class="col-lg-3 col-md-6">
+<h6>Services</h6>
+<ul>
+<li><a href="/membership/lab-test.html">Lab Tests</a></li>
+<li><a href="/membership/find-doctors.html">Find Doctors</a></li>
+<li><a href="/membership/video-consultation.html">Video Consultation</a></li>
+<li><a href="/membership/medicine-delivery.html">Medicine Delivery</a></li>
+<li><a href="/membership/medical-finance.html">Medical Finance</a></li>
+</ul>
+</div>
+<div class="col-lg-3 col-md-6">
+<h6>Legal &amp; Support</h6>
+<ul>
+<li><a href="/membership/privacy-policy.html">Privacy Policy</a></li>
+<li><a href="/membership/terms-and-conditions.html">Terms &amp; Conditions</a></li>
+<li><a href="/membership/refund-policy.html">Refund Policy</a></li>
+<li><a href="/membership/disclaimer.html">Disclaimer</a></li>
+<li><a href="/membership/grevience-portal.html">Grievance Portal</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="futrr-bottom py-3">
+<div class="container d-flex flex-column flex-md-row align-items-center justify-content-between gap-2">
+<div>
+<p class="mb-0">© 2025 Astikan Healthcare Private Limited - All Rights Reserved.</p>
+<small>CIN: U74999UP2018PTC103568</small>
+</div>
+<div class="text-md-end">
+<span class="me-2">Follow us:</span>
+<a aria-label="Facebook" href="#"><i aria-hidden="true" class="bi bi-facebook"></i></a>
+<a aria-label="Twitter" href="#"><i aria-hidden="true" class="bi bi-twitter"></i></a>
+<a aria-label="Instagram" href="#"><i aria-hidden="true" class="bi bi-instagram"></i></a>
+<a aria-label="LinkedIn" href="#"><i aria-hidden="true" class="bi bi-linkedin"></i></a>
+</div>
+</div>
+</div>
+</footer></body>
+</html>

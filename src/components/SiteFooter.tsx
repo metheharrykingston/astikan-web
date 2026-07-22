@@ -118,7 +118,7 @@ export default function SiteFooter() {
         <div className="relative mx-auto max-w-[1380px] px-5 pb-8 pt-16 lg:px-8 lg:pt-20">
           <div className="grid gap-14 lg:grid-cols-[1.45fr_1fr_1fr_1fr]">
             <div data-aos="fade-up">
-              <span onClick={() => window.location.assign('/')} className="inline-block cursor-pointer" role="link" tabIndex={0} onKeyDown={(event) => { if (event.key === 'Enter' || event.key === ' ') window.location.assign('/'); }}><AstikanLogo /></span>
+              <span onClick={() => window.location.assign('/')} className="inline-block cursor-pointer" role="link" tabIndex={0} onKeyDown={(event) => { if (event.key === 'Enter' || event.key === ' ') window.location.assign('/'); }}><AstikanLogo light /></span>
               <p className="mt-6 max-w-md text-sm leading-7 text-blue-100/65">Astikan builds health technologies for a world where every life can understand, access, and navigate health with greater clarity.</p>
               <div className="mt-8 flex items-center gap-3">
                 {[[FaLinkedinIn, 'LinkedIn'], [FaXTwitter, 'X'], [FaYoutube, 'YouTube'], [FaInstagram, 'Instagram']].map(([Icon, label]) => <span key={label} aria-label={`${label} coming later`} className="flex h-10 w-10 cursor-default items-center justify-center rounded-full border border-white/15 text-blue-100/45"><Icon size={15} /></span>)}

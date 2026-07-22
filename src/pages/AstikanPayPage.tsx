@@ -248,9 +248,6 @@ export default function AstikanPayPage() {
   const pageRef = useRef(null);
 
   useLayoutEffect(() => {
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduceMotion) return undefined;
-
     const context = gsap.context(() => {
       gsap.timeline({ defaults: { ease: 'power3.out' } })
         .from('.pay-hero-copy > *', { y: 28, opacity: 0, duration: 0.72, stagger: 0.08 })
@@ -269,7 +266,13 @@ export default function AstikanPayPage() {
           <div className="absolute inset-0 opacity-30 [background-image:linear-gradient(rgba(75,110,190,.055)_1px,transparent_1px),linear-gradient(90deg,rgba(75,110,190,.055)_1px,transparent_1px)] [background-size:52px_52px]" />
           <div className="relative mx-auto grid min-h-[780px] max-w-[1500px] items-center gap-5 px-5 lg:grid-cols-[.72fr_1.28fr] lg:px-8">
             <div className="pay-hero-copy relative z-20 max-w-2xl py-14 lg:py-20">
-              <div className="flex items-center gap-4"><PayMark className="h-16 w-16 sm:h-20 sm:w-20" /><div><p className="text-xs font-extrabold uppercase tracking-[0.22em] text-blue-600">HEALTH-FIRST UPI</p><div className="mt-1 text-sm font-bold text-slate-400">Powered by everyday payments</div></div></div>
+              <div className="flex min-w-0 items-center gap-3 sm:gap-4" data-motion-text="off">
+                <PayMark className="h-14 w-14 shrink-0 sm:h-20 sm:w-20" />
+                <div className="min-w-0">
+                  <p className="whitespace-nowrap text-[10px] font-extrabold uppercase leading-5 tracking-[0.14em] text-blue-600 sm:text-xs sm:tracking-[0.22em]">HEALTH-FIRST UPI</p>
+                  <div className="mt-0.5 text-xs font-bold leading-5 text-slate-400 sm:mt-1 sm:text-sm">Powered by everyday payments</div>
+                </div>
+              </div>
               <h1 className="mt-7 text-[3.35rem] font-extrabold leading-[.98] tracking-[-0.045em] text-navy-900 sm:text-7xl lg:text-[5.15rem]">Astikan Pay</h1>
               <h2 className="mt-5 text-2xl font-bold tracking-tight text-blue-700 sm:text-3xl">A health-first UPI payment application.</h2>
               <p className="mt-6 max-w-xl text-base leading-8 text-slate-600 sm:text-lg">Astikan Pay brings hospital bills, laboratory payments, pharmacy purchases, family support, receipts, refunds, and normal UPI transactions into one calm payment experience.</p>
