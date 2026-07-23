@@ -1,0 +1,50 @@
+name: Astikan VPS post-deploy validation
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/vps-post-deploy-validation.yml'
+      - 'qa/vps-post-deploy-validate.mjs'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  AUDIT_BASE_URL: https://www.astikan.com
+  AUDIT_OUTPUT: vps-validation-output
+
+jobs:
+  validate-live-vps:
+    name: Validate live VPS in Chromium Firefox WebKit
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout QA branch
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install validation dependencies
+        run: npm install --no-save --package-lock=false playwright@1.57.0
+
+      - name: Install browser engines and system libraries
+        run: npx playwright install --with-deps chromium firefox webkit
+
+      - name: Validate current production deployment
+        continue-on-error: true
+        run: node qa/vps-post-deploy-validate.mjs
+
+      - name: Upload screenshots and results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: astikan-vps-post-deploy-validation
+          path: vps-validation-output
+          if-no-files-found: error
+          retention-days: 7
+          compression-level: 6
