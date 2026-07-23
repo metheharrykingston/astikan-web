@@ -48,3 +48,5 @@ jobs:
           if-no-files-found: error
           retention-days: 7
           compression-level: 6
+
+# Fresh rerun requested after the latest VPS deployment.
